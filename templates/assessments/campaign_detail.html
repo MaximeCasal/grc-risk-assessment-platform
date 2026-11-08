@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block content %}
+<a class="back" href="{% url 'application_detail' campaign.application.pk %}">← {{ campaign.application.name }}</a>
+
+<div class="page-head">
+  <div>
+    <p class="eyebrow">Évaluation ISRA · {{ campaign.get_status_display }}</p>
+    <h1>{{ campaign.title }}</h1>
+  </div>
+  <div class="button-row">
+    {% if can_assign %}
+    <a class="btn" href="{% url 'campaign_assign' campaign.pk %}">+ Attribuer un questionnaire</a>
+    {% endif %}
+    {% if can_modify_campaign %}
+    <a class="btn secondary" href="{% url 'campaign_edit' campaign.pk %}">Modifier l’évaluation</a>
+    {% endif %}
+    {% if can_conclude %}
+    <a class="btn secondary" href="{% url 'conclusion_create' campaign.pk %}">{% if campaign.status == 'CLOSED' %}Réviser l’appréciation{% else %}Nouvelle appréciation{% endif %}</a>
+    {% endif %}
+  </div>
+</div>
+
+<div class="section-head">
+  <h2>Questionnaires attribués</h2>
+  {% if can_assign %}
+  <a href="{% url 'campaign_assign' campaign.pk %}">+ Nouvelle attribution</a>
+  {% endif %}
+</div>
+{% with analyst=True %}
+  {% include 'assessments/assignment_table.html' %}
+{% endwith %}
+
+<div class="section-head"><h2>Scénarios de risque</h2>{% if can_modify_campaign %}<a href="{% url 'scenario_create' campaign.pk %}">+ Ajouter un scénario</a>{% endif %}</div>
+<div class="scenario-grid">
+  {% for s in campaign.scenarios.all %}
+    <article class="scenario-card">
+      <small>{{ s.reference }}</small>
+      <h3>{{ s.title }}</h3>
+      <p>{{ s.description|default:'Brouillon sans description'|linebreaksbr }}</p>
+      <dl>
+        <dt>Impact</dt><dd>{{ s.impact|default:'Non renseigné' }}</dd>
+        <dt>Vraisemblance</dt><dd>{{ s.likelihood|default:'Non renseignée' }}</dd>
+        <dt>Risque inhérent</dt><dd>{{ s.inherent_risk|default:'Non renseigné' }}</dd>
+        <dt>Risque résiduel</dt><dd>{{ s.residual_risk|default:'Non renseigné' }}</dd>
+      </dl>
+      <details class="scenario-details">
+        <summary>Consulter l’analyse complète</summary>
+        <div>
+          <h4>Événement redouté</h4><p>{{ s.feared_event|default:'Non renseigné'|linebreaksbr }}</p>
+          <h4>Faiblesses</h4><p>{{ s.weaknesses|default:'Non renseignées'|linebreaksbr }}</p>
+          <h4>Mesures existantes</h4><p>{{ s.existing_measures|default:'Non renseignées'|linebreaksbr }}</p>
+          <h4>Justification</h4><p>{{ s.justification|default:'Non renseignée'|linebreaksbr }}</p>
+          <h4>Traitement</h4><p>{{ s.treatment|default:'Non renseigné'|linebreaksbr }}</p>
+          <h4>Références</h4><p>{{ s.references|default:'Non renseignées'|linebreaksbr }}</p>
+        </div>
+      </details>
+      {% if can_modify_campaign %}
+      <div class="scenario-actions">
+        <a href="{% url 'scenario_edit' s.pk %}">Modifier</a>
+        <form class="inline" method="post" action="{% url 'scenario_delete' s.pk %}">{% csrf_token %}<button class="link danger">Supprimer</button></form>
+      </div>
+      {% endif %}
+    </article>
+  {% empty %}<p>Aucun scénario documenté.</p>{% endfor %}
+</div>
+
+<h2>Historique des appréciations</h2>
+<div class="timeline">{% for c in campaign.conclusions.all %}<div><span class="dot {{ c.level|lower }}"></span><b>{{ c.get_level_display }}</b><small>{{ c.created_at|date:'d/m/Y H:i' }} · {{ c.author.get_full_name }}</small><p>{{ c.justification }}</p></div>{% empty %}<p>Non évalué.</p>{% endfor %}</div>
+{% endblock %}

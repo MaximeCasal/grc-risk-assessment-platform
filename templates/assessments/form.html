@@ -1,0 +1,1 @@
+{% extends 'base.html' %}{% block content %}<a class="back" href="javascript:history.back()">← Retour</a><div class="form-panel"><p class="eyebrow">Analyse manuelle</p><h1>{{ title }}</h1><form method="post">{% csrf_token %}{{ form.as_p }}<button>Enregistrer</button></form></div>{% endblock %}

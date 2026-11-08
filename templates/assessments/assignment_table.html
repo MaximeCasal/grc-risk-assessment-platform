@@ -1,0 +1,93 @@
+<div class="table assignment-table{% if analyst %} assignment-table-analyst{% endif %}">
+  <table>
+    <thead>
+      <tr><th>Questionnaire</th><th>Périmètre</th>{% if analyst %}<th>Répondant</th>{% endif %}<th>Statut</th><th><span class="sr-only">Action</span></th></tr>
+    </thead>
+    <tbody>
+      {% for a in assignments %}
+      <tr>
+        <td><b>{{ a.template.title }}</b><small class="table-subtitle">{{ a.template.code }}</small></td>
+        <td>{{ a.campaign.application.name }}</td>
+        {% if analyst %}<td>{{ a.respondent.get_full_name|default:a.respondent.username }}</td>{% endif %}
+        <td><span class="status {{ a.status|lower }}">{{ a.get_status_display }}</span></td>
+        <td class="table-action">
+          {% if a.status == 'SUBMITTED' and analyst %}
+            <div class="assignment-actions">
+              <a href="{% url 'results' a.pk %}">Voir les résultats</a>
+              {% if a.bo_summary or a.it_summary %}
+              <button class="score-toggle" type="button" aria-expanded="false" aria-controls="score-panel-{{ a.pk }}" data-score-toggle="score-panel-{{ a.pk }}">
+                <span data-score-label>Voir les scores</span>
+                <svg aria-hidden="true" viewBox="0 0 20 20"><path d="m5 7.5 5 5 5-5"/></svg>
+              </button>
+              {% endif %}
+            </div>
+          {% elif a.status == 'SUBMITTED' %}<span class="muted">Transmis à l’analyste GRC</span>
+          {% elif not analyst %}<a href="{% url 'questionnaire' a.pk %}">Ouvrir</a>
+          {% else %}<span class="muted">Brouillon confidentiel</span>{% endif %}
+        </td>
+      </tr>
+      {% if analyst and a.bo_summary or analyst and a.it_summary %}
+      <tr class="score-detail-row" id="score-panel-{{ a.pk }}" aria-hidden="true" hidden>
+        <td colspan="5">
+          <div class="score-detail-reveal">
+            {% if a.bo_summary %}
+            <section class="score-detail-panel" aria-label="Synthèse des scores du questionnaire métier">
+              <h3>Besoin de protection</h3>
+              <h3>Impact métier</h3>
+              {% for row in a.bo_summary.rows %}
+              <div class="score-result-cell">
+                <span>{{ row.label }}</span>
+                <strong class="campaign-score level-{{ row.protection.color_level }}">{% if row.protection.value != None %}{{ row.protection.value|floatformat:"-2" }}/5{% else %}N/D{% endif %}</strong>
+              </div>
+              <div class="score-result-cell">
+                <span>{{ row.label }}</span>
+                <strong class="campaign-score level-{{ row.impact.color_level }}">{% if row.impact.value != None %}{{ row.impact.value|floatformat:"-2" }}/5{% else %}N/D{% endif %}</strong>
+              </div>
+              {% endfor %}
+            </section>
+            {% elif a.it_summary %}
+            <section class="score-detail-panel it-score-detail-panel" aria-label="Synthèse des scores du questionnaire IT">
+              <h3>Faiblesses des contrôles par famille <small>Échelle de 0 à 5</small></h3>
+              {% for family in a.it_summary.families %}
+              <div class="score-result-cell">
+                <span><b>{{ family.code }}</b>{{ family.name }}</span>
+                <strong class="campaign-score level-{{ family.color_level }}">{% if family.value != None %}{{ family.value|floatformat:1 }}/5{% else %}N/D{% endif %}</strong>
+              </div>
+              {% endfor %}
+            </section>
+            {% endif %}
+          </div>
+        </td>
+      </tr>
+      {% endif %}
+      {% empty %}
+      <tr><td class="table-empty" colspan="{% if analyst %}5{% else %}4{% endif %}">Aucun questionnaire pour le moment.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<script>
+document.querySelectorAll('[data-score-toggle]').forEach(button => {
+  if (button.dataset.scoreReady) return;
+  button.dataset.scoreReady = 'true';
+  button.addEventListener('click', () => {
+    const panel = document.getElementById(button.dataset.scoreToggle);
+    if (!panel) return;
+    const opening = button.getAttribute('aria-expanded') !== 'true';
+    const label = button.querySelector('[data-score-label]');
+    button.setAttribute('aria-expanded', String(opening));
+    panel.setAttribute('aria-hidden', String(!opening));
+    if (label) label.textContent = opening ? 'Masquer les scores' : 'Voir les scores';
+    if (opening) {
+      panel.hidden = false;
+      requestAnimationFrame(() => panel.classList.add('is-open'));
+    } else {
+      panel.classList.remove('is-open');
+      window.setTimeout(() => {
+        if (button.getAttribute('aria-expanded') === 'false') panel.hidden = true;
+      }, 240);
+    }
+  });
+});
+</script>

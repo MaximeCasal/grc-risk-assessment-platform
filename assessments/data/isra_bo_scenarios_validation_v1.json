@@ -1,0 +1,781 @@
+{
+  "model_version": "1.0.0",
+  "cases": [
+    {
+      "name": "base_confidentialite",
+      "active_question_ids": [
+        "C01",
+        "C03",
+        "C12",
+        "P01",
+        "U07"
+      ],
+      "answers": {
+        "C01": [
+          "C01#01"
+        ],
+        "C03": [
+          "C03#02"
+        ],
+        "C12": [
+          "C12#06"
+        ],
+        "P01": [
+          "P01#06"
+        ],
+        "U07": [
+          "U07#01"
+        ]
+      },
+      "expected_remarks": "E_C=3.6, X_C=5, W_C=0, S_C=3.24",
+      "expected": {
+        "dimensions": {
+          "C": {
+            "E": 3.6,
+            "X": 5.0,
+            "W": 0.0,
+            "S": 3.24
+          },
+          "I": {
+            "E": null,
+            "X": null,
+            "W": 0.0,
+            "S": null
+          },
+          "D": {
+            "E": null,
+            "X": null,
+            "W": null,
+            "S": null
+          }
+        },
+        "groups": {
+          "E/C/C-DON": 3.0,
+          "E/C/C-IMP": 5.0,
+          "E/C/C-VOL": 2.0,
+          "W/C/C-ACC": 0.0,
+          "W/I/I-CONT": 0.0,
+          "X/C/C-PART": 5.0
+        },
+        "question_scores": {
+          "C03": 2.0,
+          "U07": 0.0,
+          "C12": 5.0,
+          "P01": 5.0,
+          "C01": 3.0
+        },
+        "quality": {
+          "active_contributive": 5,
+          "numeric_contributive": 5,
+          "missing_contributive": [],
+          "explicit_unknown": [],
+          "explicit_na": [],
+          "ignored_hidden_with_answer": []
+        }
+      }
+    },
+    {
+      "name": "reponse_cachee_obsolete_ignoree",
+      "active_question_ids": [
+        "C01",
+        "C03",
+        "C12",
+        "P01",
+        "U07"
+      ],
+      "answers": {
+        "C01": [
+          "C01#01"
+        ],
+        "C03": [
+          "C03#02"
+        ],
+        "C12": [
+          "C12#06"
+        ],
+        "P01": [
+          "P01#06"
+        ],
+        "U07": [
+          "U07#01"
+        ],
+        "C04": [
+          "C04#01"
+        ]
+      },
+      "expected_remarks": "A hidden C04 cannot alter results",
+      "expected": {
+        "dimensions": {
+          "C": {
+            "E": 3.6,
+            "X": 5.0,
+            "W": 0.0,
+            "S": 3.24
+          },
+          "I": {
+            "E": null,
+            "X": null,
+            "W": 0.0,
+            "S": null
+          },
+          "D": {
+            "E": null,
+            "X": null,
+            "W": null,
+            "S": null
+          }
+        },
+        "groups": {
+          "E/C/C-DON": 3.0,
+          "E/C/C-IMP": 5.0,
+          "E/C/C-VOL": 2.0,
+          "W/C/C-ACC": 0.0,
+          "W/I/I-CONT": 0.0,
+          "X/C/C-PART": 5.0
+        },
+        "question_scores": {
+          "C03": 2.0,
+          "U07": 0.0,
+          "C12": 5.0,
+          "P01": 5.0,
+          "C01": 3.0
+        },
+        "quality": {
+          "active_contributive": 5,
+          "numeric_contributive": 5,
+          "missing_contributive": [],
+          "explicit_unknown": [],
+          "explicit_na": [],
+          "ignored_hidden_with_answer": [
+            "C04"
+          ]
+        }
+      }
+    },
+    {
+      "name": "categorie_reactive_C04",
+      "active_question_ids": [
+        "C01",
+        "C03",
+        "C12",
+        "P01",
+        "U07",
+        "C04"
+      ],
+      "answers": {
+        "C01": [
+          "C01#01"
+        ],
+        "C03": [
+          "C03#02"
+        ],
+        "C12": [
+          "C12#06"
+        ],
+        "P01": [
+          "P01#06"
+        ],
+        "U07": [
+          "U07#01"
+        ],
+        "C04": [
+          "C04#01"
+        ]
+      },
+      "expected_remarks": "C04 now active increases E_C to 4; S_C=3.6",
+      "expected": {
+        "dimensions": {
+          "C": {
+            "E": 4.0,
+            "X": 5.0,
+            "W": 0.0,
+            "S": 3.6
+          },
+          "I": {
+            "E": null,
+            "X": null,
+            "W": 0.0,
+            "S": null
+          },
+          "D": {
+            "E": null,
+            "X": null,
+            "W": null,
+            "S": null
+          }
+        },
+        "groups": {
+          "E/C/C-DON": 4.0,
+          "E/C/C-IMP": 5.0,
+          "E/C/C-VOL": 2.0,
+          "W/C/C-ACC": 0.0,
+          "W/I/I-CONT": 0.0,
+          "X/C/C-PART": 5.0
+        },
+        "question_scores": {
+          "C03": 2.0,
+          "U07": 0.0,
+          "C12": 5.0,
+          "P01": 5.0,
+          "C04": 5.0,
+          "C01": 3.0
+        },
+        "quality": {
+          "active_contributive": 6,
+          "numeric_contributive": 6,
+          "missing_contributive": [],
+          "explicit_unknown": [],
+          "explicit_na": [],
+          "ignored_hidden_with_answer": []
+        }
+      }
+    },
+    {
+      "name": "groupe_inapplicable_renormalise",
+      "active_question_ids": [
+        "C01",
+        "C12"
+      ],
+      "answers": {
+        "C01": [
+          "C01#01"
+        ],
+        "C12": [
+          "C12#06"
+        ]
+      },
+      "expected_remarks": "C-VOL absent, renormalized E_C=(.4*3+.4*5)/.8=4",
+      "expected": {
+        "dimensions": {
+          "C": {
+            "E": 4.0,
+            "X": null,
+            "W": null,
+            "S": 4.0
+          },
+          "I": {
+            "E": null,
+            "X": null,
+            "W": null,
+            "S": null
+          },
+          "D": {
+            "E": null,
+            "X": null,
+            "W": null,
+            "S": null
+          }
+        },
+        "groups": {
+          "E/C/C-DON": 3.0,
+          "E/C/C-IMP": 5.0
+        },
+        "question_scores": {
+          "C12": 5.0,
+          "C01": 3.0
+        },
+        "quality": {
+          "active_contributive": 2,
+          "numeric_contributive": 2,
+          "missing_contributive": [],
+          "explicit_unknown": [],
+          "explicit_na": [],
+          "ignored_hidden_with_answer": []
+        }
+      }
+    },
+    {
+      "name": "question_visible_sans_reponse",
+      "active_question_ids": [
+        "C01",
+        "C03",
+        "C12"
+      ],
+      "answers": {
+        "C01": [
+          "C01#01"
+        ],
+        "C03": [
+          "C03#02"
+        ]
+      },
+      "expected_remarks": "Visible C12 not answered; C-IMP excluded and flagged incomplete",
+      "expected": {
+        "dimensions": {
+          "C": {
+            "E": 2.6666666666666665,
+            "X": null,
+            "W": null,
+            "S": 2.6666666666666665
+          },
+          "I": {
+            "E": null,
+            "X": null,
+            "W": null,
+            "S": null
+          },
+          "D": {
+            "E": null,
+            "X": null,
+            "W": null,
+            "S": null
+          }
+        },
+        "groups": {
+          "E/C/C-DON": 3.0,
+          "E/C/C-VOL": 2.0
+        },
+        "question_scores": {
+          "C03": 2.0,
+          "C01": 3.0
+        },
+        "quality": {
+          "active_contributive": 3,
+          "numeric_contributive": 2,
+          "missing_contributive": [
+            "C12"
+          ],
+          "explicit_unknown": [],
+          "explicit_na": [],
+          "ignored_hidden_with_answer": []
+        }
+      }
+    },
+    {
+      "name": "composantes_XW_absentes",
+      "active_question_ids": [
+        "C01",
+        "C03",
+        "C12"
+      ],
+      "answers": {
+        "C01": [
+          "C01#01"
+        ],
+        "C03": [
+          "C03#02"
+        ],
+        "C12": [
+          "C12#06"
+        ]
+      },
+      "expected_remarks": "E_C=3.6; no adjustment; X=null W=null",
+      "expected": {
+        "dimensions": {
+          "C": {
+            "E": 3.6,
+            "X": null,
+            "W": null,
+            "S": 3.6
+          },
+          "I": {
+            "E": null,
+            "X": null,
+            "W": null,
+            "S": null
+          },
+          "D": {
+            "E": null,
+            "X": null,
+            "W": null,
+            "S": null
+          }
+        },
+        "groups": {
+          "E/C/C-DON": 3.0,
+          "E/C/C-IMP": 5.0,
+          "E/C/C-VOL": 2.0
+        },
+        "question_scores": {
+          "C12": 5.0,
+          "C03": 2.0,
+          "C01": 3.0
+        },
+        "quality": {
+          "active_contributive": 3,
+          "numeric_contributive": 3,
+          "missing_contributive": [],
+          "explicit_unknown": [],
+          "explicit_na": [],
+          "ignored_hidden_with_answer": []
+        }
+      }
+    },
+    {
+      "name": "W_inconnue_pas_une_mauvaise_protection",
+      "active_question_ids": [
+        "C01",
+        "C03",
+        "C12",
+        "U07"
+      ],
+      "answers": {
+        "C01": [
+          "C01#01"
+        ],
+        "C03": [
+          "C03#02"
+        ],
+        "C12": [
+          "C12#06"
+        ],
+        "U07": [
+          "U07#05"
+        ]
+      },
+      "expected_remarks": "W missing (ND) means neutral attenuation; does not mean W=5",
+      "expected": {
+        "dimensions": {
+          "C": {
+            "E": 3.6,
+            "X": null,
+            "W": null,
+            "S": 3.6
+          },
+          "I": {
+            "E": null,
+            "X": null,
+            "W": null,
+            "S": null
+          },
+          "D": {
+            "E": null,
+            "X": null,
+            "W": null,
+            "S": null
+          }
+        },
+        "groups": {
+          "E/C/C-DON": 3.0,
+          "E/C/C-IMP": 5.0,
+          "E/C/C-VOL": 2.0
+        },
+        "question_scores": {
+          "C12": 5.0,
+          "C03": 2.0,
+          "C01": 3.0
+        },
+        "quality": {
+          "active_contributive": 4,
+          "numeric_contributive": 3,
+          "missing_contributive": [],
+          "explicit_unknown": [
+            "U07"
+          ],
+          "explicit_na": [],
+          "ignored_hidden_with_answer": []
+        }
+      }
+    },
+    {
+      "name": "enjeu_absent_score_null",
+      "active_question_ids": [
+        "P01",
+        "U07"
+      ],
+      "answers": {
+        "P01": [
+          "P01#06"
+        ],
+        "U07": [
+          "U07#01"
+        ]
+      },
+      "expected_remarks": "No E_C, no S_C",
+      "expected": {
+        "dimensions": {
+          "C": {
+            "E": null,
+            "X": 5.0,
+            "W": 0.0,
+            "S": null
+          },
+          "I": {
+            "E": null,
+            "X": null,
+            "W": 0.0,
+            "S": null
+          },
+          "D": {
+            "E": null,
+            "X": null,
+            "W": null,
+            "S": null
+          }
+        },
+        "groups": {
+          "W/C/C-ACC": 0.0,
+          "W/I/I-CONT": 0.0,
+          "X/C/C-PART": 5.0
+        },
+        "question_scores": {
+          "P01": 5.0,
+          "U07": 0.0
+        },
+        "quality": {
+          "active_contributive": 2,
+          "numeric_contributive": 2,
+          "missing_contributive": [],
+          "explicit_unknown": [],
+          "explicit_na": [],
+          "ignored_hidden_with_answer": []
+        }
+      }
+    },
+    {
+      "name": "zero_numerique_valide",
+      "active_question_ids": [
+        "C01"
+      ],
+      "answers": {
+        "C01": [
+          "C01#07"
+        ]
+      },
+      "expected_remarks": "E_C=0, S_C=0, not null",
+      "expected": {
+        "dimensions": {
+          "C": {
+            "E": 0.0,
+            "X": null,
+            "W": null,
+            "S": 0
+          },
+          "I": {
+            "E": null,
+            "X": null,
+            "W": null,
+            "S": null
+          },
+          "D": {
+            "E": null,
+            "X": null,
+            "W": null,
+            "S": null
+          }
+        },
+        "groups": {
+          "E/C/C-DON": 0.0
+        },
+        "question_scores": {
+          "C01": 0.0
+        },
+        "quality": {
+          "active_contributive": 1,
+          "numeric_contributive": 1,
+          "missing_contributive": [],
+          "explicit_unknown": [],
+          "explicit_na": [],
+          "ignored_hidden_with_answer": []
+        }
+      }
+    },
+    {
+      "name": "NA_ne_vaut_pas_zero",
+      "active_question_ids": [
+        "C03"
+      ],
+      "answers": {
+        "C03": [
+          "C03#07"
+        ]
+      },
+      "expected_remarks": "C03 NA, no E_C and no S_C",
+      "expected": {
+        "dimensions": {
+          "C": {
+            "E": null,
+            "X": null,
+            "W": null,
+            "S": null
+          },
+          "I": {
+            "E": null,
+            "X": null,
+            "W": null,
+            "S": null
+          },
+          "D": {
+            "E": null,
+            "X": null,
+            "W": null,
+            "S": null
+          }
+        },
+        "groups": {},
+        "question_scores": {},
+        "quality": {
+          "active_contributive": 1,
+          "numeric_contributive": 0,
+          "missing_contributive": [],
+          "explicit_unknown": [],
+          "explicit_na": [
+            "C03"
+          ],
+          "ignored_hidden_with_answer": []
+        }
+      }
+    },
+    {
+      "name": "multichoix_max",
+      "active_question_ids": [
+        "P04"
+      ],
+      "answers": {
+        "P04": [
+          "P04#02",
+          "P04#06"
+        ]
+      },
+      "expected_remarks": "max(2,5)=5, X_C=5, X_I=5; E missing",
+      "expected": {
+        "dimensions": {
+          "C": {
+            "E": null,
+            "X": 5.0,
+            "W": null,
+            "S": null
+          },
+          "I": {
+            "E": null,
+            "X": 5.0,
+            "W": null,
+            "S": null
+          },
+          "D": {
+            "E": null,
+            "X": null,
+            "W": null,
+            "S": null
+          }
+        },
+        "groups": {
+          "X/C/C-PART": 5.0,
+          "X/I/I-FLUX": 5.0
+        },
+        "question_scores": {
+          "P04": 5.0
+        },
+        "quality": {
+          "active_contributive": 1,
+          "numeric_contributive": 1,
+          "missing_contributive": [],
+          "explicit_unknown": [],
+          "explicit_na": [],
+          "ignored_hidden_with_answer": []
+        }
+      }
+    },
+    {
+      "name": "hors_indice_toujours_exclu",
+      "active_question_ids": [
+        "C11",
+        "C01"
+      ],
+      "answers": {
+        "C11": [
+          "C11#07"
+        ],
+        "C01": [
+          "C01#01"
+        ]
+      },
+      "expected_remarks": "H C11 option numeric 0 ignored; E_C=3",
+      "expected": {
+        "dimensions": {
+          "C": {
+            "E": 3.0000000000000004,
+            "X": null,
+            "W": null,
+            "S": 3.0000000000000004
+          },
+          "I": {
+            "E": null,
+            "X": null,
+            "W": null,
+            "S": null
+          },
+          "D": {
+            "E": null,
+            "X": null,
+            "W": null,
+            "S": null
+          }
+        },
+        "groups": {
+          "E/C/C-DON": 3.0
+        },
+        "question_scores": {
+          "C01": 3.0
+        },
+        "quality": {
+          "active_contributive": 1,
+          "numeric_contributive": 1,
+          "missing_contributive": [],
+          "explicit_unknown": [],
+          "explicit_na": [],
+          "ignored_hidden_with_answer": []
+        }
+      }
+    },
+    {
+      "name": "question_conditionnelle_non_declenchee",
+      "active_question_ids": [
+        "C01",
+        "C12"
+      ],
+      "answers": {
+        "C01": [
+          "C01#01"
+        ],
+        "C12": [
+          "C12#06"
+        ],
+        "P04": [
+          "P04#06"
+        ]
+      },
+      "expected_remarks": "P04 stored but not active, no effect on X",
+      "expected": {
+        "dimensions": {
+          "C": {
+            "E": 4.0,
+            "X": null,
+            "W": null,
+            "S": 4.0
+          },
+          "I": {
+            "E": null,
+            "X": null,
+            "W": null,
+            "S": null
+          },
+          "D": {
+            "E": null,
+            "X": null,
+            "W": null,
+            "S": null
+          }
+        },
+        "groups": {
+          "E/C/C-DON": 3.0,
+          "E/C/C-IMP": 5.0
+        },
+        "question_scores": {
+          "C12": 5.0,
+          "C01": 3.0
+        },
+        "quality": {
+          "active_contributive": 2,
+          "numeric_contributive": 2,
+          "missing_contributive": [],
+          "explicit_unknown": [],
+          "explicit_na": [],
+          "ignored_hidden_with_answer": [
+            "P04"
+          ]
+        }
+      }
+    }
+  ]
+}

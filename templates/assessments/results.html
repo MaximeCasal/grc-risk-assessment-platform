@@ -1,0 +1,236 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block color_scheme %}light{% endblock %}
+{% block body_class %}{% if results.bo or results.it_app %}results-light{% endif %}{% endblock %}
+{% block extra_head %}{% if results.bo or results.it_app %}<link rel="stylesheet" href="{% static 'css/results.css' %}?v=20261019-it-app-v4">{% endif %}{% endblock %}
+{% block content %}
+{% if results.it_app %}
+{% include 'assessments/it_app_results_v4.html' %}
+{% elif results.bo %}
+<div class="results-page">
+  <a class="results-back" href="{% url 'dashboard' %}">
+    <span aria-hidden="true">←</span> Tableau de bord
+  </a>
+
+  <header class="results-hero">
+    <div>
+      <div class="results-kicker"><span class="status submitted">Soumis</span><span>{{ assignment.submitted_at|date:'d/m/Y à H:i' }}</span></div>
+      <h1>Questionnaire ISRA <span>— Business Owner</span></h1>
+      <p class="respondent-line">Répondu par <strong>{{ assignment.respondent.get_full_name }}</strong></p>
+    </div>
+    <a class="btn export-button" href="{% url 'export_xlsx' assignment.pk %}">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 15v4h14v-4"/></svg>
+      Exporter XLSX
+    </a>
+  </header>
+
+  {% if results.bo.is_v4 %}
+  <section class="results-section" aria-labelledby="summary-title">
+    <div class="section-heading">
+      <div><span class="section-label">Synthèse</span><h2 id="summary-title">Besoins de protection et impacts métier</h2></div>
+      <p>Échelle de 0 à 5</p>
+    </div>
+    <div class="bm-table-wrap">
+      <table class="bm-table">
+        <thead><tr><th>Dimension</th><th>Besoin de protection</th><th>Impact métier</th></tr></thead>
+        <tbody>
+          <tr><th>Confidentialité</th><td>{% with item=results.bo.indicators.B_C %}{% include 'assessments/score_cell.html' %}{% endwith %}</td><td>{% with item=results.bo.indicators.M_C %}{% include 'assessments/score_cell.html' %}{% endwith %}</td></tr>
+          <tr><th>Intégrité</th><td>{% with item=results.bo.indicators.B_I %}{% include 'assessments/score_cell.html' %}{% endwith %}</td><td>{% with item=results.bo.indicators.M_I %}{% include 'assessments/score_cell.html' %}{% endwith %}</td></tr>
+          <tr><th>Disponibilité</th><td>{% with item=results.bo.indicators.B_D %}{% include 'assessments/score_cell.html' %}{% endwith %}</td><td>{% with item=results.bo.indicators.M_D %}{% include 'assessments/score_cell.html' %}{% endwith %}</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <article class="complementary-score">
+      <div><span class="section-label">Indicateur complémentaire</span><h3>Impact à 7 jours</h3><p>Impact d’une interruption totale pendant sept jours, conservé séparément de l’impact à un jour.</p></div>
+      {% with item=results.bo.indicators.M_D_7J %}{% include 'assessments/score_cell.html' %}{% endwith %}
+    </article>
+    <p class="business-note"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg><span>Aucune moyenne entre les besoins et les impacts, aucune note CIA globale et aucun ajustement par les volumes, l’exposition ou les contrôles. Ces résultats ne sont pas un risque résiduel.</span></p>
+  </section>
+
+  <section class="results-section calculation-section" aria-labelledby="calculation-title">
+    <div class="section-heading">
+      <div><span class="section-label">Traçabilité</span><h2 id="calculation-title">Détail des sept indicateurs</h2></div>
+      <p>Maximum des réponses directes applicables</p>
+    </div>
+    <div class="calculation-list v4-calculation-list">
+      {% for code, indicator in results.bo.indicators.items %}
+      <details class="calculation-row">
+        <summary>
+          <span class="group-dimension dimension-{{ indicator.dimension|lower }}">{{ indicator.dimension }}</span>
+          <span class="group-title"><strong>{{ indicator.label }}</strong></span>
+          <span class="group-metric"><small>Note</small><strong>{% if indicator.value != None %}{{ indicator.value|floatformat:0 }}/5{% else %}Non évalué{% endif %}</strong></span>
+          <span class="group-metric"><small>Couverture</small><strong>{{ indicator.coverage.answered }}/{{ indicator.coverage.applicable }}</strong></span>
+          <span class="chevron" aria-hidden="true">⌄</span>
+        </summary>
+        <div class="calculation-detail v4-detail">
+          <div><span>Statut</span><strong>{% if indicator.status == 'complete' %}Complet{% elif indicator.status == 'provisional' %}Provisoire{% else %}Non évalué{% endif %}</strong></div>
+          <div><span>Question(s) déterminante(s)</span><strong>{{ indicator.determining_questions|join:', '|default:'—' }}</strong></div>
+          <div class="retained-questions"><span>Réponses contributives</span><ul>{% for contribution in indicator.contributions %}<li><a href="#answer-{{ contribution.reference }}">{{ contribution.reference }}</a><span>{{ contribution.selected_labels|join:'; ' }} · valeur {{ contribution.score }}/5{% if contribution.determining %} · maximum retenu{% endif %}</span></li>{% empty %}<li>Aucune réponse numérique connue.</li>{% endfor %}</ul></div>
+          {% if indicator.missing_questions %}<div class="retained-questions missing-list"><span>Réponses directes manquantes ou ND</span><ul>{% for reference in indicator.missing_questions %}<li><a href="#answer-{{ reference }}">{{ reference }}</a></li>{% endfor %}</ul></div>{% endif %}
+        </div>
+      </details>
+      {% endfor %}
+    </div>
+  </section>
+  {% else %}
+  <section class="results-section" aria-labelledby="summary-title">
+    <div class="section-heading">
+      <div><span class="section-label">Synthèse</span><h2 id="summary-title">Enjeux métier</h2></div>
+      <p>0 = enjeu faible <span>·</span> 5 = enjeu très élevé</p>
+    </div>
+    <div class="cia-grid">
+      {% for dimension, data in results.bo.dimensions.items %}
+      <article class="cia-card cia-{{ dimension|lower }}{% if data.S != None and data.S >= 5 %} critical-score{% endif %}">
+        <div class="cia-card-head">
+          <span class="cia-icon" aria-hidden="true">
+            {% if dimension == 'C' %}<svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            {% elif dimension == 'I' %}<svg viewBox="0 0 24 24"><path d="m12 3 8 4v5c0 5-3.4 8-8 9-4.6-1-8-4-8-9V7l8-4Z"/><path d="m9 12 2 2 4-4"/></svg>
+            {% else %}<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>{% endif %}
+          </span>
+          <div><span class="cia-code">{{ dimension }}</span><h3>{% if dimension == 'C' %}Confidentialité{% elif dimension == 'I' %}Intégrité{% else %}Disponibilité{% endif %}</h3></div>
+        </div>
+        <div class="cia-score">{% if data.S != None %}<strong>{{ data.S|floatformat:2 }}</strong><span>/ 5</span>{% else %}<strong class="not-calculable">Non calculable</strong>{% endif %}</div>
+        {% if data.S != None %}
+        <div class="score-scale" style="--score-position: {{ data.position_percent_css }}%" aria-label="Score {{ data.S|floatformat:2 }} sur 5">
+          <div class="score-track"><span class="score-marker"></span></div>
+          <div class="score-ticks" aria-hidden="true"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
+        </div>
+        {% endif %}
+        <p>Indicateur synthétique d’enjeu métier.</p>
+        <div class="component-chips"><span>E {{ data.E|floatformat:2|default:'—' }}</span><span>X {{ data.X|floatformat:2|default:'—' }}</span><span>W {{ data.W|floatformat:2|default:'—' }}</span></div>
+      </article>
+      {% endfor %}
+    </div>
+    <p class="business-note"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg><span>Ces indicateurs expriment la sensibilité et les enjeux métier déclarés. Ils ne constituent ni un niveau de risque cyber, ni une vulnérabilité, ni une mesure de conformité.</span></p>
+  </section>
+
+  <section class="results-section coverage-card" aria-labelledby="coverage-title">
+    <div class="section-heading compact">
+      <div><span class="section-label">Qualité de l’évaluation</span><h2 id="coverage-title">Couverture du calcul</h2></div>
+      <span class="coverage-state {% if results.bo.quality.numeric_contributive < results.bo.quality.active_contributive %}provisional{% endif %}">{% if results.bo.quality.numeric_contributive < results.bo.quality.active_contributive %}À consolider{% else %}Complète{% endif %}</span>
+    </div>
+    <div class="coverage-layout">
+      <div class="coverage-progress">
+        <div class="coverage-value"><strong>{% if results.bo.quality.coverage_percent != None %}{{ results.bo.quality.coverage_percent|floatformat:0 }} %{% else %}—{% endif %}</strong><span>{{ results.bo.quality.numeric_contributive }} réponses chiffrées sur {{ results.bo.quality.active_contributive }} questions contributives</span></div>
+        <div class="coverage-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ results.bo.quality.coverage_percent|floatformat:0 }}"><span style="width: {{ results.bo.quality.coverage_percent_css }}%"></span></div>
+        <p>Le pourcentage porte uniquement sur les questions contributives actives.</p>
+      </div>
+      <dl class="coverage-stats">
+        <div><dt>Questions actives</dt><dd>{{ results.bo.quality.active_total }}</dd></div>
+        <div><dt>Contributives</dt><dd>{{ results.bo.quality.active_contributive }}</dd></div>
+        <div><dt>Chiffrées</dt><dd>{{ results.bo.quality.numeric_contributive }}</dd></div>
+        <div class="stat-unknown"><dt>Je ne sais pas</dt><dd>{{ results.bo.quality.explicit_unknown|length }}</dd></div>
+        <div><dt>Sans réponse</dt><dd>{{ results.bo.quality.missing_contributive|length }}</dd></div>
+        <div><dt>Non applicables</dt><dd>{{ results.bo.quality.explicit_na|length }}</dd></div>
+      </dl>
+    </div>
+    <div class="active-scope"><strong>Périmètre actif</strong><span>{{ results.bo.active_categories|join:' · ' }}</span></div>
+  </section>
+
+  <section class="results-section calculation-section" aria-labelledby="calculation-title">
+    <div class="section-heading">
+      <div><span class="section-label">Traçabilité</span><h2 id="calculation-title">Détail du calcul</h2></div>
+      <p>{{ results.bo.quality.calculable_groups }} groupes calculables · méthode {{ results.bo.model_id }} {{ results.bo.model_version }}</p>
+    </div>
+    <div class="calculation-filters" role="group" aria-label="Filtrer les groupes par dimension">
+      <button type="button" class="active" data-group-filter="all">Tous</button>
+      <button type="button" data-group-filter="C">Confidentialité</button>
+      <button type="button" data-group-filter="I">Intégrité</button>
+      <button type="button" data-group-filter="D">Disponibilité</button>
+    </div>
+    <div class="calculation-list">
+      {% for key, group in results.bo.groups.items %}
+      <details class="calculation-row" data-dimension="{{ group.dimension }}">
+        <summary>
+          <span class="group-dimension dimension-{{ group.dimension|lower }}">{{ group.dimension }}</span>
+          <span class="group-title"><strong>{{ group.title }}</strong><small>{{ key }}</small></span>
+          <span class="group-visual"><i style="width: {{ group.position_percent_css }}%"></i></span>
+          <span class="group-metric"><small>Valeur</small><strong>{{ group.value|floatformat:2 }}</strong></span>
+          <span class="group-metric"><small>Poids effectif</small><strong>{{ group.effective_weight|floatformat:2 }}</strong></span>
+          <span class="chevron" aria-hidden="true">⌄</span>
+        </summary>
+        <div class="calculation-detail">
+          <div><span>Poids théorique</span><strong>{{ group.theoretical_weight|floatformat:2 }}</strong></div>
+          <div><span>Poids effectif renormalisé</span><strong>{{ group.effective_weight|floatformat:2 }}</strong></div>
+          <div class="retained-questions"><span>Questions retenues</span><ul>{% for item in group.questions %}<li><a href="#answer-{{ item.reference }}">{{ item.reference }}</a><span>Note {{ item.score|floatformat:2 }} · coefficient {{ item.coefficient|floatformat:2 }}</span></li>{% endfor %}</ul></div>
+        </div>
+      </details>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="results-section attention-section" aria-labelledby="attention-title">
+    <div class="section-heading">
+      <div><span class="section-label">Revue analyste</span><h2 id="attention-title">Points à examiner</h2></div>
+      <p>Repères de lecture, sans qualification automatique de risque.</p>
+    </div>
+    <div class="attention-columns">
+      <div class="attention-panel">
+        <div class="attention-panel-head"><div><span class="attention-dot high"></span><h3>Notes 4 ou 5</h3></div><span>{{ results.bo.attention_items|length }}</span></div>
+        <div class="attention-list">
+          {% for item in results.bo.attention_items %}
+          <a class="attention-item" href="#answer-{{ item.question.reference }}"><span class="attention-ref">{{ item.question.reference }}</span><span class="attention-copy"><strong>{{ item.question.text }}</strong><small>{{ item.categories|join:' · ' }}</small></span><span class="attention-score">{{ item.score|floatformat:0 }}/5</span></a>
+          {% empty %}<p class="empty-state">Aucune réponse contributive notée 4 ou 5.</p>{% endfor %}
+        </div>
+      </div>
+      <div class="attention-panel">
+        <div class="attention-panel-head"><div><span class="attention-dot unknown"></span><h3>À clarifier</h3></div><span>{{ results.bo.unknown_items|length }}</span></div>
+        <div class="attention-list">
+          {% for item in results.bo.unknown_items %}
+          <a class="attention-item" href="#answer-{{ item.question.reference }}"><span class="attention-ref">{{ item.question.reference }}</span><span class="attention-copy"><strong>{{ item.question.text }}</strong><small>{{ item.categories|join:' · ' }}</small></span><span class="answer-badge unknown">Je ne sais pas</span></a>
+          {% empty %}<p class="empty-state">Aucune réponse inconnue à clarifier.</p>{% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="results-section answers-section" aria-labelledby="answers-title">
+    <div class="section-heading answers-heading">
+      <div><span class="section-label">Traçabilité complète</span><h2 id="answers-title">Réponses détaillées</h2></div>
+      <label class="answer-search"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></svg><span class="sr-only">Rechercher une réponse</span><input type="search" id="answer-search" placeholder="Rechercher une question ou une référence…"></label>
+    </div>
+    <div id="answer-sections">
+      {% for section, data in results.sections.items %}
+      <details class="answer-section" open>
+        <summary><span>{{ forloop.counter|stringformat:'02d' }}</span><strong>{{ section }}</strong><small>{{ data.answers|length }} réponse{{ data.answers|length|pluralize }}</small><i aria-hidden="true">⌄</i></summary>
+        <div class="answer-list">
+          {% for q, answer, choices, score in data.answers %}
+          <article class="answer-card" id="answer-{{ q.reference }}" data-search="{{ q.reference|lower }} {{ q.text|lower }} {% for c in choices %}{{ c.label|lower }} {% endfor %}">
+            <div class="answer-card-head"><span class="answer-reference">{{ q.reference }}</span><div class="answer-categories">{% for category in q.categories.all %}<span>{{ category.name }}</span>{% endfor %}</div>{% if score != None %}<span class="answer-score">Note {{ score|floatformat:0 }}/5</span>{% endif %}</div>
+            <h3>{{ q.text }}</h3>
+            <div class="answer-content"><span>Réponse</span><div>{% for c in choices %}<p>{{ c.label }} {% if c.special == 'ND' %}<span class="answer-badge unknown">Je ne sais pas</span>{% elif c.special == 'NA' %}<span class="answer-badge na">Non applicable</span>{% endif %}</p>{% empty %}<p>{% if answer.value %}{{ answer.value|join:'; ' }}{% else %}<span class="answer-badge missing">Sans réponse</span>{% endif %}</p>{% endfor %}</div></div>
+            {% if answer.comment %}<div class="answer-comment"><span>Commentaire</span><p>{{ answer.comment }}</p></div>{% endif %}
+          </article>
+          {% endfor %}
+        </div>
+      </details>
+      {% endfor %}
+      <p class="no-search-results" hidden>Aucune réponse ne correspond à cette recherche.</p>
+    </div>
+  </section>
+</div>
+
+<script>
+document.querySelectorAll('[data-group-filter]').forEach(button => button.addEventListener('click', () => {
+  document.querySelectorAll('[data-group-filter]').forEach(item => item.classList.toggle('active', item === button));
+  document.querySelectorAll('.calculation-row').forEach(row => { row.hidden = button.dataset.groupFilter !== 'all' && row.dataset.dimension !== button.dataset.groupFilter; });
+}));
+const search = document.querySelector('#answer-search');
+if (search) search.addEventListener('input', () => {
+  const term = search.value.trim().toLocaleLowerCase('fr'); let total = 0;
+  document.querySelectorAll('.answer-section').forEach(section => {
+    let count = 0; section.querySelectorAll('.answer-card').forEach(card => { const visible = !term || card.dataset.search.includes(term); card.hidden = !visible; if (visible) count++; });
+    section.hidden = count === 0; if (term && count) section.open = true; total += count;
+  });
+  document.querySelector('.no-search-results').hidden = total !== 0;
+});
+</script>
+{% else %}
+<a class="back" href="{% url 'dashboard' %}">← Tableau de bord</a>
+<div class="page-head"><div><p class="eyebrow">Questionnaire soumis · {{ assignment.submitted_at|date:'d/m/Y H:i' }}</p><h1>{{ assignment.template.title }}</h1><p>{{ assignment.respondent.get_full_name }}</p></div><a class="btn" href="{% url 'export_xlsx' assignment.pk %}">Exporter XLSX</a></div>
+<section class="method"><h2>Méthode de calcul</h2><p>Les notes numériques applicables sont moyennées par section pour produire un <b>indicateur moyen d’écart de contrôle</b>, jamais un niveau de risque. ND, NA et questions sans score sont exclues. Pour un choix multiple, le maximum est retenu, jamais la somme. L’appréciation globale reste une décision manuelle de l’analyste.</p></section>
+{% if results.impacts %}<div class="impact-grid"><div><span>Confidentialité</span><b>{{ results.impacts.impact_c|default:'—' }}</b></div><div><span>Intégrité</span><b>{{ results.impacts.impact_i|default:'—' }}</b></div><div><span>Disponibilité</span><b>{{ results.impacts.impact_d|default:'—' }}</b></div></div>{% endif %}
+{% for section, data in results.sections.items %}<section class="result-section"><div class="section-head"><h2>{{ section }}</h2><div><b>{{ data.average|default:'—' }}</b><small>indicateur moyen · {{ data.nd }} ND · {{ data.na }} NA</small></div></div><div class="table"><table><tr><th>Réf.</th><th>Question</th><th>Réponse</th><th>Note</th><th>Commentaire</th></tr>{% for q, answer, choices, score in data.answers %}<tr><td>{{ q.reference }}</td><td>{{ q.text }}</td><td>{% for c in choices %}{{ c.label }}{% if not forloop.last %}; {% endif %}{% empty %}{{ answer.value|join:'; ' }}{% endfor %}</td><td>{% if score != None %}{{ score }}{% else %}—{% endif %}</td><td>{{ answer.comment|default:'—' }}</td></tr>{% endfor %}</table></div></section>{% endfor %}
+{% endif %}
+{% endblock %}

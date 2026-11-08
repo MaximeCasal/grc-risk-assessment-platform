@@ -1,0 +1,13 @@
+<div class="bm-score-cell{% if item.value != None and item.value >= 5 %} critical-score{% endif %}">
+  <div class="bm-score-line">
+    {% if item.value != None %}<strong>{{ item.value|floatformat:0 }}</strong><span>/ 5</span>{% else %}<strong class="not-calculable">Non évalué</strong>{% endif %}
+    {% if item.status == 'provisional' %}<em class="score-status provisional">Provisoire</em>{% elif item.status == 'complete' %}<em class="score-status">Complet</em>{% endif %}
+  </div>
+  <small>Couverture {{ item.coverage.answered }}/{{ item.coverage.applicable }}</small>
+  {% if item.value != None %}
+  <div class="bm-score-scale" style="--score-position: {{ item.position_percent_css }}%" aria-label="Résultat {{ item.value|floatformat:0 }} sur 5">
+    <div class="score-track"><span class="score-marker"></span></div>
+    <div class="score-ticks" aria-hidden="true"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
+  </div>
+  {% endif %}
+</div>

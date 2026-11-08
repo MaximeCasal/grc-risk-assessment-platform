@@ -1,0 +1,4431 @@
+{
+  "questionnaire_id": "IT_APPLICATION_V4",
+  "questionnaire_version": "4.0.0",
+  "method_id": "IT_APPLICATION_WEAKNESS_V4",
+  "method_version": "4.0.0",
+  "families": [
+    {
+      "code": "IAM",
+      "order": 1,
+      "name": "Identités, authentification et sessions",
+      "questions": [
+        "B04",
+        "B05",
+        "B10",
+        "B11",
+        "B12",
+        "B13",
+        "B14",
+        "B15",
+        "B16",
+        "B17"
+      ]
+    },
+    {
+      "code": "AUT",
+      "order": 2,
+      "name": "Autorisations et cloisonnement",
+      "questions": [
+        "B06",
+        "B07",
+        "B08",
+        "B09",
+        "D06"
+      ]
+    },
+    {
+      "code": "DAT",
+      "order": 3,
+      "name": "Protection des données et des secrets",
+      "questions": [
+        "A07",
+        "C01",
+        "C02",
+        "C03",
+        "C06",
+        "C07",
+        "D03"
+      ]
+    },
+    {
+      "code": "API",
+      "order": 4,
+      "name": "Sécurité des interfaces et des entrées",
+      "questions": [
+        "C08",
+        "D02",
+        "D04",
+        "D05",
+        "D07"
+      ]
+    },
+    {
+      "code": "TRT",
+      "order": 5,
+      "name": "Fiabilité et maîtrise des traitements",
+      "questions": [
+        "D08",
+        "D09",
+        "D10",
+        "D11"
+      ]
+    },
+    {
+      "code": "JOU",
+      "order": 6,
+      "name": "Journalisation et traçabilité",
+      "questions": [
+        "E01",
+        "E02",
+        "E03"
+      ]
+    },
+    {
+      "code": "DET",
+      "order": 7,
+      "name": "Détection, supervision et réponse",
+      "questions": [
+        "E04",
+        "E05",
+        "E06",
+        "I04"
+      ]
+    },
+    {
+      "code": "VUL",
+      "order": 8,
+      "name": "Vulnérabilités et obsolescence",
+      "questions": [
+        "A08",
+        "F04"
+      ]
+    },
+    {
+      "code": "CHG",
+      "order": 9,
+      "name": "Changements et chaîne de livraison",
+      "questions": [
+        "F05",
+        "F06",
+        "F10",
+        "F11"
+      ]
+    },
+    {
+      "code": "REC",
+      "order": 10,
+      "name": "Continuité et reprise applicative",
+      "questions": [
+        "G04",
+        "G05",
+        "G06",
+        "G07"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "reference": "A01",
+      "order": 1,
+      "section_order": 1,
+      "section_title": "Cadrage, périmètre et exposition",
+      "text": "Quel type de solution évaluez-vous ?",
+      "help_text": "Indication : Choisir la réponse principale. Préciser, si nécessaire, les composants gérés par l’entreprise et par un fournisseur.",
+      "response_type": "single",
+      "required": true,
+      "role": "H",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "A01#01",
+          "label": "Application développée en interne ou sur mesure",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A01#02",
+          "label": "Progiciel installé et administré pour l’entreprise",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A01#03",
+          "label": "Application fournie en tant que service (SaaS)",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A01#04",
+          "label": "Application hybride, comportant plusieurs types de composants",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A01#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "A02",
+      "order": 2,
+      "section_order": 1,
+      "section_title": "Cadrage, périmètre et exposition",
+      "text": "Sur quelle(s) plateforme(s) ou quel(s) environnement(s) d’hébergement l’application fonctionne-t-elle ?",
+      "help_text": "Indication : Indiquer les identifiants de plateforme ainsi que leur rôle : production, base de données, préproduction, traitement ou autre.",
+      "response_type": "text",
+      "required": true,
+      "role": "H",
+      "family": null,
+      "category": "Solution sous maîtrise technique de l’entreprise",
+      "routing": "Condition : composants sous maîtrise technique de l’entreprise ; mode hybride : selon périmètre",
+      "options": []
+    },
+    {
+      "reference": "A03",
+      "order": 3,
+      "section_order": 1,
+      "section_title": "Cadrage, périmètre et exposition",
+      "text": "Un schéma récent décrit-il les composants de l’application et ses principales communications ?",
+      "help_text": "Indication : Schéma applicatif : interfaces, API, bases de données, traitements et dépendances. Ne pas confondre avec le schéma d’infrastructure de la plateforme.",
+      "response_type": "single",
+      "required": true,
+      "role": "A",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "A03#01",
+          "label": "Oui, complet et vérifié après les derniers changements importants",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A03#02",
+          "label": "Oui, mais certaines informations ne sont pas à jour",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A03#03",
+          "label": "Partiellement",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A03#04",
+          "label": "Non",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A03#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "A04",
+      "order": 4,
+      "section_order": 1,
+      "section_title": "Cadrage, périmètre et exposition",
+      "text": "Quels sont les composants majeurs de l’application et leurs technologies (avec les versions connues) ?",
+      "help_text": "Indication : Exemples : portail web, application mobile, services métier, API, base de données, traitement planifié, connecteur. Préciser ce qui relève de l’éditeur.",
+      "response_type": "text",
+      "required": true,
+      "role": "H",
+      "family": null,
+      "category": "Solution sous maîtrise technique de l’entreprise",
+      "routing": "Condition : composants sous maîtrise technique de l’entreprise ; mode hybride : selon périmètre",
+      "options": []
+    },
+    {
+      "reference": "A05",
+      "order": 5,
+      "section_order": 1,
+      "section_title": "Cadrage, périmètre et exposition",
+      "text": "L’application dispose-t-elle d’une fiche à jour dans le référentiel des actifs ou la CMDB ?",
+      "help_text": "Indication : Contrôle de gouvernance ; à ne pas confondre avec une vulnérabilité exploitable.",
+      "response_type": "single",
+      "required": true,
+      "role": "A",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "A05#01",
+          "label": "Oui, avec propriétaire, version, dépendances et plateforme d’hébergement à jour",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A05#02",
+          "label": "Oui, mais certaines informations sont manquantes ou anciennes",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A05#03",
+          "label": "Non",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A05#04",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "A06",
+      "order": 6,
+      "section_order": 1,
+      "section_title": "Cadrage, périmètre et exposition",
+      "text": "Quels environnements de l’application existent en dehors de la production ?",
+      "help_text": "Indication : Choix multiples. L’objectif est d’identifier les environnements concernés par les contrôles applicatifs.",
+      "response_type": "multiple",
+      "required": true,
+      "role": "H",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "A06#01",
+          "label": "Développement",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A06#02",
+          "label": "Test ou recette",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A06#03",
+          "label": "Préproduction",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A06#04",
+          "label": "Formation ou démonstration",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A06#05",
+          "label": "Aucun environnement distinct",
+          "score": null,
+          "special": "",
+          "exclusive": true
+        },
+        {
+          "id": "A06#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": true
+        }
+      ]
+    },
+    {
+      "reference": "A09",
+      "order": 7,
+      "section_order": 1,
+      "section_title": "Cadrage, périmètre et exposition",
+      "text": "Des changements majeurs de l’application sont-ils prévus dans les 12 prochains mois ?",
+      "help_text": "Indication : Préciser le projet et la date connue. Une évolution prévue ne remplace pas la vérification de l’état actuel.",
+      "response_type": "single",
+      "required": true,
+      "role": "H",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "A09#01",
+          "label": "Non",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A09#02",
+          "label": "Oui : changement de version ou de technologie",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A09#03",
+          "label": "Oui : migration, remplacement ou arrêt",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A09#04",
+          "label": "Oui : changement de fournisseur ou refonte importante",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A09#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "B01",
+      "order": 8,
+      "section_order": 1,
+      "section_title": "Cadrage, périmètre et exposition",
+      "text": "Depuis quels environnements les utilisateurs ou systèmes peuvent-ils accéder à l’application ?",
+      "help_text": "Indication : Choix multiples. Ces réponses décrivent l’exposition ; une ouverture Internet n’est pas en elle-même une défaillance de sécurité.",
+      "response_type": "multiple",
+      "required": true,
+      "role": "X",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "B01#01",
+          "label": "Réseau interne de l’entreprise",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B01#02",
+          "label": "Accès distant privé (VPN ou réseau privé équivalent)",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B01#03",
+          "label": "Internet, avec authentification",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B01#04",
+          "label": "Internet, pour des fonctions volontairement publiques",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B01#05",
+          "label": "Accès de partenaires par liaison privée ou interface dédiée",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B01#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": true
+        }
+      ]
+    },
+    {
+      "reference": "B02",
+      "order": 9,
+      "section_order": 1,
+      "section_title": "Cadrage, périmètre et exposition",
+      "text": "Quelles interfaces de l’application sont accessibles depuis l’extérieur de l’entreprise ?",
+      "help_text": "Indication : Choix multiples. Si des interfaces sont externes, préciser les principales URL, usages ou publics autorisés. Point à investiguer : Si interface d’administration externe : approfondir.",
+      "response_type": "multiple",
+      "required": true,
+      "role": "X",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "B02#01",
+          "label": "Interface web ou mobile destinée aux utilisateurs",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B02#02",
+          "label": "API destinée aux partenaires ou clients",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B02#03",
+          "label": "Interface de dépôt ou de récupération de fichiers",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B02#04",
+          "label": "Interface d’administration applicative",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B02#05",
+          "label": "Aucune",
+          "score": null,
+          "special": "",
+          "exclusive": true
+        },
+        {
+          "id": "B02#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": true
+        }
+      ]
+    },
+    {
+      "reference": "B03",
+      "order": 10,
+      "section_order": 1,
+      "section_title": "Cadrage, périmètre et exposition",
+      "text": "Quels modes d’authentification permettent de se connecter à l’application ?",
+      "help_text": "Indication : Choix multiples. Le mode seul ne permet pas de juger de la maîtrise des accès ; préciser les exceptions et mécanismes de secours.",
+      "response_type": "multiple",
+      "required": true,
+      "role": "H",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "B03#01",
+          "label": "SSO ou fédération avec l’identité d’entreprise",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B03#02",
+          "label": "Comptes locaux gérés par l’application",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B03#03",
+          "label": "Fédération avec l’identité d’un partenaire ou fournisseur",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B03#04",
+          "label": "Authentification sans compte pour les fonctions publiques",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B03#05",
+          "label": "Autre mécanisme",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B03#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": true
+        }
+      ]
+    },
+    {
+      "reference": "D01",
+      "order": 11,
+      "section_order": 1,
+      "section_title": "Cadrage, périmètre et exposition",
+      "text": "Les interfaces et flux entrants et sortants sont-ils inventoriés avec leur destination, leur usage et leur responsable ?",
+      "help_text": "Indication : Inclure les API, fichiers, transferts automatiques et services appelés. Complète les dépendances indiquées par le Business Owner.",
+      "response_type": "single",
+      "required": true,
+      "role": "A",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "D01#01",
+          "label": "Oui, inventaire complet et maintenu à jour",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D01#02",
+          "label": "Oui, mais incomplet ou ancien",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D01#03",
+          "label": "Inventaire partiel",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D01#04",
+          "label": "Aucun inventaire exploitable",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D01#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "D01#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "H01",
+      "order": 12,
+      "section_order": 1,
+      "section_title": "Cadrage, périmètre et exposition",
+      "text": "Quels éditeurs, intégrateurs ou prestataires interviennent dans la maintenance, l’exploitation ou le support de l’application ?",
+      "help_text": "Indication : Indiquer leurs rôles et les prestations concernées. Ne pas inclure ici les fournisseurs propres à la plateforme d’hébergement, sauf responsabilité partagée.",
+      "response_type": "text",
+      "required": true,
+      "role": "H",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": []
+    },
+    {
+      "reference": "B04",
+      "order": 13,
+      "section_order": 2,
+      "section_title": "IAM — Identités, authentification et sessions",
+      "text": "L’authentification multifacteur (MFA) protège-t-elle les accès qui en ont besoin ?",
+      "help_text": "Indication : Évaluer la couverture réelle du MFA, y compris les comptes locaux et les accès de secours. Les exigences peuvent dépendre du contexte de l’application. Point à investiguer : Si 5 : absence de MFA sur accès sensibles.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "IAM",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "B04#01",
+          "label": "Oui, tous les comptes concernés, y compris les accès sensibles",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B04#02",
+          "label": "Oui, tous les accès à privilèges et externes, avec exceptions justifiées",
+          "score": 1,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B04#03",
+          "label": "Seulement une partie des accès sensibles",
+          "score": 3,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B04#04",
+          "label": "Aucun MFA sur des accès sensibles",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B04#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "B05",
+      "order": 14,
+      "section_order": 2,
+      "section_title": "IAM — Identités, authentification et sessions",
+      "text": "Les droits de connexion et les comptes sont-ils créés, modifiés et retirés lors des arrivées, mobilités et départs ?",
+      "help_text": "Indication : Préciser la personne ou l’équipe responsable de l’exécution technique.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "IAM",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "B05#01",
+          "label": "Oui, processus maîtrisé, tracé et vérifié",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B05#02",
+          "label": "Oui, sur demande formalisée mais avec vérification limitée",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B05#03",
+          "label": "Traitement manuel irrégulier",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B05#04",
+          "label": "Aucun processus fiable",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B05#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "B10",
+      "order": 15,
+      "section_order": 2,
+      "section_title": "IAM — Identités, authentification et sessions",
+      "text": "Comment les comptes d’administration applicative sont-ils protégés ?",
+      "help_text": "Indication : Préciser les responsabilités relatives aux droits d’administration des serveurs ou du cloud. Point à investiguer : Si 5 : comptes administrateur partagés/non maîtrisés.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "IAM",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "B10#01",
+          "label": "Comptes nominatifs, MFA et droits restreints avec suivi des actions",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B10#02",
+          "label": "Comptes nominatifs et MFA, mais suivi limité",
+          "score": 1,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B10#03",
+          "label": "Comptes nominatifs sans protection renforcée suffisante",
+          "score": 3,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B10#04",
+          "label": "Comptes partagés ou privilèges non maîtrisés",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B10#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "B11",
+      "order": 16,
+      "section_order": 2,
+      "section_title": "IAM — Identités, authentification et sessions",
+      "text": "Les comptes administrateurs et les comptes inutilisés font-ils l’objet de revues et de retraits réguliers ?",
+      "help_text": "",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "IAM",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "B11#01",
+          "label": "Oui, revues périodiques tracées et retraits effectués",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B11#02",
+          "label": "Oui, mais de manière irrégulière",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B11#03",
+          "label": "Très rarement",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B11#04",
+          "label": "Jamais",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B11#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "B12",
+      "order": 17,
+      "section_order": 2,
+      "section_title": "IAM — Identités, authentification et sessions",
+      "text": "Les comptes utilisés par les interfaces et traitements automatiques sont-ils identifiés et limités aux autorisations nécessaires ?",
+      "help_text": "",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "IAM",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "B12#01",
+          "label": "Oui, inventoriés, propriétaires identifiés et droits revus",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B12#02",
+          "label": "Oui, inventoriés, mais revues incomplètes",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B12#03",
+          "label": "Partiellement identifiés ou avec des droits excessifs",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B12#04",
+          "label": "Non maîtrisés",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B12#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "B12#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "B13",
+      "order": 18,
+      "section_order": 2,
+      "section_title": "IAM — Identités, authentification et sessions",
+      "text": "L’accès applicatif des éditeurs, intégrateurs ou prestataires est-il limité, nominatif et traçable ?",
+      "help_text": "Indication : Ne pas confondre avec l’accès des prestataires à l’infrastructure, évalué séparément.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "IAM",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "B13#01",
+          "label": "Aucun accès de prestataire",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B13#02",
+          "label": "Accès temporaires autorisés et tracés",
+          "score": 1,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B13#03",
+          "label": "Accès permanents justifiés, nominatifs et revus",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B13#04",
+          "label": "Accès permanents insuffisamment revus ou tracés",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B13#05",
+          "label": "Accès partagés ou non maîtrisés",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B13#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "B14",
+      "order": 19,
+      "section_order": 2,
+      "section_title": "IAM — Identités, authentification et sessions",
+      "text": "Les sessions de connexion expirent-elles après une durée d’inactivité adaptée à la sensibilité de l’application ?",
+      "help_text": "",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "IAM",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "B14#01",
+          "label": "Oui, durée définie et vérifiée",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B14#02",
+          "label": "Oui, mais durée ou couverture non vérifiée",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B14#03",
+          "label": "Partiellement",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B14#04",
+          "label": "Non",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B14#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "B14#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "B15",
+      "order": 20,
+      "section_order": 2,
+      "section_title": "IAM — Identités, authentification et sessions",
+      "text": "Une session ou un jeton d’accès peut-il être révoqué rapidement en cas de départ, de changement de droits ou de suspicion de compromission ?",
+      "help_text": "",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "IAM",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "B15#01",
+          "label": "Oui, mécanisme testé et utilisable rapidement",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B15#02",
+          "label": "Oui, mais avec intervention manuelle ou délai important",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B15#03",
+          "label": "Révocation partielle ou non vérifiée",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B15#04",
+          "label": "Non",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B15#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "B15#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "B16",
+      "order": 21,
+      "section_order": 2,
+      "section_title": "IAM — Identités, authentification et sessions",
+      "text": "Existe-t-il des comptes locaux ou d’urgence qui permettent de contourner le SSO ou les protections d’authentification habituelles ?",
+      "help_text": "Indication : Une exception peut être nécessaire pour la reprise, mais doit être sécurisée. Point à investiguer : Si 5 : accès alternatif non maîtrisé.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "IAM",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "B16#01",
+          "label": "Non, aucun chemin de connexion alternatif non protégé",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B16#02",
+          "label": "Oui, exceptions recensées, protégées et vérifiées",
+          "score": 1,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B16#03",
+          "label": "Oui, exceptions connues mais faiblement contrôlées",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B16#04",
+          "label": "Oui, accès alternatifs non inventoriés ou non maîtrisés",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B16#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "B17",
+      "order": 22,
+      "section_order": 2,
+      "section_title": "IAM — Identités, authentification et sessions",
+      "text": "La récupération de compte et la réinitialisation des mots de passe comportent-elles une vérification suffisante de l’identité ?",
+      "help_text": "",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "IAM",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "B17#01",
+          "label": "Oui, processus sécurisé et testé",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B17#02",
+          "label": "Oui, mais sans vérification récente",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B17#03",
+          "label": "Procédure manuelle fragile ou partielle",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B17#04",
+          "label": "Non",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B17#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "B17#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "B06",
+      "order": 23,
+      "section_order": 3,
+      "section_title": "AUT — Autorisations et cloisonnement",
+      "text": "Les rôles et droits fonctionnels de l’application sont-ils définis et limités au besoin de chaque utilisateur ?",
+      "help_text": "",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "AUT",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "B06#01",
+          "label": "Oui, rôles documentés et vérifiés selon le principe du moindre privilège",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B06#02",
+          "label": "Rôles définis, avec certaines permissions trop étendues",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B06#03",
+          "label": "Droits attribués principalement au cas par cas sans revue régulière",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B06#04",
+          "label": "Droits largement ouverts ou identiques pour tous",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B06#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "B07",
+      "order": 24,
+      "section_order": 3,
+      "section_title": "AUT — Autorisations et cloisonnement",
+      "text": "L’application vérifie-t-elle les autorisations avant chaque opération sensible et l’accès aux données concernées ?",
+      "help_text": "Indication : Exemples : empêcher un utilisateur de consulter un dossier appartenant à un autre client, de modifier un montant ou d’utiliser une fonction réservée. Point à investiguer : Si 5 : défaut de contrôle d’autorisation.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "AUT",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "B07#01",
+          "label": "Oui, contrôles effectués côté serveur et régulièrement testés",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B07#02",
+          "label": "Oui, contrôles en place, mais peu ou pas testés",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B07#03",
+          "label": "Contrôles partiels ou reposant sur l’interface utilisateur",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B07#04",
+          "label": "Aucun contrôle fiable identifié",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B07#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "B08",
+      "order": 25,
+      "section_order": 3,
+      "section_title": "AUT — Autorisations et cloisonnement",
+      "text": "Lorsque plusieurs clients, entités ou organisations partagent l’application, la séparation de leurs données et droits a-t-elle été testée ?",
+      "help_text": "Indication : À répondre seulement si l’application est multi-client ou multi-entité. Point à investiguer : Si 5 : défaut d’isolation multi-client.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "AUT",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "B08#01",
+          "label": "Oui, tests documentés et résultats satisfaisants",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B08#02",
+          "label": "Séparation prévue mais non vérifiée récemment",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B08#03",
+          "label": "Séparation incomplète ou défaut connu",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B08#04",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "B08#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "B09",
+      "order": 26,
+      "section_order": 3,
+      "section_title": "AUT — Autorisations et cloisonnement",
+      "text": "Les fonctions d’administration et les actions métier très sensibles disposent-elles de permissions spécifiques ?",
+      "help_text": "Indication : Exemples : gestion des utilisateurs, paramètres critiques, suppression massive, paiement ou validation définitive.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "AUT",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "B09#01",
+          "label": "Oui, droits limités, séparés et revus",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B09#02",
+          "label": "Oui, mais avec certaines autorisations étendues",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B09#03",
+          "label": "Partiellement",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B09#04",
+          "label": "Non, elles sont accessibles à des profils non justifiés",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "B09#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "D06",
+      "order": 27,
+      "section_order": 3,
+      "section_title": "AUT — Autorisations et cloisonnement",
+      "text": "Les API vérifient-elles les autorisations de chaque appel, y compris pour l’accès à un dossier ou objet particulier ?",
+      "help_text": "Indication : Pour un portail et une API partageant les mêmes services, ne pas déclarer une autorisation vérifiée sans l’avoir également testée côté API. Point à investiguer : Si 5 : contrôles API absents.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "AUT",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "D06#01",
+          "label": "Oui, contrôles côté serveur et tests d’accès non autorisé",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D06#02",
+          "label": "Oui, contrôles présents sans tests suffisants",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D06#03",
+          "label": "Vérifications partielles",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D06#04",
+          "label": "Absence de vérification fiable",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D06#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "D06#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "A07",
+      "order": 28,
+      "section_order": 4,
+      "section_title": "DAT — Protection des données et des secrets",
+      "text": "Des données réelles de production sont-elles copiées dans les environnements hors production ?",
+      "help_text": "Indication : Si aucun environnement hors production n’existe, sélectionner « Non concerné ». Point à investiguer : Si 5 : données réelles moins protégées.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "DAT",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "A07#01",
+          "label": "Non, seules des données fictives ou irréversiblement anonymisées sont utilisées",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A07#02",
+          "label": "Oui, mais les données sont masquées et les accès maîtrisés",
+          "score": 1,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A07#03",
+          "label": "Oui, données réelles avec un niveau de protection équivalent à la production",
+          "score": 3,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A07#04",
+          "label": "Oui, données réelles avec des protections moins strictes",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A07#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "A07#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "C01",
+      "order": 29,
+      "section_order": 4,
+      "section_title": "DAT — Protection des données et des secrets",
+      "text": "Les échanges entre les utilisateurs et l’application sont-ils chiffrés avec des protocoles et configurations appropriés ?",
+      "help_text": "Indication : Ne concerne pas les communications entre composants d’infrastructure. Point à investiguer : Si 5 : informations protégées en clair.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "DAT",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "C01#01",
+          "label": "Oui, pour tous les accès concernés, vérifié",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C01#02",
+          "label": "Oui, mais paramètres ou couverture non vérifiés",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C01#03",
+          "label": "Seulement une partie des échanges",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C01#04",
+          "label": "Non, des données protégées transitent en clair",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C01#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "C02",
+      "order": 30,
+      "section_order": 4,
+      "section_title": "DAT — Protection des données et des secrets",
+      "text": "Les secrets utilisés par l’application (clés d’API, mots de passe techniques, jetons) sont-ils stockés et protégés de manière appropriée ?",
+      "help_text": "Point à investiguer : Si 5 : secrets en clair dans dépôts/documents.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "DAT",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "C02#01",
+          "label": "Oui, stockage dédié, accès restreints et rotation possible",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C02#02",
+          "label": "Oui, stockage protégé mais rotation ou suivi incomplet",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C02#03",
+          "label": "Secrets conservés dans des fichiers ou variables peu protégés",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C02#04",
+          "label": "Secrets en clair dans le code, des dépôts ou des documents accessibles",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C02#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "C02#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "C03",
+      "order": 31,
+      "section_order": 4,
+      "section_title": "DAT — Protection des données et des secrets",
+      "text": "Les extractions de données depuis l’application sont-elles limitées aux profils autorisés et surveillées selon leur sensibilité ?",
+      "help_text": "Point à investiguer : Si 5 : exports non restreints ni tracés.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "DAT",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "C03#01",
+          "label": "Oui, permissions, traçabilité et contrôles des extractions inhabituelles",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C03#02",
+          "label": "Permissions et journalisation sans contrôle d’anomalie",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C03#03",
+          "label": "Permissions ou traçabilité partielles",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C03#04",
+          "label": "Exports non restreints ni tracés",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C03#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "C03#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "C06",
+      "order": 32,
+      "section_order": 4,
+      "section_title": "DAT — Protection des données et des secrets",
+      "text": "Les copies de données créées par l’application (exports, rapports, dépôts temporaires) sont- elles recensées et protégées ?",
+      "help_text": "",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "DAT",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "C06#01",
+          "label": "Oui, copies connues, accès maîtrisés et effacement prévu",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C06#02",
+          "label": "Oui, copies recensées mais protections inégales",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C06#03",
+          "label": "Copies partiellement recensées",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C06#04",
+          "label": "Copies non maîtrisées",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C06#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "C06#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "C07",
+      "order": 33,
+      "section_order": 4,
+      "section_title": "DAT — Protection des données et des secrets",
+      "text": "Les messages d’erreur, journaux et fonctions de diagnostic évitent-ils de divulguer des données sensibles ou des secrets ?",
+      "help_text": "Point à investiguer : Si 5 : secrets exposés dans diagnostics.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "DAT",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "C07#01",
+          "label": "Oui, contrôle vérifié sur les environnements concernés",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C07#02",
+          "label": "Mesures en place, non vérifiées récemment",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C07#03",
+          "label": "Fuites possibles dans certains cas",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C07#04",
+          "label": "Données sensibles ou secrets régulièrement exposés",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C07#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "C07#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "D03",
+      "order": 34,
+      "section_order": 4,
+      "section_title": "DAT — Protection des données et des secrets",
+      "text": "Les données échangées entre applications sont-elles chiffrées pendant leur transport lorsqu’elles le nécessitent ?",
+      "help_text": "Point à investiguer : Si 5 : flux sensibles en clair.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "DAT",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "D03#01",
+          "label": "Oui, tous les flux concernés sont protégés et vérifiés",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D03#02",
+          "label": "Oui, mais certains contrôles ne sont pas vérifiés",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D03#03",
+          "label": "Une partie des flux concernés n’est pas protégée",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D03#04",
+          "label": "Des flux sensibles circulent en clair sans justification",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D03#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "D03#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "C08",
+      "order": 35,
+      "section_order": 5,
+      "section_title": "API — Sécurité des interfaces et des entrées",
+      "text": "Si l’application accepte des fichiers déposés par des utilisateurs ou partenaires, leur contenu fait-il l’objet de contrôles de sécurité ?",
+      "help_text": "Indication : Question conditionnelle : documents justificatifs, pièces jointes, contrats, images, fichiers de données. Point à investiguer : Si 5 : dépôt sans contrôle adapté.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "API",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "C08#01",
+          "label": "Oui, types, tailles, accès et contenus malveillants contrôlés",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C08#02",
+          "label": "Contrôles présents, mais incomplets",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C08#03",
+          "label": "Contrôles limités au type ou à la taille du fichier",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C08#04",
+          "label": "Aucun contrôle de sécurité identifié",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C08#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "C08#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "D02",
+      "order": 36,
+      "section_order": 5,
+      "section_title": "API — Sécurité des interfaces et des entrées",
+      "text": "Chaque interface dispose-t-elle d’un mécanisme d’authentification adapté, propre à l’échange concerné ?",
+      "help_text": "Point à investiguer : Si 5 : flux sensibles non authentifiés.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "API",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "D02#01",
+          "label": "Oui, mécanismes adaptés et identités techniques distinctes",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D02#02",
+          "label": "Oui, mais mécanismes ou secrets partagés entre plusieurs flux",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D02#03",
+          "label": "Authentification faible ou exceptions non justifiées",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D02#04",
+          "label": "Aucune authentification sur des flux qui devraient être protégés",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D02#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "D02#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "D04",
+      "order": 37,
+      "section_order": 5,
+      "section_title": "API — Sécurité des interfaces et des entrées",
+      "text": "Les échanges importants disposent-ils de mesures assurant l’authenticité et l’intégrité des messages ?",
+      "help_text": "Indication : Exemples : signature ou code d’authentification de message, vérification d’émetteur. Un simple chiffrement ou une somme de contrôle non authentifiée ne suffit pas toujours. Point à investiguer : Si 5 : flux importants sans garantie d’intégrité.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "API",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "D04#01",
+          "label": "Oui, mécanismes adaptés et vérifiés pour tous les flux concernés",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D04#02",
+          "label": "Oui, mais couverture ou tests incomplets",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D04#03",
+          "label": "Mesures insuffisantes pour certains flux critiques",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D04#04",
+          "label": "Aucune garantie fiable lorsque cela est nécessaire",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D04#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "D04#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "D05",
+      "order": 38,
+      "section_order": 5,
+      "section_title": "API — Sécurité des interfaces et des entrées",
+      "text": "Les données reçues par formulaire, API, fichier ou interface sont-elles contrôlées avant traitement ?",
+      "help_text": "Indication : Inclure les risques d’injection, les valeurs incohérentes et les données non autorisées. Point à investiguer : Si 5 : absence de validation suffisante.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "API",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "D05#01",
+          "label": "Oui, validation des formats, des droits et des contenus à risque, avec tests",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D05#02",
+          "label": "Oui, contrôles en place mais non testés sur tous les flux",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D05#03",
+          "label": "Contrôles incomplets",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D05#04",
+          "label": "Absence de validation suffisante",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D05#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "D07",
+      "order": 39,
+      "section_order": 5,
+      "section_title": "API — Sécurité des interfaces et des entrées",
+      "text": "Les API ou fonctions exposées disposent-elles de protections contre les sollicitations automatisées abusives ?",
+      "help_text": "Indication : Exemples : limitation de débit, contrôle des tentatives, quotas, blocage d’abus. Pour les fonctions concernées seulement. Point à investiguer : Si 5 : fonctions exposées sans protection anti-abus.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "API",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "D07#01",
+          "label": "Oui, limitations et protections adaptées, vérifiées",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D07#02",
+          "label": "Oui, mesures présentes mais peu ou pas testées",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D07#03",
+          "label": "Protection partielle",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D07#04",
+          "label": "Aucune protection adaptée",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D07#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "D07#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "D08",
+      "order": 40,
+      "section_order": 6,
+      "section_title": "TRT — Fiabilité et maîtrise des traitements",
+      "text": "Les traitements automatiques et échanges importants sont-ils supervisés pour détecter les échecs ou dossiers rejetés ?",
+      "help_text": "",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "TRT",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "D08#01",
+          "label": "Oui, événements détectés, alertes reçues et reprise organisée",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D08#02",
+          "label": "Oui, détection mais traitement des alertes limité",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D08#03",
+          "label": "Supervision partielle",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D08#04",
+          "label": "Aucune supervision fiable",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D08#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "D08#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "D09",
+      "order": 41,
+      "section_order": 6,
+      "section_title": "TRT — Fiabilité et maîtrise des traitements",
+      "text": "Après une interruption, les traitements importants peuvent-ils être repris sans perte ni duplication involontaire des opérations ?",
+      "help_text": "Indication : Particulièrement important pour les factures, paiements, commandes et mouvements de données.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "TRT",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "D09#01",
+          "label": "Oui, mécanismes testés de reprise et de prévention des doublons",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D09#02",
+          "label": "Oui, procédure existante mais peu testée",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D09#03",
+          "label": "Reprise principalement manuelle ou incertaine",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D09#04",
+          "label": "Aucun mécanisme fiable",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D09#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "D09#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "D10",
+      "order": 42,
+      "section_order": 6,
+      "section_title": "TRT — Fiabilité et maîtrise des traitements",
+      "text": "Les modifications des règles métier, paramètres critiques et automatisations sont-elles approuvées, enregistrées et réversibles ?",
+      "help_text": "",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "TRT",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "D10#01",
+          "label": "Oui, validation, traçabilité et retour arrière vérifié",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D10#02",
+          "label": "Validation et traçabilité, sans retour arrière vérifié",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D10#03",
+          "label": "Contrôles partiels",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D10#04",
+          "label": "Modifications non maîtrisées",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D10#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "D10#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "D11",
+      "order": 43,
+      "section_order": 6,
+      "section_title": "TRT — Fiabilité et maîtrise des traitements",
+      "text": "Les traitements planifiés, scripts et connecteurs applicatifs sont-ils recensés, avec des droits d’exécution limités ?",
+      "help_text": "",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "TRT",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "D11#01",
+          "label": "Oui, inventoriés, supervisés et limités en droits",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D11#02",
+          "label": "Oui, mais supervision ou droits incomplets",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D11#03",
+          "label": "Partiellement recensés",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D11#04",
+          "label": "Non maîtrisés",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "D11#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "D11#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "E01",
+      "order": 44,
+      "section_order": 7,
+      "section_title": "JOU — Journalisation et traçabilité",
+      "text": "Les événements de sécurité de l’application sont-ils enregistrés de façon exploitable ?",
+      "help_text": "Indication : Documenter également l’acheminement et la protection de la plateforme de journaux partagée.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "JOU",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "E01#01",
+          "label": "Oui, connexions, échecs, élévations de droits et actions sensibles couverts",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "E01#02",
+          "label": "Oui, mais événements importants manquants",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "E01#03",
+          "label": "Journaux limités aux erreurs techniques",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "E01#04",
+          "label": "Aucune journalisation exploitable",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "E01#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "E02",
+      "order": 45,
+      "section_order": 7,
+      "section_title": "JOU — Journalisation et traçabilité",
+      "text": "Les modifications des données importantes peuvent-elles être retracées (auteur, date, action et élément concerné) ?",
+      "help_text": "Indication : Les anciennes et nouvelles valeurs sont utiles selon les cas, mais ne doivent pas être journalisées en clair si elles sont sensibles.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "JOU",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "E02#01",
+          "label": "Oui, informations suffisantes et vérifiées",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "E02#02",
+          "label": "Oui, mais seulement pour certains objets ou actions",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "E02#03",
+          "label": "Traçabilité insuffisante",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "E02#04",
+          "label": "Aucune piste d’audit exploitable",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "E02#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "E03",
+      "order": 46,
+      "section_order": 7,
+      "section_title": "JOU — Journalisation et traçabilité",
+      "text": "La durée de conservation des journaux applicatifs répond-elle aux besoins d’enquête et aux obligations définies ?",
+      "help_text": "Indication : Ne pas considérer arbitrairement 12 mois comme nécessaires à toute application.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "JOU",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "E03#01",
+          "label": "Oui, exigences définies et respectées",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "E03#02",
+          "label": "Exigences définies mais application partielle",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "E03#03",
+          "label": "Durée non justifiée ou insuffisante",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "E03#04",
+          "label": "Aucune conservation utile",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "E03#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "E04",
+      "order": 47,
+      "section_order": 8,
+      "section_title": "DET — Détection, supervision et réponse",
+      "text": "Des alertes sont-elles prévues en cas de comportements anormaux sur l’application ?",
+      "help_text": "Indication : Exemples : connexions inhabituelles, extraction massive, modification en série, échecs répétés.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "DET",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "E04#01",
+          "label": "Oui, cas d’usage définis, actifs et testés",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "E04#02",
+          "label": "Oui, mais couverture ou tests partiels",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "E04#03",
+          "label": "Alertes ponctuelles sans suivi régulier",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "E04#04",
+          "label": "Aucune alerte adaptée",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "E04#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "E05",
+      "order": 48,
+      "section_order": 8,
+      "section_title": "DET — Détection, supervision et réponse",
+      "text": "Les alertes applicatives importantes sont-elles prises en charge par une équipe identifiée avec des consignes d’intervention ?",
+      "help_text": "",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "DET",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "E05#01",
+          "label": "Oui, circuit d’alerte, responsables et exercices définis",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "E05#02",
+          "label": "Oui, responsables désignés mais pratique peu éprouvée",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "E05#03",
+          "label": "Prise en charge irrégulière",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "E05#04",
+          "label": "Aucune prise en charge organisée",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "E05#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "E06",
+      "order": 49,
+      "section_order": 8,
+      "section_title": "DET — Détection, supervision et réponse",
+      "text": "La disponibilité et le bon fonctionnement des fonctions critiques sont-ils supervisés ?",
+      "help_text": "Indication : Exemples : capacité à effectuer une opération métier, traitement d’une file de messages ou exécution d’un calcul important.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "DET",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "E06#01",
+          "label": "Oui, supervision fonctionnelle et technique avec alertes traitées",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "E06#02",
+          "label": "Oui, supervision essentiellement technique",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "E06#03",
+          "label": "Surveillance partielle ou manuelle",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "E06#04",
+          "label": "Absence de supervision suffisante",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "E06#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "I04",
+      "order": 50,
+      "section_order": 8,
+      "section_title": "DET — Détection, supervision et réponse",
+      "text": "Existe-t-il une procédure de traitement des incidents de sécurité prenant en compte cette application ?",
+      "help_text": "",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "DET",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "I04#01",
+          "label": "Oui, rôles, actions et escalade définis et testés",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "I04#02",
+          "label": "Oui, procédure définie mais non testée",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "I04#03",
+          "label": "Procédure incomplète",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "I04#04",
+          "label": "Aucune procédure applicable",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "I04#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "A08",
+      "order": 51,
+      "section_order": 9,
+      "section_title": "VUL — Vulnérabilités et obsolescence",
+      "text": "Un ou plusieurs composants logiciels propres à l’application ne reçoivent-ils plus de mises à jour de sécurité ?",
+      "help_text": "Indication : Exemples : framework, moteur applicatif, bibliothèque ou progiciel. Inclure les dépendances d’infrastructure qui conditionnent la sécurité de l’application. Point à investiguer : Si 5 : composant non supporté sans protection adaptée.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "VUL",
+      "category": "Solution sous maîtrise technique de l’entreprise",
+      "routing": "Condition : composants sous maîtrise technique de l’entreprise ; mode hybride : selon périmètre",
+      "options": [
+        {
+          "id": "A08#01",
+          "label": "Aucun composant identifié comme hors support",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A08#02",
+          "label": "Fin du support prévue dans les 12 prochains mois",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A08#03",
+          "label": "Au moins un composant hors support avec mesures compensatoires vérifiées",
+          "score": 3,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A08#04",
+          "label": "Au moins un composant hors support sans protection adaptée",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "A08#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "F04",
+      "order": 52,
+      "section_order": 9,
+      "section_title": "VUL — Vulnérabilités et obsolescence",
+      "text": "Les vulnérabilités applicatives sont-elles corrigées selon des délais adaptés à leur gravité et à l’exposition ?",
+      "help_text": "",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "VUL",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "F04#01",
+          "label": "Oui, délais définis, mesurés et généralement respectés",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F04#02",
+          "label": "Oui, délais définis mais retards fréquents",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F04#03",
+          "label": "Traitement irrégulier ou sans priorité claire",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F04#04",
+          "label": "Aucun processus de correction",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F04#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "F05",
+      "order": 53,
+      "section_order": 10,
+      "section_title": "CHG — Changements et chaîne de livraison",
+      "text": "Les changements applicatifs suivent-ils un processus de validation, de test et de retour arrière ?",
+      "help_text": "",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "CHG",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "F05#01",
+          "label": "Oui, changements tracés, testés, approuvés et retour arrière préparé",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F05#02",
+          "label": "Oui, mais contrôles de sécurité ou retour arrière incomplets",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F05#03",
+          "label": "Processus informel",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F05#04",
+          "label": "Aucun processus maîtrisé",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F05#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "F06",
+      "order": 54,
+      "section_order": 10,
+      "section_title": "CHG — Changements et chaîne de livraison",
+      "text": "Qui peut déployer une nouvelle version ou modifier la configuration de production de l’application ?",
+      "help_text": "",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "CHG",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "F06#01",
+          "label": "Équipe restreinte, autorisations définies et actions tracées",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F06#02",
+          "label": "Équipe restreinte mais validation ou traçabilité incomplète",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F06#03",
+          "label": "Droits de déploiement trop étendus",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F06#04",
+          "label": "Aucun contrôle d’accès approprié",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F06#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "F06#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "F10",
+      "order": 55,
+      "section_order": 10,
+      "section_title": "CHG — Changements et chaîne de livraison",
+      "text": "Les dépôts de code et outils de déploiement sont-ils protégés contre les modifications non autorisées ?",
+      "help_text": "Point à investiguer : Si 5 : modifications non autorisées du code.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "CHG",
+      "category": "Solution sous maîtrise technique de l’entreprise",
+      "routing": "Condition : composants sous maîtrise technique de l’entreprise ; mode hybride : selon périmètre",
+      "options": [
+        {
+          "id": "F10#01",
+          "label": "Oui, accès limités, revues et traçabilité des modifications",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F10#02",
+          "label": "Oui, mais revues ou protections incomplètes",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F10#03",
+          "label": "Contrôles partiels",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F10#04",
+          "label": "Accès et modifications insuffisamment maîtrisés",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F10#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "F10#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "F11",
+      "order": 56,
+      "section_order": 10,
+      "section_title": "CHG — Changements et chaîne de livraison",
+      "text": "Les secrets de développement et de déploiement sont-ils protégés et peuvent-ils être renouvelés après compromission ?",
+      "help_text": "",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "CHG",
+      "category": "Solution sous maîtrise technique de l’entreprise",
+      "routing": "Condition : composants sous maîtrise technique de l’entreprise ; mode hybride : selon périmètre",
+      "options": [
+        {
+          "id": "F11#01",
+          "label": "Oui, accès contrôlés, stockage adapté et renouvellement possible",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F11#02",
+          "label": "Oui, mais protection ou rotation incomplète",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F11#03",
+          "label": "Secrets répartis dans des outils peu maîtrisés",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F11#04",
+          "label": "Secrets accessibles en clair ou renouvellement impossible",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F11#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "F11#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "G04",
+      "order": 57,
+      "section_order": 11,
+      "section_title": "REC — Continuité et reprise applicative",
+      "text": "Un plan précise-t-il comment restaurer l’application, ses paramètres et ses connexions essentielles ?",
+      "help_text": "",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "REC",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "G04#01",
+          "label": "Oui, procédure documentée et testée",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G04#02",
+          "label": "Oui, procédure existante mais peu ou non testée",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G04#03",
+          "label": "Procédure partielle",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G04#04",
+          "label": "Aucune procédure",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G04#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "G05",
+      "order": 58,
+      "section_order": 11,
+      "section_title": "REC — Continuité et reprise applicative",
+      "text": "En cas de défaillance d’un service partagé indispensable (identité, API, base, DNS), une solution de secours applicative existe-t-elle ?",
+      "help_text": "Indication : Préciser les dépendances : leur sécurisation technique relève aussi de la plateforme. Point à investiguer : Si 5 : point de dépendance critique sans solution.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "REC",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "G05#01",
+          "label": "Oui, solution testée pour les dépendances critiques",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G05#02",
+          "label": "Oui, solution prévue mais non testée",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G05#03",
+          "label": "Mode de secours seulement pour certaines dépendances",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G05#04",
+          "label": "Aucune solution pour des dépendances critiques",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G05#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "G05#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "G06",
+      "order": 59,
+      "section_order": 11,
+      "section_title": "REC — Continuité et reprise applicative",
+      "text": "La reprise de l’application permet-elle de vérifier la cohérence des données et le résultat des traitements critiques ?",
+      "help_text": "",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "REC",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "G06#01",
+          "label": "Oui, vérifications définies et testées",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G06#02",
+          "label": "Oui, vérifications existantes mais incomplètes",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G06#03",
+          "label": "Vérifications manuelles incertaines",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G06#04",
+          "label": "Aucune vérification fiable",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G06#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "G06#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "G07",
+      "order": 60,
+      "section_order": 11,
+      "section_title": "REC — Continuité et reprise applicative",
+      "text": "La couverture du support applicatif (horaires, permanence, prestataire) est-elle compatible avec les besoins de disponibilité métier ?",
+      "help_text": "Indication : Comparer aux besoins du BO, notamment durant les périodes critiques.",
+      "response_type": "single",
+      "required": true,
+      "role": "W",
+      "family": "REC",
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "G07#01",
+          "label": "Oui, modalités connues et adaptées aux besoins",
+          "score": 0,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G07#02",
+          "label": "Oui, mais certaines plages ou responsabilités ne sont pas couvertes",
+          "score": 2,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G07#03",
+          "label": "Couverture insuffisante",
+          "score": 4,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G07#04",
+          "label": "Aucun support organisé",
+          "score": 5,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G07#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "C04",
+      "order": 61,
+      "section_order": 12,
+      "section_title": "Assurance, constats et informations complémentaires",
+      "text": "Les durées de conservation validées par le métier sont-elles appliquées dans l’application ?",
+      "help_text": "Indication : Les durées attendues proviennent du métier ou de la conformité. Préciser si aucune règle n’a été définie. Point à investiguer : Si 5 : conservation au-delà des durées prévues.",
+      "response_type": "single",
+      "required": true,
+      "role": "A",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "C04#01",
+          "label": "Oui, archivage ou suppression mis en œuvre et vérifié",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C04#02",
+          "label": "Oui, mais traitement manuel ou vérification incomplète",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C04#03",
+          "label": "Partiellement",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C04#04",
+          "label": "Non, les données sont conservées au-delà des durées prévues",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C04#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "C05",
+      "order": 62,
+      "section_order": 12,
+      "section_title": "Assurance, constats et informations complémentaires",
+      "text": "L’application permet-elle de rechercher, restituer et, lorsque cela est légalement requis, effacer les données d’une personne ?",
+      "help_text": "Point à investiguer : Si 5 : impossibilité d’honorer obligations applicables.",
+      "response_type": "single",
+      "required": true,
+      "role": "A",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "C05#01",
+          "label": "Oui, processus complet, maîtrisé et testé",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C05#02",
+          "label": "Oui, mais avec une intervention manuelle importante",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C05#03",
+          "label": "Partiellement, certaines données ou copies sont difficiles à traiter",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C05#04",
+          "label": "Non",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "C05#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "C05#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "F01",
+      "order": 63,
+      "section_order": 12,
+      "section_title": "Assurance, constats et informations complémentaires",
+      "text": "L’application fait-elle l’objet de recherches de vulnérabilités adaptées à son exposition et à ses technologies ?",
+      "help_text": "Indication : Tests automatisés, analyses de code, scans ou audits selon le type de solution. Point à investiguer : Si 5 : aucune recherche organisée, priorité de vérification.",
+      "response_type": "single",
+      "required": true,
+      "role": "A",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "F01#01",
+          "label": "Oui, tests couvrant les composants et interfaces concernés, avec suivi des résultats",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F01#02",
+          "label": "Oui, couverture incomplète",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F01#03",
+          "label": "Contrôles très ponctuels",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F01#04",
+          "label": "Aucune recherche de vulnérabilités identifiée",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F01#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "F02",
+      "order": 64,
+      "section_order": 12,
+      "section_title": "Assurance, constats et informations complémentaires",
+      "text": "Un test d’intrusion ou un audit technique a-t-il récemment évalué les fonctions et interfaces exposées ?",
+      "help_text": "Indication : Indiquer la date, le périmètre, les exclusions et la référence du rapport. Ne pas noter uniquement la date sans tenir compte des évolutions. Point à investiguer : Si 5 : couverture d’audit non démontrée.",
+      "response_type": "single",
+      "required": true,
+      "role": "A",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "F02#01",
+          "label": "Oui, test adapté aux changements et à l’exposition, avec résultats traités",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F02#02",
+          "label": "Oui, test ancien ou couverture partielle",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F02#03",
+          "label": "Test très ancien, sans actualisation après changement majeur",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F02#04",
+          "label": "Aucun test pertinent réalisé",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F02#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "F03",
+      "order": 65,
+      "section_order": 12,
+      "section_title": "Assurance, constats et informations complémentaires",
+      "text": "Des vulnérabilités applicatives importantes restent-elles connues et non corrigées ?",
+      "help_text": "Indication : Une absence de vulnérabilité « connue » n’équivaut pas à une absence de vulnérabilité si les contrôles ne sont pas effectués. Point à investiguer : Si 4 ou 5 : ouvrir scénario/registre avec CVE, exposition, correction.",
+      "response_type": "single",
+      "required": true,
+      "role": "R",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "F03#01",
+          "label": "Aucune vulnérabilité importante ouverte dans un périmètre régulièrement contrôlé",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F03#02",
+          "label": "Vulnérabilités ouvertes avec mesures temporaires et plan de correction suivi",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F03#03",
+          "label": "Vulnérabilités importantes sans correction rapide ou mesures adaptées",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F03#04",
+          "label": "Vulnérabilités critiques exposées sans plan maîtrisé",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F03#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "F07",
+      "order": 66,
+      "section_order": 12,
+      "section_title": "Assurance, constats et informations complémentaires",
+      "text": "Le développement de l’application suit-il un processus intégrant des exigences de sécurité dès la conception ?",
+      "help_text": "Indication : Pour les développements internes ou sur mesure uniquement.",
+      "response_type": "single",
+      "required": true,
+      "role": "A",
+      "family": null,
+      "category": "Solution sous maîtrise technique de l’entreprise",
+      "routing": "Condition : composants sous maîtrise technique de l’entreprise ; mode hybride : selon périmètre",
+      "options": [
+        {
+          "id": "F07#01",
+          "label": "Oui, règles formalisées, revues et appliquées",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F07#02",
+          "label": "Oui, mais couverture incomplète",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F07#03",
+          "label": "Pratique occasionnelle",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F07#04",
+          "label": "Aucune démarche identifiée",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F07#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "F07#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "F08",
+      "order": 67,
+      "section_order": 12,
+      "section_title": "Assurance, constats et informations complémentaires",
+      "text": "Des analyses automatisées du code et des bibliothèques sont-elles réalisées avant les mises en production ?",
+      "help_text": "Indication : Exemples : analyse statique du code (SAST), analyse des dépendances (SCA), tests dynamiques (DAST) si adaptés.",
+      "response_type": "single",
+      "required": true,
+      "role": "A",
+      "family": null,
+      "category": "Solution sous maîtrise technique de l’entreprise",
+      "routing": "Condition : composants sous maîtrise technique de l’entreprise ; mode hybride : selon périmètre",
+      "options": [
+        {
+          "id": "F08#01",
+          "label": "Oui, contrôles intégrés aux livraisons et résultats traités",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F08#02",
+          "label": "Oui, contrôles réalisés ponctuellement",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F08#03",
+          "label": "Couverture très partielle",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F08#04",
+          "label": "Aucun contrôle",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F08#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "F08#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "F09",
+      "order": 68,
+      "section_order": 12,
+      "section_title": "Assurance, constats et informations complémentaires",
+      "text": "Les bibliothèques, composants tiers et leurs versions sont-ils identifiés afin de repérer les vulnérabilités publiées ?",
+      "help_text": "",
+      "response_type": "single",
+      "required": true,
+      "role": "A",
+      "family": null,
+      "category": "Solution sous maîtrise technique de l’entreprise",
+      "routing": "Condition : composants sous maîtrise technique de l’entreprise ; mode hybride : selon périmètre",
+      "options": [
+        {
+          "id": "F09#01",
+          "label": "Oui, inventaire maintenu et alertes suivies",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F09#02",
+          "label": "Oui, inventaire incomplet ou suivi manuel",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F09#03",
+          "label": "Connaissance partielle des composants",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F09#04",
+          "label": "Aucun suivi",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "F09#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "F09#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "G01",
+      "order": 69,
+      "section_order": 12,
+      "section_title": "Assurance, constats et informations complémentaires",
+      "text": "Quel délai de remise en service complet de l’application a réellement été observé ou démontré lors des tests ?",
+      "help_text": "Indication : Préciser le périmètre du test et les dépendances utilisées ; comparer ensuite avec le RTO métier validé, sans noter ce délai isolément. Point à investiguer : Rapprocher au RTO métier et au périmètre de test.",
+      "response_type": "single",
+      "required": true,
+      "role": "H",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "G01#01",
+          "label": "Moins d’une heure",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G01#02",
+          "label": "De 1 à moins de 4 heures",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G01#03",
+          "label": "De 4 à moins de 24 heures",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G01#04",
+          "label": "De 1 à moins de 3 jours",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G01#05",
+          "label": "3 jours ou plus",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G01#06",
+          "label": "Aucune mesure ou aucun essai réalisé",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G01#07",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "G02",
+      "order": 70,
+      "section_order": 12,
+      "section_title": "Assurance, constats et informations complémentaires",
+      "text": "Ce délai de reprise de l’application a-t-il été confirmé par un test de bout en bout ?",
+      "help_text": "Indication : La restauration d’un serveur ou d’une base ne suffit pas à prouver la reprise du service métier.",
+      "response_type": "single",
+      "required": true,
+      "role": "A",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "G02#01",
+          "label": "Oui, test récent représentatif avec résultats probants",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G02#02",
+          "label": "Oui, mais test partiel ou ancien",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G02#03",
+          "label": "Seulement une estimation théorique",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G02#04",
+          "label": "Aucun test ou élément de preuve",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G02#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "G03",
+      "order": 71,
+      "section_order": 12,
+      "section_title": "Assurance, constats et informations complémentaires",
+      "text": "Quelle quantité de données récentes peut effectivement être perdue lors d’une reprise de l’application ?",
+      "help_text": "Indication : Indiquer le point de reprise réellement démontré et le comparer plus tard avec l’exigence métier (RPO cible). Point à investiguer : Rapprocher aux objectifs BO de perte admissible.",
+      "response_type": "single",
+      "required": true,
+      "role": "H",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "G03#01",
+          "label": "Aucune perte constatée ou démontrée",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G03#02",
+          "label": "Moins d’une heure",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G03#03",
+          "label": "De 1 à moins de 4 heures",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G03#04",
+          "label": "De 4 à moins de 24 heures",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G03#05",
+          "label": "24 heures ou plus",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G03#06",
+          "label": "Non mesurée",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "G03#07",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "H02",
+      "order": 72,
+      "section_order": 12,
+      "section_title": "Assurance, constats et informations complémentaires",
+      "text": "Les responsabilités respectives de l’entreprise et de chaque fournisseur en matière de sécurité applicative sont-elles définies ?",
+      "help_text": "",
+      "response_type": "single",
+      "required": true,
+      "role": "A",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "H02#01",
+          "label": "Oui, responsabilités documentées et connues des équipes",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "H02#02",
+          "label": "Oui, mais partage incomplet sur certains contrôles",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "H02#03",
+          "label": "Rôles essentiellement supposés ou informels",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "H02#04",
+          "label": "Aucune répartition claire",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "H02#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "H02#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "H03",
+      "order": 73,
+      "section_order": 12,
+      "section_title": "Assurance, constats et informations complémentaires",
+      "text": "Le contrat ou les engagements du fournisseur couvrent-ils les exigences de sécurité pertinentes pour l’application ?",
+      "help_text": "Indication : Exemples : sécurité des accès, traitement des vulnérabilités, notification d’incident, disponibilité, réversibilité, droits d’audit.",
+      "response_type": "single",
+      "required": true,
+      "role": "A",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "H03#01",
+          "label": "Oui, exigences proportionnées, documentées et suivies",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "H03#02",
+          "label": "Oui, mais plusieurs exigences importantes manquent",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "H03#03",
+          "label": "Engagements vagues ou non vérifiés",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "H03#04",
+          "label": "Aucun engagement formalisé",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "H03#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "H03#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "H04",
+      "order": 74,
+      "section_order": 12,
+      "section_title": "Assurance, constats et informations complémentaires",
+      "text": "Les assurances de sécurité du fournisseur applicatif ont-elles été examinées et leur périmètre vérifié ?",
+      "help_text": "Indication : Exemples : rapport SOC 2, certification ISO 27001 du SMSI avec son périmètre, audit de sécurité. La certification d’un fournisseur ne prouve pas automatiquement la sécurité de toutes les fonctionnalités.",
+      "response_type": "single",
+      "required": true,
+      "role": "A",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "H04#01",
+          "label": "Oui, rapport ou attestation récente avec périmètre pertinent vérifié",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "H04#02",
+          "label": "Oui, mais document ancien ou périmètre incomplet",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "H04#03",
+          "label": "Simple déclaration commerciale du fournisseur",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "H04#04",
+          "label": "Aucun élément d’assurance examiné",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "H04#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "H04#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "H05",
+      "order": 75,
+      "section_order": 12,
+      "section_title": "Assurance, constats et informations complémentaires",
+      "text": "Les écarts de sécurité identifiés chez le fournisseur applicatif sont-ils suivis jusqu’à leur correction ?",
+      "help_text": "",
+      "response_type": "single",
+      "required": true,
+      "role": "A",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "H05#01",
+          "label": "Oui, responsables, échéances et preuves de traitement identifiés",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "H05#02",
+          "label": "Oui, suivi partiel",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "H05#03",
+          "label": "Écarts connus sans suivi satisfaisant",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "H05#04",
+          "label": "Aucun suivi",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "H05#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "H05#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "H06",
+      "order": 76,
+      "section_order": 12,
+      "section_title": "Assurance, constats et informations complémentaires",
+      "text": "Le fournisseur applicatif est-il tenu de signaler les incidents affectant le service ou les données dans les délais nécessaires ?",
+      "help_text": "",
+      "response_type": "single",
+      "required": true,
+      "role": "A",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "H06#01",
+          "label": "Oui, délais et modalités adaptés aux obligations de l’entreprise",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "H06#02",
+          "label": "Oui, engagement existant mais insuffisamment précis",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "H06#03",
+          "label": "Notification laissée à la discrétion du fournisseur",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "H06#04",
+          "label": "Aucune obligation identifiée",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "H06#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "H06#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "H07",
+      "order": 77,
+      "section_order": 12,
+      "section_title": "Assurance, constats et informations complémentaires",
+      "text": "Les données et configurations nécessaires au changement de solution peuvent-elles être récupérées dans un format exploitable ?",
+      "help_text": "Point à investiguer : Si 5 : sortie fournisseur non maîtrisée.",
+      "response_type": "single",
+      "required": true,
+      "role": "A",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "H07#01",
+          "label": "Oui, dispositif de réversibilité documenté et testé",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "H07#02",
+          "label": "Oui, prévu contractuellement mais non testé",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "H07#03",
+          "label": "Restitution partielle ou difficile",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "H07#04",
+          "label": "Aucune réversibilité exploitable",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "H07#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "H07#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "I01",
+      "order": 78,
+      "section_order": 12,
+      "section_title": "Assurance, constats et informations complémentaires",
+      "text": "Quels audits, contrôles ou évaluations de sécurité récents couvrent effectivement cette application ?",
+      "help_text": "Indication : Indiquer date, périmètre, référence et principaux points non couverts. L’absence d’audit ne constitue pas automatiquement une faille, mais limite le niveau d’assurance.",
+      "response_type": "text",
+      "required": true,
+      "role": "H",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": []
+    },
+    {
+      "reference": "I02",
+      "order": 79,
+      "section_order": 12,
+      "section_title": "Assurance, constats et informations complémentaires",
+      "text": "Les constats importants d’audit ou de test de sécurité sont-ils traités avec un plan suivi ?",
+      "help_text": "Point à investiguer : Si 5 : constat critique non traité.",
+      "response_type": "single",
+      "required": true,
+      "role": "A",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "I02#01",
+          "label": "Aucun constat important ouvert après contrôles appropriés",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "I02#02",
+          "label": "Constats suivis avec responsables et échéances",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "I02#03",
+          "label": "Constats importants en retard ou mal suivis",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "I02#04",
+          "label": "Constats critiques sans traitement",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "I02#05",
+          "label": "Non concerné",
+          "score": null,
+          "special": "NA",
+          "exclusive": false
+        },
+        {
+          "id": "I02#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "I03",
+      "order": 80,
+      "section_order": 12,
+      "section_title": "Assurance, constats et informations complémentaires",
+      "text": "Des dérogations aux règles de sécurité ou des risques acceptés concernent-ils l’application ?",
+      "help_text": "Indication : Indiquer les références des acceptations de risque et les mesures compensatoires ; ne pas les compter deux fois dans un score.",
+      "response_type": "single",
+      "required": true,
+      "role": "H",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "I03#01",
+          "label": "Aucun connu",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "I03#02",
+          "label": "Oui, dérogations approuvées, documentées et limitées dans le temps",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "I03#03",
+          "label": "Oui, dérogations informelles ou sans échéance",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "I03#04",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "I05",
+      "order": 81,
+      "section_order": 12,
+      "section_title": "Assurance, constats et informations complémentaires",
+      "text": "Des incidents de sécurité, pertes de données ou pannes majeures ont-ils affecté l’application au cours des trois dernières années ?",
+      "help_text": "Indication : Préciser les causes identifiées, les effets et les actions correctives. Un incident ancien n’est pas à lui seul une note de risque.",
+      "response_type": "single",
+      "required": true,
+      "role": "H",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": [
+        {
+          "id": "I05#01",
+          "label": "Non",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "I05#02",
+          "label": "Oui, incident de sécurité",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "I05#03",
+          "label": "Oui, panne ou perte de données majeure",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "I05#04",
+          "label": "Oui, plusieurs catégories d’incidents",
+          "score": null,
+          "special": "",
+          "exclusive": false
+        },
+        {
+          "id": "I05#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "special": "ND",
+          "exclusive": false
+        }
+      ]
+    },
+    {
+      "reference": "I06",
+      "order": 82,
+      "section_order": 12,
+      "section_title": "Assurance, constats et informations complémentaires",
+      "text": "Quels documents permettent de confirmer les réponses importantes et quels points restent à vérifier ?",
+      "help_text": "Indication : Exemples : dossier d’architecture applicative, tests des accès, résultat de pentest, registre des interfaces, compte-rendu de reprise, rapport fournisseur. Pour les points en attente, indiquer le responsable pressenti.",
+      "response_type": "text",
+      "required": true,
+      "role": "H",
+      "family": null,
+      "category": "Socle commun",
+      "routing": "Socle commun : toujours affichée",
+      "options": []
+    }
+  ]
+}

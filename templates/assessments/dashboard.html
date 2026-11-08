@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="page-head">
+  <div><p class="eyebrow">Espace sécurisé</p><h1>{% if analyst %}Pilotage GRC{% else %}Mes questionnaires{% endif %}</h1></div>
+</div>
+{% if analyst %}
+  <div class="stats">
+    <div><b>{{ applications|length }}</b><span>applications</span></div>
+    <div><b>{{ assignments|length }}</b><span>questionnaires attribués</span></div>
+    <div><b>{{ help_requests|length }}</b><span>demandes d’aide</span></div>
+  </div>
+  <div class="section-head"><h2>Portefeuille applicatif</h2><small>Ouvrez une application pour créer une évaluation ISRA</small></div>
+  <div class="portfolio">
+    {% for app in applications %}
+      <a href="{% url 'application_detail' app.pk %}">
+        <div class="portfolio-card-top">
+          <small>{{ app.code }} · {{ app.domain }}</small>
+          <span class="risk-bubble {{ app.latest_risk_level|lower|default:'none' }}" aria-label="Appréciation : {{ app.latest_risk_label }}">
+            <i aria-hidden="true"></i>{{ app.latest_risk_label }}
+          </span>
+        </div>
+        <h3>{{ app.name }}</h3>
+        <p>{{ app.description|truncatechars:115 }}</p>
+        <span>{{ app.campaigns.count }} évaluation{{ app.campaigns.count|pluralize }}</span>
+      </a>
+    {% endfor %}
+  </div>
+  <h2>Suivi des questionnaires</h2>
+  {% include 'assessments/assignment_table.html' %}
+  {% if help_requests %}
+    <h2>Demandes d’aide</h2>
+    <div class="table"><table><tr><th>Questionnaire</th><th>Répondant</th><th>Question</th><th>Commentaire volontaire</th></tr>
+      {% for h in help_requests %}<tr><td>{{ h.assignment.template.code }}</td><td>{{ h.author.get_full_name }}</td><td>{{ h.question.reference }}</td><td>{{ h.comment }}</td></tr>{% endfor %}
+    </table></div>
+  {% endif %}
+{% else %}
+  <p class="lead">Les questionnaires qui vous sont attribués apparaîtront ici. Vous pourrez les ouvrir, enregistrer un brouillon puis les soumettre.</p>
+  {% include 'assessments/assignment_table.html' %}
+{% endif %}
+{% endblock %}

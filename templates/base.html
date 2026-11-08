@@ -1,0 +1,37 @@
+{% load static %}<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="{% block color_scheme %}light{% endblock %}">
+  <title>{% block title %}Orivane ISRA{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/app.css' %}?v=20261020-risk-bubbles">
+  <link rel="stylesheet" href="{% static 'css/components.css' %}?v=20261017-layout-fix">
+  <link rel="stylesheet" href="{% static 'css/workflow.css' %}?v=20261017-layout-fix">
+  {% block extra_head %}{% endblock %}
+  <link rel="stylesheet" href="{% static 'css/cyber.css' %}?v=20261027-it-score-scales">
+</head>
+<body class="{% if user.is_authenticated %}app-shell{% endif %} {% block body_class %}{% endblock %}">
+  {% if user.is_authenticated %}
+    <aside class="sidebar">
+      <a class="brand" href="{% url 'dashboard' %}"><span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.8 20 6v5.8c0 4.9-3.3 8-8 9.4-4.7-1.4-8-4.5-8-9.4V6l8-3.2Z"/><path d="m8.8 12 2 2 4.5-4.5"/></svg></span><strong>Orivane</strong><small>ISRA</small></a>
+      <nav aria-label="Navigation principale">
+        <span class="nav-label">Espace de travail</span>
+        <a class="{% if request.resolver_match.url_name != 'home' %}active{% endif %}" href="{% url 'dashboard' %}" {% if request.resolver_match.url_name != 'home' %}aria-current="page"{% endif %}><i aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg></i>Tableau de bord</a>
+        <a class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}" {% if request.resolver_match.url_name == 'home' %}aria-current="page"{% endif %}><i aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19.5V5.8A2.8 2.8 0 0 1 6.8 3H20v16H6.8A2.8 2.8 0 0 0 4 21.8"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/></svg></i>Présentation</a>
+      </nav>
+      <div class="user-card">
+        <span class="avatar">{{ user.first_name|first|default:user.username|first }}{{ user.last_name|first }}</span>
+        <div><b>{{ user.get_full_name|default:user.username }}</b><small>{{ user.role_links.first.job_title|default:"Session sécurisée" }}</small></div>
+        <form method="post" action="{% url 'logout' %}">{% csrf_token %}<button class="logout" title="Se déconnecter" aria-label="Se déconnecter">↗</button></form>
+      </div>
+    </aside>
+  {% endif %}
+  <main id="main-content">
+    <a class="skip-link" href="#main-content">Aller au contenu</a>
+    {% if messages %}<div class="messages">{% for message in messages %}<p class="{{ message.tags }}">{{ message }}</p>{% endfor %}</div>{% endif %}
+    {% block content %}{% endblock %}
+  </main>
+  <script>document.querySelectorAll('[data-exclusive]').forEach(x=>x.addEventListener('change',e=>{if(e.target.checked)e.target.closest('.options').querySelectorAll('input').forEach(i=>{if(i!==e.target)i.checked=false})}));</script>
+</body>
+</html>

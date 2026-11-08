@@ -1,0 +1,5143 @@
+{
+  "schema_version": "1.0",
+  "model_id": "ISRA-BO-CID",
+  "model_version": "1.0.0",
+  "scope": "Business Owner (BO) only",
+  "scale": {
+    "min": 0,
+    "max": 5,
+    "higher_means": "higher concern for E and X, greater weakness for W"
+  },
+  "adjustments": {
+    "exposure_max_increase_fraction": 0.25,
+    "controls_max_decrease_fraction": 0.35
+  },
+  "groups": [
+    {
+      "role": "E",
+      "dimension": "C",
+      "group_id": "C-DON",
+      "title": "Nature / sensibilité des données",
+      "weight": 0.4
+    },
+    {
+      "role": "E",
+      "dimension": "C",
+      "group_id": "C-VOL",
+      "title": "Volume de données et personnes",
+      "weight": 0.2
+    },
+    {
+      "role": "E",
+      "dimension": "C",
+      "group_id": "C-IMP",
+      "title": "Conséquences d'une divulgation",
+      "weight": 0.4
+    },
+    {
+      "role": "E",
+      "dimension": "I",
+      "group_id": "I-ACT",
+      "title": "Opérations et modifications métier",
+      "weight": 0.35
+    },
+    {
+      "role": "E",
+      "dimension": "I",
+      "group_id": "I-IMP",
+      "title": "Conséquences d'une altération",
+      "weight": 0.35
+    },
+    {
+      "role": "E",
+      "dimension": "I",
+      "group_id": "I-PRE",
+      "title": "Preuves, intégrité et régulation",
+      "weight": 0.2
+    },
+    {
+      "role": "E",
+      "dimension": "I",
+      "group_id": "I-CAS",
+      "title": "Effets en cascade des erreurs",
+      "weight": 0.1
+    },
+    {
+      "role": "E",
+      "dimension": "D",
+      "group_id": "D-DEP",
+      "title": "Dépendance fonctionnelle et fréquence",
+      "weight": 0.2
+    },
+    {
+      "role": "E",
+      "dimension": "D",
+      "group_id": "D-IMP",
+      "title": "Effets d'une interruption",
+      "weight": 0.4
+    },
+    {
+      "role": "E",
+      "dimension": "D",
+      "group_id": "D-TEM",
+      "title": "Contraintes et exigences temporelles",
+      "weight": 0.3
+    },
+    {
+      "role": "E",
+      "dimension": "D",
+      "group_id": "D-CAS",
+      "title": "Interdépendances et impacts en chaîne",
+      "weight": 0.1
+    },
+    {
+      "role": "X",
+      "dimension": "C",
+      "group_id": "C-PART",
+      "title": "Exports, impression et circulation",
+      "weight": 0.6
+    },
+    {
+      "role": "X",
+      "dimension": "C",
+      "group_id": "C-ACC",
+      "title": "Population accédante et droits",
+      "weight": 0.4
+    },
+    {
+      "role": "X",
+      "dimension": "I",
+      "group_id": "I-ACT",
+      "title": "Opérations et modifications métier",
+      "weight": 0.5
+    },
+    {
+      "role": "X",
+      "dimension": "I",
+      "group_id": "I-FLUX",
+      "title": "Propagation et circulation des données",
+      "weight": 0.25
+    },
+    {
+      "role": "X",
+      "dimension": "I",
+      "group_id": "I-CAS",
+      "title": "Effets en cascade des erreurs",
+      "weight": 0.25
+    },
+    {
+      "role": "X",
+      "dimension": "D",
+      "group_id": "D-CAS",
+      "title": "Interdépendances et impacts en chaîne",
+      "weight": 0.6
+    },
+    {
+      "role": "X",
+      "dimension": "D",
+      "group_id": "D-DEP",
+      "title": "Dépendance fonctionnelle et fréquence",
+      "weight": 0.4
+    },
+    {
+      "role": "W",
+      "dimension": "C",
+      "group_id": "C-ACC",
+      "title": "Population accédante et droits",
+      "weight": 1.0
+    },
+    {
+      "role": "W",
+      "dimension": "I",
+      "group_id": "I-CONT",
+      "title": "Contrôles et traçabilité métier",
+      "weight": 1.0
+    },
+    {
+      "role": "W",
+      "dimension": "D",
+      "group_id": "D-ALT",
+      "title": "Solutions alternatives",
+      "weight": 1.0
+    }
+  ],
+  "questions": [
+    {
+      "id": "Q-001",
+      "source_id": "A01",
+      "label": "À quelle étape du cycle de vie se trouve actuellement l’application ?",
+      "role": "H",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {},
+      "category_scope_text": "Socle commun",
+      "rationale": "Cycle de vie : contexte non graduable",
+      "options": [
+        {
+          "id": "A01#01",
+          "label": "Projet ou déploiement à venir",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 1
+        },
+        {
+          "id": "A01#02",
+          "label": "En service et utilisée régulièrement",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 2
+        },
+        {
+          "id": "A01#03",
+          "label": "En cours de transformation importante",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 3
+        },
+        {
+          "id": "A01#04",
+          "label": "En cours de remplacement",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 4
+        },
+        {
+          "id": "A01#05",
+          "label": "En fin d’utilisation",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 5
+        },
+        {
+          "id": "A01#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 6
+        }
+      ],
+      "routing_description": "Priorité : Important mais peu s’en passer",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-002",
+      "source_id": "A02",
+      "label": "À quoi sert principalement l’application ? Décrivez en quelques phrases les activités réalisées et les résultats attendus par les équipes.",
+      "role": "H",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {},
+      "category_scope_text": "Socle commun",
+      "rationale": "Finalité libre : pas de barème reproductible",
+      "options": [],
+      "routing_description": "Priorité : Peu s’en passer",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-003",
+      "source_id": "A03",
+      "label": "Dans quelle mesure les activités métier dépendent-elles de cette application pour fonctionner normalement ?",
+      "role": "E",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 1.0
+      },
+      "groups": {
+        "D": "D-DEP"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Dépendance métier directe pour la disponibilité",
+      "options": [
+        {
+          "id": "A03#01",
+          "label": "L’application apporte surtout du confort : le travail peut continuer sans difficulté",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "A03#02",
+          "label": "Elle facilite le travail, mais des alternatives simples existent",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "A03#03",
+          "label": "Elle est nécessaire à certaines tâches ; un remplacement temporaire est possible",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "A03#04",
+          "label": "Elle est indispensable à plusieurs activités importantes",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "A03#05",
+          "label": "Elle est indispensable à une activité essentielle, sans solution de remplacement praticable",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "A03#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 6
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-004",
+      "source_id": "A04",
+      "label": "L’application intervient-elle dans des activités devant être réalisées à des dates ou heures précises (par exemple paie, clôture comptable, livraison ou déclaration obligatoire) ?",
+      "role": "E",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 1.0
+      },
+      "groups": {
+        "D": "D-TEM"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Échéances métier et sensibilité temporelle",
+      "options": [
+        {
+          "id": "A04#01",
+          "label": "Non, aucune échéance précise",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "A04#02",
+          "label": "Oui, quelques échéances occasionnelles",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "A04#03",
+          "label": "Oui, des échéances régulières importantes",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "A04#04",
+          "label": "Oui, des échéances strictes dont le non-respect aurait des conséquences graves",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "A04#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-005",
+      "source_id": "A05",
+      "label": "Qui serait directement affecté si l’application ne fonctionnait plus ou produisait des informations incorrectes ?",
+      "role": "X",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.15,
+        "D": 0.35
+      },
+      "groups": {
+        "I": "I-CAS",
+        "D": "D-CAS"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Périmètre affecté lors d'erreurs ou d'arrêts : impact indirect transversal",
+      "options": [
+        {
+          "id": "A05#01",
+          "label": "Une équipe ou un petit groupe de travail",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "A05#02",
+          "label": "Plusieurs équipes d’un même service",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "A05#03",
+          "label": "Plusieurs services, sites ou entités",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "A05#04",
+          "label": "Une grande partie de l’entreprise ou des clients / partenaires essentiels",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "A05#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        }
+      ],
+      "routing_description": "Priorité : Important",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-006",
+      "source_id": "A06",
+      "label": "Quels processus ou activités dépendent de cette application et lesquels sont les plus importants ? Pour chaque activité, précisez le résultat attendu et son importance.",
+      "role": "H",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {},
+      "category_scope_text": "Socle commun",
+      "rationale": "Description détaillée des processus, nécessaire à l'analyste",
+      "options": [],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-007",
+      "source_id": "A07",
+      "label": "De quelles autres applications, équipes ou organisations proviennent les informations ou services indispensables à cette application ?",
+      "role": "H",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {},
+      "category_scope_text": "Socle commun",
+      "rationale": "Dépendances amont non notées, qualité variable en texte libre",
+      "options": [],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-008",
+      "source_id": "A08",
+      "label": "Quelles autres applications, équipes ou organisations utilisent les données, décisions ou résultats produits par cette application ?",
+      "role": "H",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {},
+      "category_scope_text": "Socle commun",
+      "rationale": "Dépendances aval non notées, indispensable pour scénarios",
+      "options": [],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-009",
+      "source_id": "A09",
+      "label": "Les informations sont-elles échangées avec d’autres applications ou organisations ?",
+      "role": "X",
+      "coefficients": {
+        "C": 0.2,
+        "I": 0.2,
+        "D": 0.1
+      },
+      "groups": {
+        "C": "C-PART",
+        "I": "I-FLUX",
+        "D": "D-CAS"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Échanges multiplient les surfaces de circulation, pas automatiquement l'impact",
+      "options": [
+        {
+          "id": "A09#01",
+          "label": "Aucun échange",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "A09#02",
+          "label": "Transferts occasionnels réalisés manuellement",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "A09#03",
+          "label": "Transferts réguliers par fichier ou saisie manuelle",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "A09#04",
+          "label": "Échanges automatiques réguliers",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "A09#05",
+          "label": "Échanges automatiques fréquents avec plusieurs destinataires",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "A09#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 6
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-010",
+      "source_id": "A10",
+      "label": "En cas d’erreur ou d’arrêt de l’application, dans quelle mesure d’autres activités ou services pourraient-ils être perturbés en cascade ?",
+      "role": "E",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.45,
+        "D": 0.55
+      },
+      "groups": {
+        "I": "I-CAS",
+        "D": "D-CAS"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Erreur ou arrêt en cascade : impacts intégrité et disponibilité",
+      "options": [
+        {
+          "id": "A10#01",
+          "label": "Aucune autre activité ne serait affectée",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "A10#02",
+          "label": "Une activité secondaire pourrait être affectée",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "A10#03",
+          "label": "Plusieurs activités pourraient être ralenties",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "A10#04",
+          "label": "Plusieurs activités importantes pourraient être bloquées",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "A10#05",
+          "label": "Des activités essentielles dans plusieurs services ou entités pourraient être bloquées",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "A10#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 6
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-011",
+      "source_id": "C01",
+      "label": "Quelles catégories de personnes sont concernées par les données personnelles de l’application ? (Une donnée personnelle permet d’identifier directement ou indirectement une personne.)",
+      "role": "E",
+      "coefficients": {
+        "C": 1.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-DON"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Typologie des personnes et vulnérabilité particulière",
+      "options": [
+        {
+          "id": "C01#01",
+          "label": "Clients, locataires, usagers ou bénéficiaires",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "C01#02",
+          "label": "Salariés ou anciens salariés",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "C01#03",
+          "label": "Candidats au recrutement",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "C01#04",
+          "label": "Prospects ou contacts commerciaux",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "C01#05",
+          "label": "Fournisseurs, partenaires ou représentants de sociétés",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "C01#06",
+          "label": "Mineurs ou personnes particulièrement vulnérables",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 6
+        },
+        {
+          "id": "C01#07",
+          "label": "Aucune de ces situations",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 7
+        },
+        {
+          "id": "C01#08",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 8
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire  |  Choix multiples",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "multi",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-012",
+      "source_id": "C02",
+      "label": "Quels types de données personnelles sont utilisés ou conservés dans l’application ?",
+      "role": "E",
+      "coefficients": {
+        "C": 1.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-DON"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Nature et confidentialité des informations individuelles",
+      "options": [
+        {
+          "id": "C02#01",
+          "label": "Identité et coordonnées (nom, adresse, téléphone, courriel)",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "C02#02",
+          "label": "Identifiants professionnels ou numéros de dossier",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "C02#03",
+          "label": "Documents officiels d’identité (carte d’identité, passeport)",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "C02#04",
+          "label": "Coordonnées bancaires, revenus, rémunérations ou données de paiement",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "C02#05",
+          "label": "Localisation précise ou historique de déplacements",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "C02#06",
+          "label": "Évaluations RH, sanctions disciplinaires ou informations personnelles confidentielles",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 6
+        },
+        {
+          "id": "C02#07",
+          "label": "Informations relatives à des infractions ou condamnations pénales",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 7
+        },
+        {
+          "id": "C02#08",
+          "label": "Mots de passe ou informations permettant de se connecter à un compte",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 8
+        },
+        {
+          "id": "C02#09",
+          "label": "Aucune de ces situations",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 9
+        },
+        {
+          "id": "C02#10",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 10
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire  |  Choix multiples",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "multi",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-013",
+      "source_id": "C03",
+      "label": "Combien de personnes environ sont concernées par les données personnelles conservées ou utilisées dans l’application ?",
+      "role": "E",
+      "coefficients": {
+        "C": 1.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-VOL"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Ampleur du traitement de données personnelles",
+      "options": [
+        {
+          "id": "C03#01",
+          "label": "Moins de 50 personnes",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "C03#02",
+          "label": "De 50 à 499 personnes",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "C03#03",
+          "label": "De 500 à 4 999 personnes",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "C03#04",
+          "label": "De 5 000 à 49 999 personnes",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "C03#05",
+          "label": "50 000 personnes ou plus",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "C03#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 6
+        },
+        {
+          "id": "C03#07",
+          "label": "Non concerné",
+          "score": null,
+          "value_type": "not_applicable",
+          "source_choice_position": 7
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-014",
+      "source_id": "C04",
+      "label": "L’application traite-t-elle des données personnelles particulièrement sensibles au sens du RGPD ?",
+      "role": "E",
+      "coefficients": {
+        "C": 1.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-DON"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Données particulières relevant de l'article 9 RGPD",
+      "options": [
+        {
+          "id": "C04#01",
+          "label": "Informations sur la santé",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "C04#02",
+          "label": "Origine raciale ou ethnique",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "C04#03",
+          "label": "Opinions politiques, convictions religieuses ou philosophiques",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "C04#04",
+          "label": "Appartenance syndicale",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "C04#05",
+          "label": "Vie sexuelle ou orientation sexuelle",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "C04#06",
+          "label": "Données génétiques",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 6
+        },
+        {
+          "id": "C04#07",
+          "label": "Données biométriques utilisées pour identifier une personne de façon unique",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 7
+        },
+        {
+          "id": "C04#08",
+          "label": "Aucune de ces situations",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 8
+        },
+        {
+          "id": "C04#09",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 9
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire  |  Choix multiples",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "multi",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-015",
+      "source_id": "C05",
+      "label": "Si l’application contient des données personnelles particulièrement sensibles, combien de personnes sont concernées environ ?",
+      "role": "E",
+      "coefficients": {
+        "C": 1.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-VOL"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Volume des personnes touchées par des données particulières",
+      "options": [
+        {
+          "id": "C05#01",
+          "label": "Moins de 50 personnes",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "C05#02",
+          "label": "De 50 à 499 personnes",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "C05#03",
+          "label": "De 500 à 4 999 personnes",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "C05#04",
+          "label": "5 000 personnes ou plus",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "C05#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        },
+        {
+          "id": "C05#06",
+          "label": "Non concerné",
+          "score": null,
+          "value_type": "not_applicable",
+          "source_choice_position": 6
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire  |  Condition : des données mentionnées à la question C04 sont présentes",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-016",
+      "source_id": "C06",
+      "label": "Quelles informations financières non publiques l’application contient-elle ?",
+      "role": "E",
+      "coefficients": {
+        "C": 1.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-DON"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Nature des données financières non publiques",
+      "options": [
+        {
+          "id": "C06#01",
+          "label": "Coordonnées de paiement, soldes ou historiques d’opérations",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "C06#02",
+          "label": "Budgets, trésorerie, prévisions ou rapports financiers internes",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "C06#03",
+          "label": "Déclarations fiscales, comptables ou réglementaires non publiques",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "C06#04",
+          "label": "Informations sur des fonds, portefeuilles ou biens confiés par des clients",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "C06#05",
+          "label": "Aucune de ces situations",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "C06#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 6
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire  |  Choix multiples",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "multi",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-017",
+      "source_id": "C07",
+      "label": "Quelles informations commerciales ou stratégiques non publiques l’application contient-elle ?",
+      "role": "E",
+      "coefficients": {
+        "C": 1.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-DON"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Nature des informations stratégiques non publiques",
+      "options": [
+        {
+          "id": "C07#01",
+          "label": "Contrats, prix négociés, marges ou conditions commerciales particulières",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "C07#02",
+          "label": "Plans marketing non publiés ou campagnes à venir",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "C07#03",
+          "label": "Données commerciales détaillées par client ou partenaire",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "C07#04",
+          "label": "Plans d’activité, feuille de route ou stratégie de l’entreprise",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "C07#05",
+          "label": "Projets de fusion, acquisition, cession ou réorganisation non annoncés",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "C07#06",
+          "label": "Recherche et développement, inventions, savoir-faire ou secrets d’affaires",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 6
+        },
+        {
+          "id": "C07#07",
+          "label": "Aucune de ces situations",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 7
+        },
+        {
+          "id": "C07#08",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 8
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire  |  Choix multiples",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "multi",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-018",
+      "source_id": "C08",
+      "label": "L’application contient-elle des documents opérationnels dont la diffusion pourrait nuire à l’entreprise ?",
+      "role": "E",
+      "coefficients": {
+        "C": 1.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-DON"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Documents internes sensibles aux divulgations",
+      "options": [
+        {
+          "id": "C08#01",
+          "label": "Documents courants, sans caractère confidentiel",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "C08#02",
+          "label": "Contrats de prestation, engagements de service ou dossiers de gestion de biens",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "C08#03",
+          "label": "Informations sur les bâtiments, les installations ou l’organisation interne",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "C08#04",
+          "label": "Dossiers de contentieux, enquêtes ou documents couverts par un secret professionnel",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "C08#05",
+          "label": "Résultats d’audit, faiblesses de sécurité ou mesures de protection confidentielles",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "C08#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 6
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire  |  Choix multiples",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "multi",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-019",
+      "source_id": "C09",
+      "label": "L’accès aux informations de l’application est-il soumis à une obligation particulière de confidentialité ?",
+      "role": "E",
+      "coefficients": {
+        "C": 1.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-DON"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Obligations de confidentialité contractuelles ou légales",
+      "options": [
+        {
+          "id": "C09#01",
+          "label": "Non, les informations sont publiques ou librement partageables",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "C09#02",
+          "label": "Oui, les informations sont réservées à des équipes internes",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "C09#03",
+          "label": "Oui, une clause contractuelle limite leur diffusion",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "C09#04",
+          "label": "Oui, un secret légal, professionnel ou une restriction importante s’applique",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "C09#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-020",
+      "source_id": "C10",
+      "label": "Quel est l’ordre de grandeur du nombre de dossiers, contrats, documents ou opérations non publics que l’application contient ou traite ?",
+      "role": "E",
+      "coefficients": {
+        "C": 1.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-VOL"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Volume de dossiers ou documents non publics",
+      "options": [
+        {
+          "id": "C10#01",
+          "label": "Quelques unités ou dizaines",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "C10#02",
+          "label": "Quelques centaines",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "C10#03",
+          "label": "Quelques milliers",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "C10#04",
+          "label": "Quelques dizaines de milliers",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "C10#05",
+          "label": "Des centaines de milliers ou davantage",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "C10#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 6
+        },
+        {
+          "id": "C10#07",
+          "label": "Non concerné",
+          "score": null,
+          "value_type": "not_applicable",
+          "source_choice_position": 7
+        }
+      ],
+      "routing_description": "Priorité : Important",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-021",
+      "source_id": "C11",
+      "label": "Quelles seraient les principales conséquences si des informations confidentielles étaient consultées ou divulguées à des personnes non autorisées ?",
+      "role": "H",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {},
+      "category_scope_text": "Socle commun",
+      "rationale": "Conséquences listées sans gradation : toutes les réponses sont notées 5, y compris aucune conséquence : anomalie source",
+      "options": [
+        {
+          "id": "C11#01",
+          "label": "Atteinte à la vie privée de personnes",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 1
+        },
+        {
+          "id": "C11#02",
+          "label": "Perte financière, fraude ou perte d’un avantage commercial",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 2
+        },
+        {
+          "id": "C11#03",
+          "label": "Non-respect d’une obligation légale ou réglementaire",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 3
+        },
+        {
+          "id": "C11#04",
+          "label": "Rupture d’un engagement contractuel de confidentialité",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 4
+        },
+        {
+          "id": "C11#05",
+          "label": "Perte de confiance de clients ou de partenaires",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 5
+        },
+        {
+          "id": "C11#06",
+          "label": "Atteinte à la réputation de l’entreprise",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 6
+        },
+        {
+          "id": "C11#07",
+          "label": "Aucune conséquence connue",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 7
+        },
+        {
+          "id": "C11#08",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 8
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire  |  Choix multiples",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "multi",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-022",
+      "source_id": "C12",
+      "label": "Si une quantité importante des informations les plus confidentielles de l’application était divulguée, quel serait l’impact global pour l’entreprise ou les personnes concernées ?",
+      "role": "E",
+      "coefficients": {
+        "C": 1.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-IMP"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Gravité métier d'une divulgation : ancre de référence",
+      "options": [
+        {
+          "id": "C12#01",
+          "label": "Aucun impact notable",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "C12#02",
+          "label": "Faible : conséquences facilement gérables",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "C12#03",
+          "label": "Limité : désagréments ou coûts modérés",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "C12#04",
+          "label": "Modéré : conséquences métier significatives",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "C12#05",
+          "label": "Important : pertes, obligations ou atteintes sérieuses",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "C12#06",
+          "label": "Critique : conséquences majeures ou durables",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 6
+        },
+        {
+          "id": "C12#07",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 7
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-023",
+      "source_id": "P01",
+      "label": "Les utilisateurs téléchargent-ils ou extraient-ils des informations de l’application dans des fichiers (Excel, PDF, CSV ou autre format) ?",
+      "role": "X",
+      "coefficients": {
+        "C": 0.45,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-PART"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Fréquence d'export, exposition indirecte ne définit pas la confidentialité",
+      "options": [
+        {
+          "id": "P01#01",
+          "label": "Jamais",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "P01#02",
+          "label": "Exceptionnellement",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "P01#03",
+          "label": "Quelques fois par mois",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "P01#04",
+          "label": "Chaque semaine",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "P01#05",
+          "label": "Chaque jour",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "P01#06",
+          "label": "En masse ou de façon continue",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 6
+        },
+        {
+          "id": "P01#07",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 7
+        }
+      ],
+      "routing_description": "Priorité : Important",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-024",
+      "source_id": "P02",
+      "label": "Quels types d’informations sont généralement exportés et dans quel but ?",
+      "role": "H",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {},
+      "category_scope_text": "Administratif › Gestion documentaire • Commerce › Relation client",
+      "rationale": "Description des données exportées sans barème reproductible",
+      "options": [],
+      "routing_description": "Priorité : Non spécifiée  |  Condition : des exports ont lieu",
+      "display_scope_text": "Administratif › Gestion documentaire • Commerce › Relation client",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-025",
+      "source_id": "P03",
+      "label": "Qui peut effectuer des exports dans le cadre de son travail ?",
+      "role": "X",
+      "coefficients": {
+        "C": 0.55,
+        "I": 0.1,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-PART",
+        "I": "I-ACT"
+      },
+      "category_scope_text": "Administratif › Gestion documentaire • Identités et accès › Gestion des habilitations",
+      "rationale": "Étendue des droits d'export et possible modification des fichiers exportés",
+      "options": [
+        {
+          "id": "P03#01",
+          "label": "Aucun utilisateur",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "P03#02",
+          "label": "Quelques personnes spécialement autorisées",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "P03#03",
+          "label": "Certains profils métier",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "P03#04",
+          "label": "La plupart des utilisateurs",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "P03#05",
+          "label": "Les utilisateurs internes et des intervenants externes",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "P03#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 6
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire  |  Condition : des exports sont possibles",
+      "display_scope_text": "Administratif › Gestion documentaire • Identités et accès › Gestion des habilitations",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-026",
+      "source_id": "P04",
+      "label": "Où les fichiers extraits de l’application sont-ils habituellement enregistrés ou transmis ?",
+      "role": "X",
+      "coefficients": {
+        "C": 0.8,
+        "I": 0.2,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-PART",
+        "I": "I-FLUX"
+      },
+      "category_scope_text": "Administratif › Gestion documentaire • Commerce › Relation client • Achats › Gestion fournisseurs",
+      "rationale": "Canaux de circulation des fichiers, externalisation et perte de maîtrise",
+      "options": [
+        {
+          "id": "P04#01",
+          "label": "Espace de travail ou outil collaboratif de l’entreprise",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "P04#02",
+          "label": "Répertoire ou serveur partagé de l’entreprise",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "P04#03",
+          "label": "Messagerie professionnelle",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "P04#04",
+          "label": "Ordinateur ou téléphone local",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "P04#05",
+          "label": "Client, partenaire ou prestataire extérieur",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "P04#06",
+          "label": "Clé USB, espace ou messagerie personnels",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 6
+        },
+        {
+          "id": "P04#07",
+          "label": "Aucune de ces situations",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 7
+        },
+        {
+          "id": "P04#08",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 8
+        }
+      ],
+      "routing_description": "Priorité : Non spécifiée  |  Condition : des exports ont lieu  |  Choix multiples",
+      "display_scope_text": "Administratif › Gestion documentaire • Commerce › Relation client • Achats › Gestion fournisseurs",
+      "selection_mode_hint": "multi",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-027",
+      "source_id": "P05",
+      "label": "En dehors des exports de fichiers, les informations de l’application peuvent-elles être directement consultées ou reçues par des personnes extérieures à l’entreprise ?",
+      "role": "X",
+      "coefficients": {
+        "C": 0.85,
+        "I": 0.15,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-PART",
+        "I": "I-FLUX"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Accès de tiers, exposition de données et éventuels échanges",
+      "options": [
+        {
+          "id": "P05#01",
+          "label": "Non",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "P05#02",
+          "label": "Oui, quelques partenaires ou prestataires identifiés",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "P05#03",
+          "label": "Oui, un groupe limité de clients ou de tiers",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "P05#04",
+          "label": "Oui, un grand nombre de clients, partenaires ou autres tiers",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "P05#05",
+          "label": "Oui, une diffusion publique est possible",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "P05#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 6
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-028",
+      "source_id": "P06",
+      "label": "À quelle fréquence les utilisateurs impriment-ils des documents issus de l’application ?",
+      "role": "X",
+      "coefficients": {
+        "C": 0.35,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-PART"
+      },
+      "category_scope_text": "Administratif › Gestion documentaire",
+      "rationale": "Impression : exposition possible mais dépend des pratiques réelles",
+      "options": [
+        {
+          "id": "P06#01",
+          "label": "Jamais",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "P06#02",
+          "label": "Rarement",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "P06#03",
+          "label": "Régulièrement",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "P06#04",
+          "label": "Très fréquemment ou en grande quantité",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "P06#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        }
+      ],
+      "routing_description": "Priorité : Important",
+      "display_scope_text": "Administratif › Gestion documentaire",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-029",
+      "source_id": "P07",
+      "label": "Pendant combien de temps les principales catégories de données doivent-elles être conservées pour répondre aux besoins métier ou aux obligations connues ?",
+      "role": "H",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {},
+      "category_scope_text": "Administratif › Archivage et conservation • Juridique › Obligations et déclarations",
+      "rationale": "Durée de conservation textuelle, nécessite typologie et barème externes",
+      "options": [],
+      "routing_description": "Priorité : Important mais peu s’en passer",
+      "display_scope_text": "Administratif › Archivage et conservation • Juridique › Obligations et déclarations",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-030",
+      "source_id": "P08",
+      "label": "Le métier doit-il disposer d’un moyen de retrouver, transmettre, archiver ou supprimer certaines données à une date précise ?",
+      "role": "H",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {},
+      "category_scope_text": "Administratif › Archivage et conservation • Juridique › Protection des données",
+      "rationale": "Oui/non sur besoin de manipulation documentaire, pas sur son risque",
+      "options": [
+        {
+          "id": "P08#01",
+          "label": "Oui",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 1
+        },
+        {
+          "id": "P08#02",
+          "label": "Non",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 2
+        },
+        {
+          "id": "P08#03",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 3
+        },
+        {
+          "id": "P08#04",
+          "label": "Non concerné",
+          "score": null,
+          "value_type": "not_applicable",
+          "source_choice_position": 4
+        }
+      ],
+      "routing_description": "Priorité : Important mais peu s’en passer",
+      "display_scope_text": "Administratif › Archivage et conservation • Juridique › Protection des données",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-031",
+      "source_id": "P09",
+      "label": "En cas de changement d’outil ou de fin de contrat avec un fournisseur, le métier doit-il récupérer les données ou documents de cette application ?",
+      "role": "H",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {},
+      "category_scope_text": "Administratif › Restitution et réversibilité • Juridique › Contrats et engagements • Achats › Gestion fournisseurs",
+      "rationale": "Exigence de réversibilité sans niveau d'impact noté",
+      "options": [
+        {
+          "id": "P09#01",
+          "label": "Oui",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 1
+        },
+        {
+          "id": "P09#02",
+          "label": "Non",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 2
+        },
+        {
+          "id": "P09#03",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 3
+        },
+        {
+          "id": "P09#04",
+          "label": "Non concerné",
+          "score": null,
+          "value_type": "not_applicable",
+          "source_choice_position": 4
+        }
+      ],
+      "routing_description": "Priorité : Important mais peu s’en passer",
+      "display_scope_text": "Administratif › Restitution et réversibilité • Juridique › Contrats et engagements • Achats › Gestion fournisseurs",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-032",
+      "source_id": "U01",
+      "label": "Qui utilise l’application ?",
+      "role": "X",
+      "coefficients": {
+        "C": 0.25,
+        "I": 0.1,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-ACC",
+        "I": "I-ACT"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Typologie des utilisateurs et tiers, exposition limitée sans droits précis",
+      "options": [
+        {
+          "id": "U01#01",
+          "label": "Une équipe interne",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "U01#02",
+          "label": "Plusieurs équipes internes",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "U01#03",
+          "label": "Une grande partie de l’entreprise",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "U01#04",
+          "label": "Des clients ou usagers externes",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "U01#05",
+          "label": "Des partenaires ou prestataires externes",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "U01#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 6
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire  |  Choix multiples",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "multi",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-033",
+      "source_id": "U02",
+      "label": "Combien de personnes environ disposent d’un accès régulier à l’application ?",
+      "role": "X",
+      "coefficients": {
+        "C": 0.4,
+        "I": 0.2,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-ACC",
+        "I": "I-ACT"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Population accédante et surface de manipulation",
+      "options": [
+        {
+          "id": "U02#01",
+          "label": "Moins de 25 personnes",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "U02#02",
+          "label": "De 25 à 99 personnes",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "U02#03",
+          "label": "De 100 à 999 personnes",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "U02#04",
+          "label": "De 1 000 à 4 999 personnes",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "U02#05",
+          "label": "5 000 personnes ou plus",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "U02#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 6
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-034",
+      "source_id": "U03",
+      "label": "Quelles opérations métier les utilisateurs peuvent-ils effectuer dans l’application ?",
+      "role": "E",
+      "coefficients": {
+        "C": 0.2,
+        "I": 0.8,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-DON",
+        "I": "I-ACT"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Pouvoirs de modification et d'administration principalement intégrité",
+      "options": [
+        {
+          "id": "U03#01",
+          "label": "Consulter des informations sans les modifier",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "U03#02",
+          "label": "Créer ou modifier des dossiers courants",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "U03#03",
+          "label": "Modifier des informations importantes pour des tiers",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "U03#04",
+          "label": "Valider des opérations engageant l’entreprise (contrat, paiement, prix, décision)",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "U03#05",
+          "label": "Supprimer définitivement des informations importantes",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "U03#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 6
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire  |  Choix multiples",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "multi",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-035",
+      "source_id": "U04",
+      "label": "Des clients, partenaires ou prestataires peuvent-ils créer, modifier ou supprimer eux-mêmes des informations dans l’application ?",
+      "role": "X",
+      "coefficients": {
+        "C": 0.35,
+        "I": 0.65,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-ACC",
+        "I": "I-ACT"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Droits de modifications accordés aux tiers",
+      "options": [
+        {
+          "id": "U04#01",
+          "label": "Non",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "U04#02",
+          "label": "Oui, uniquement leurs propres données ou demandes",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "U04#03",
+          "label": "Oui, des données utilisées par d’autres personnes",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "U04#04",
+          "label": "Oui, des informations ou opérations particulièrement importantes",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "U04#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-036",
+      "source_id": "U05",
+      "label": "Un utilisateur peut-il modifier ou supprimer de nombreux dossiers en une seule opération ?",
+      "role": "X",
+      "coefficients": {
+        "C": 0.1,
+        "I": 0.9,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-ACC",
+        "I": "I-ACT"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Modification ou suppression en masse : amplificateur intégrité",
+      "options": [
+        {
+          "id": "U05#01",
+          "label": "Non",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "U05#02",
+          "label": "Oui, mais uniquement des données peu importantes",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "U05#03",
+          "label": "Oui, de nombreuses données métier",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "U05#04",
+          "label": "Oui, de grandes quantités de données critiques",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "U05#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-037",
+      "source_id": "U06",
+      "label": "Qui autorise, du côté métier, l’attribution d’un nouvel accès ou une modification des droits ?",
+      "role": "H",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {},
+      "category_scope_text": "Socle commun",
+      "rationale": "Processus d'autorisation décrit sans échelle de qualité",
+      "options": [
+        {
+          "id": "U06#01",
+          "label": "Responsable hiérarchique",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 1
+        },
+        {
+          "id": "U06#02",
+          "label": "Responsable de l’application ou du processus",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 2
+        },
+        {
+          "id": "U06#03",
+          "label": "Équipe métier désignée",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 3
+        },
+        {
+          "id": "U06#04",
+          "label": "Une autre personne (préciser)",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 4
+        },
+        {
+          "id": "U06#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        }
+      ],
+      "routing_description": "Priorité : Important",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-038",
+      "source_id": "U07",
+      "label": "Les responsables métier vérifient-ils régulièrement que les personnes qui disposent des accès en ont toujours besoin ?",
+      "role": "W",
+      "coefficients": {
+        "C": 0.55,
+        "I": 0.45,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-ACC",
+        "I": "I-CONT"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Absence de revue des habilitations (0=maîtrisé, 5=faible)",
+      "options": [
+        {
+          "id": "U07#01",
+          "label": "Oui, au moins une fois par trimestre",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "U07#02",
+          "label": "Oui, au moins une fois par an",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "U07#03",
+          "label": "Oui, mais sans périodicité définie",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "U07#04",
+          "label": "Non, aucune vérification connue",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "U07#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        }
+      ],
+      "routing_description": "Priorité : Important",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-039",
+      "source_id": "U08",
+      "label": "Lorsqu’une personne quitte l’entreprise ou change de poste, la suppression ou l’adaptation de ses accès est-elle demandée côté métier ?",
+      "role": "W",
+      "coefficients": {
+        "C": 0.55,
+        "I": 0.45,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-ACC",
+        "I": "I-CONT"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Droits non révoqués aux départs ou mobilités",
+      "options": [
+        {
+          "id": "U08#01",
+          "label": "Toujours, dans le cadre d’un processus défini",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "U08#02",
+          "label": "Le plus souvent",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "U08#03",
+          "label": "Parfois, selon les situations",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "U08#04",
+          "label": "Rarement ou jamais",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "U08#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        }
+      ],
+      "routing_description": "Priorité : Important",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-040",
+      "source_id": "U09",
+      "label": "Selon les pratiques que vous connaissez, l’application est-elle utilisée depuis des appareils personnels ou hors des locaux de l’entreprise ?",
+      "role": "X",
+      "coefficients": {
+        "C": 0.65,
+        "I": 0.15,
+        "D": 0.2
+      },
+      "groups": {
+        "C": "C-ACC",
+        "I": "I-FLUX",
+        "D": "D-CAS"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Usage personnel ou hors site, protection effective inconnue",
+      "options": [
+        {
+          "id": "U09#01",
+          "label": "Uniquement sur des appareils de l’entreprise",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "U09#02",
+          "label": "Sur des appareils de l’entreprise, y compris à distance",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "U09#03",
+          "label": "Parfois depuis un appareil personnel",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "U09#04",
+          "label": "Régulièrement depuis des appareils personnels",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "U09#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        }
+      ],
+      "routing_description": "Priorité : Important",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-041",
+      "source_id": "I01",
+      "label": "L’application est-elle l’endroit où certaines informations métier sont créées ou validées pour faire référence dans l’entreprise ?",
+      "role": "E",
+      "coefficients": {
+        "C": 0.0,
+        "I": 1.0,
+        "D": 0.0
+      },
+      "groups": {
+        "I": "I-ACT"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Information de référence faisant autorité",
+      "options": [
+        {
+          "id": "I01#01",
+          "label": "Non, elle sert surtout à consulter des copies d’informations",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "I01#02",
+          "label": "Oui, pour quelques informations secondaires",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "I01#03",
+          "label": "Oui, pour des informations métier importantes",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "I01#04",
+          "label": "Oui, pour des informations de référence essentielles à plusieurs activités",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "I01#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        }
+      ],
+      "routing_description": "Priorité : Important",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-042",
+      "source_id": "I02",
+      "label": "Les informations de l’application servent-elles à prendre des décisions ou à déclencher des actions ayant des conséquences pour des personnes, des biens ou des sommes d’argent ?",
+      "role": "E",
+      "coefficients": {
+        "C": 0.0,
+        "I": 1.0,
+        "D": 0.0
+      },
+      "groups": {
+        "I": "I-IMP"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Conséquences humaines ou financières de décisions pilotées par les données",
+      "options": [
+        {
+          "id": "I02#01",
+          "label": "Non, utilisation uniquement informative",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "I02#02",
+          "label": "Oui, décisions internes facilement réversibles",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "I02#03",
+          "label": "Oui, décisions concernant des clients, salariés ou partenaires",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "I02#04",
+          "label": "Oui, décisions ou actions pouvant produire des conséquences graves ou difficiles à annuler",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "I02#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        }
+      ],
+      "routing_description": "Priorité : Important",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-043",
+      "source_id": "I03",
+      "label": "Quelles actions importantes l’application permet-elle de réaliser ?",
+      "role": "E",
+      "coefficients": {
+        "C": 0.15,
+        "I": 0.85,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-DON",
+        "I": "I-ACT"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Capacités de modification financière, identité et contrats",
+      "options": [
+        {
+          "id": "I03#01",
+          "label": "Modifier un prix, une remise, une rémunération ou un droit",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "I03#02",
+          "label": "Créer ou modifier un contrat, un bénéficiaire ou un fournisseur",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "I03#03",
+          "label": "Modifier des coordonnées bancaires ou des conditions de paiement",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "I03#04",
+          "label": "Approuver ou déclencher un paiement, une facture ou une prestation importante",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "I03#05",
+          "label": "Changer l’état d’un dossier ayant un effet sur des personnes ou des biens",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "I03#06",
+          "label": "Modifier les règles de calcul ou paramètres métier applicables à de nombreux dossiers",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 6
+        },
+        {
+          "id": "I03#07",
+          "label": "Aucune de ces situations",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 7
+        },
+        {
+          "id": "I03#08",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 8
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire  |  Choix multiples",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "multi",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-044",
+      "source_id": "I04",
+      "label": "L’application effectue-t-elle des calculs ou décisions automatiques sur lesquels le métier s’appuie ?",
+      "role": "E",
+      "coefficients": {
+        "C": 0.0,
+        "I": 1.0,
+        "D": 0.0
+      },
+      "groups": {
+        "I": "I-ACT"
+      },
+      "category_scope_text": "Intégrations SI › Traitements automatisés • Reporting › Calculs et décisions • Finance › Contrôle financier • Logistique ›",
+      "rationale": "Calculs et décisions automatiques utilisés par le métier",
+      "options": [
+        {
+          "id": "I04#01",
+          "label": "Non, aucun calcul ou décision automatisés significatifs",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "I04#02",
+          "label": "Oui, mais les résultats sont secondaires ou facilement vérifiables",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "I04#03",
+          "label": "Oui, les résultats sont importants pour le travail quotidien",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "I04#04",
+          "label": "Oui, les résultats servent à des paiements, des décisions ou des obligations critiques",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "I04#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        }
+      ],
+      "routing_description": "Priorité : Important",
+      "display_scope_text": "Intégrations SI › Traitements automatisés • Reporting › Calculs et décisions • Finance › Contrôle financier • Logistique › Planification opérationnelle • Qualité › Surveillance et alertes",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-045",
+      "source_id": "I05",
+      "label": "L’application contient-elle des règles, barèmes ou paramètres métier dont une erreur pourrait affecter un grand nombre de dossiers ?",
+      "role": "E",
+      "coefficients": {
+        "C": 0.0,
+        "I": 1.0,
+        "D": 0.0
+      },
+      "groups": {
+        "I": "I-ACT"
+      },
+      "category_scope_text": "Intégrations SI › Traitements automatisés • Finance › Contrôle financier • RH › Paie • Commerce › Tarification • Logistique ›",
+      "rationale": "Paramètres métier à grand rayon d'action",
+      "options": [
+        {
+          "id": "I05#01",
+          "label": "Non",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "I05#02",
+          "label": "Oui, avec des conséquences limitées",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "I05#03",
+          "label": "Oui, sur des opérations importantes",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "I05#04",
+          "label": "Oui, sur des opérations essentielles ou un grand nombre de personnes",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "I05#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        }
+      ],
+      "routing_description": "Priorité : Important",
+      "display_scope_text": "Intégrations SI › Traitements automatisés • Finance › Contrôle financier • RH › Paie • Commerce › Tarification • Logistique › Gestion des stocks • Qualité › Surveillance et alertes",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-046",
+      "source_id": "I06",
+      "label": "Une information fausse ou modifiée sans autorisation pourrait-elle entraîner une fraude, un avantage indu ou une perte financière ?",
+      "role": "E",
+      "coefficients": {
+        "C": 0.1,
+        "I": 0.9,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-IMP",
+        "I": "I-IMP"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Fraude ou conséquence d'une modification non autorisée",
+      "options": [
+        {
+          "id": "I06#01",
+          "label": "Non, aucune conséquence de ce type",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "I06#02",
+          "label": "Oui, avec des conséquences faibles",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "I06#03",
+          "label": "Oui, avec des conséquences importantes",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "I06#04",
+          "label": "Oui, avec des conséquences très graves",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "I06#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-047",
+      "source_id": "I07",
+      "label": "Une information fausse, supprimée ou modifiée pourrait-elle mettre en danger des personnes ou la sécurité de locaux ou d’installations ?",
+      "role": "E",
+      "coefficients": {
+        "C": 0.0,
+        "I": 1.0,
+        "D": 0.0
+      },
+      "groups": {
+        "I": "I-IMP"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Sécurité physique ou des personnes liée aux données fausses",
+      "options": [
+        {
+          "id": "I07#01",
+          "label": "Non",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "I07#02",
+          "label": "Oui, indirectement ou dans des circonstances particulières",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "I07#03",
+          "label": "Oui, directement",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "I07#04",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 4
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-048",
+      "source_id": "I08",
+      "label": "Les informations produites par l’application servent-elles à établir des documents officiels, déclarations, rapports réglementaires ou résultats publiés ?",
+      "role": "E",
+      "coefficients": {
+        "C": 0.0,
+        "I": 1.0,
+        "D": 0.0
+      },
+      "groups": {
+        "I": "I-PRE"
+      },
+      "category_scope_text": "Finance › Comptabilité et clôture • Juridique › Obligations et déclarations • Qualité › Contrôle qualité • Reporting › Publication et",
+      "rationale": "Documents ou déclarations officiels",
+      "options": [
+        {
+          "id": "I08#01",
+          "label": "Non",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "I08#02",
+          "label": "Oui, uniquement des documents internes de suivi",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "I08#03",
+          "label": "Oui, des documents officiels pouvant être corrigés sans impact majeur",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "I08#04",
+          "label": "Oui, des déclarations ou publications dont une erreur serait grave",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "I08#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        }
+      ],
+      "routing_description": "Priorité : Important",
+      "display_scope_text": "Finance › Comptabilité et clôture • Juridique › Obligations et déclarations • Qualité › Contrôle qualité • Reporting › Publication et",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-049",
+      "source_id": "I09",
+      "label": "Certains documents ou enregistrements de l’application doivent-ils servir de preuve (par exemple contrat signé, consentement, validation ou historique d’une décision) ?",
+      "role": "E",
+      "coefficients": {
+        "C": 0.0,
+        "I": 1.0,
+        "D": 0.0
+      },
+      "groups": {
+        "I": "I-PRE"
+      },
+      "category_scope_text": "Administratif › Archivage et conservation • Juridique › Audit et preuve • Qualité › Traçabilité et preuves",
+      "rationale": "Traçabilité juridique et valeur probatoire de l'information",
+      "options": [
+        {
+          "id": "I09#01",
+          "label": "Non",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "I09#02",
+          "label": "Oui, pour un usage interne",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "I09#03",
+          "label": "Oui, pour justifier des opérations vis-à-vis de tiers",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "I09#04",
+          "label": "Oui, pour satisfaire une obligation légale ou réglementaire importante",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "I09#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        }
+      ],
+      "routing_description": "Priorité : Important",
+      "display_scope_text": "Administratif › Archivage et conservation • Juridique › Audit et preuve • Qualité › Traçabilité et preuves",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-050",
+      "source_id": "I10",
+      "label": "Si une information incorrecte était transmise à d’autres applications ou destinataires, quelles pourraient être les conséquences ?",
+      "role": "E",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.85,
+        "D": 0.15
+      },
+      "groups": {
+        "I": "I-CAS",
+        "D": "D-CAS"
+      },
+      "category_scope_text": "Intégrations SI › Flux inter-applicatifs • Logistique › Planification opérationnelle • Finance › Facturation et encaissement",
+      "rationale": "Propagation de données erronées à des destinataires externes",
+      "options": [
+        {
+          "id": "I10#01",
+          "label": "Aucune conséquence significative",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "I10#02",
+          "label": "Une correction ponctuelle serait nécessaire",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "I10#03",
+          "label": "Plusieurs dossiers ou personnes pourraient être affectés",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "I10#04",
+          "label": "Plusieurs services, partenaires ou décisions importantes pourraient être affectés",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "I10#05",
+          "label": "Une erreur pourrait se propager largement et causer des dommages graves",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "I10#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 6
+        }
+      ],
+      "routing_description": "Priorité : Peu s’en passer",
+      "display_scope_text": "Intégrations SI › Flux inter-applicatifs • Logistique › Planification opérationnelle • Finance › Facturation et encaissement",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-051",
+      "source_id": "I11",
+      "label": "Si des données importantes devenaient fausses sans être corrigées rapidement, quel serait l’impact global sur l’entreprise ou les personnes concernées ?",
+      "role": "E",
+      "coefficients": {
+        "C": 0.0,
+        "I": 1.0,
+        "D": 0.0
+      },
+      "groups": {
+        "I": "I-IMP"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Ancre directe : impact de données métier fausses",
+      "options": [
+        {
+          "id": "I11#01",
+          "label": "Aucun impact notable",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "I11#02",
+          "label": "Faible : correction simple sans dommage significatif",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "I11#03",
+          "label": "Limité : retards ou erreurs faciles à rattraper",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "I11#04",
+          "label": "Modéré : conséquences importantes pour une activité",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "I11#05",
+          "label": "Important : pertes, fraudes ou décisions erronées sérieuses",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "I11#06",
+          "label": "Critique : conséquences majeures, durables ou irréversibles",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 6
+        },
+        {
+          "id": "I11#07",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 7
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-052",
+      "source_id": "I12",
+      "label": "Les modifications ou décisions importantes sont-elles vérifiées par une autre personne ou soumises à un contrôle indépendant ?",
+      "role": "W",
+      "coefficients": {
+        "C": 0.0,
+        "I": 1.0,
+        "D": 0.0
+      },
+      "groups": {
+        "I": "I-CONT"
+      },
+      "category_scope_text": "Finance › Contrôle financier • Achats › Validation des engagements • RH › Paie • Commerce › Tarification • Logistique › Gestion des",
+      "rationale": "Double contrôle métier sur modifications importantes",
+      "options": [
+        {
+          "id": "I12#01",
+          "label": "Toujours, pour les opérations importantes",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "I12#02",
+          "label": "Le plus souvent",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "I12#03",
+          "label": "Parfois",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "I12#04",
+          "label": "Rarement ou jamais",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "I12#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        }
+      ],
+      "routing_description": "Priorité : Important",
+      "display_scope_text": "Finance › Contrôle financier • Achats › Validation des engagements • RH › Paie • Commerce › Tarification • Logistique › Gestion des",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-053",
+      "source_id": "I13",
+      "label": "Pour les opérations engageant l’entreprise, la personne qui prépare l’opération est-elle différente de celle qui l’approuve ?",
+      "role": "W",
+      "coefficients": {
+        "C": 0.1,
+        "I": 0.9,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-ACC",
+        "I": "I-CONT"
+      },
+      "category_scope_text": "Finance › Paiements • Achats › Validation des engagements • RH › Paie • Commerce › Tarification",
+      "rationale": "Séparation des tâches, maîtrise fraudes et accès",
+      "options": [
+        {
+          "id": "I13#01",
+          "label": "Oui, pour toutes les opérations concernées",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "I13#02",
+          "label": "Oui, pour la plupart des opérations",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "I13#03",
+          "label": "Seulement pour quelques opérations",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "I13#04",
+          "label": "Non, la même personne peut préparer et approuver",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "I13#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        },
+        {
+          "id": "I13#06",
+          "label": "Non concerné",
+          "score": null,
+          "value_type": "not_applicable",
+          "source_choice_position": 6
+        }
+      ],
+      "routing_description": "Priorité : Important",
+      "display_scope_text": "Finance › Paiements • Achats › Validation des engagements • RH › Paie • Commerce › Tarification",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-054",
+      "source_id": "I14",
+      "label": "Par quels moyens le métier repère-t-il les erreurs ou modifications inhabituelles ?",
+      "role": "H",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {},
+      "category_scope_text": "Finance › Contrôle financier • Qualité › Contrôle qualité • Intégrations SI › Traitements automatisés • Logistique › Gestion des stocks",
+      "rationale": "Moyens de détection multichoix non notés, inconnu sur efficacité",
+      "options": [
+        {
+          "id": "I14#01",
+          "label": "Vérification avant validation",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 1
+        },
+        {
+          "id": "I14#02",
+          "label": "Rapprochement avec d’autres données ou pièces justificatives",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 2
+        },
+        {
+          "id": "I14#03",
+          "label": "Vérification régulière par un responsable",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 3
+        },
+        {
+          "id": "I14#04",
+          "label": "Alerte ou contrôle automatique visible par le métier",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 4
+        },
+        {
+          "id": "I14#05",
+          "label": "Signalement d’un client, partenaire ou collègue après coup",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 5
+        },
+        {
+          "id": "I14#06",
+          "label": "Aucun moyen connu",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 6
+        },
+        {
+          "id": "I14#07",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 7
+        }
+      ],
+      "routing_description": "Priorité : Important  |  Choix multiples",
+      "display_scope_text": "Finance › Contrôle financier • Qualité › Contrôle qualité • Intégrations SI › Traitements automatisés • Logistique › Gestion des stocks",
+      "selection_mode_hint": "multi",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-055",
+      "source_id": "I15",
+      "label": "En pratique, combien de temps faut-il habituellement pour repérer une erreur importante dans les données ?",
+      "role": "W",
+      "coefficients": {
+        "C": 0.0,
+        "I": 1.0,
+        "D": 0.0
+      },
+      "groups": {
+        "I": "I-CONT"
+      },
+      "category_scope_text": "Finance › Contrôle financier • Qualité › Contrôle qualité • Intégrations SI › Traitements automatisés • Logistique › Gestion des stocks",
+      "rationale": "Délai de détection d'une modification erronée",
+      "options": [
+        {
+          "id": "I15#01",
+          "label": "Dans la journée",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "I15#02",
+          "label": "Sous quelques jours",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "I15#03",
+          "label": "Sous une à deux semaines",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "I15#04",
+          "label": "Après plusieurs semaines ou lors d’un contrôle ponctuel",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "I15#05",
+          "label": "L’erreur pourrait rester inconnue",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "I15#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 6
+        }
+      ],
+      "routing_description": "Priorité : Important",
+      "display_scope_text": "Finance › Contrôle financier • Qualité › Contrôle qualité • Intégrations SI › Traitements automatisés • Logistique › Gestion des stocks",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-056",
+      "source_id": "I16",
+      "label": "Le métier peut-il savoir qui a réalisé une modification importante et à quelle date ?",
+      "role": "W",
+      "coefficients": {
+        "C": 0.2,
+        "I": 0.8,
+        "D": 0.0
+      },
+      "groups": {
+        "C": "C-ACC",
+        "I": "I-CONT"
+      },
+      "category_scope_text": "Juridique › Audit et preuve • Administratif › Gestion documentaire • Identités et accès › Gestion des habilitations • Finance › Contrôle",
+      "rationale": "Traçabilité auteur/date des modifications",
+      "options": [
+        {
+          "id": "I16#01",
+          "label": "Oui, pour toutes les modifications importantes",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "I16#02",
+          "label": "Oui, mais seulement pour certaines modifications",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "I16#03",
+          "label": "Rarement",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "I16#04",
+          "label": "Non",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "I16#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        }
+      ],
+      "routing_description": "Priorité : Non spécifiée",
+      "display_scope_text": "Juridique › Audit et preuve • Administratif › Gestion documentaire • Identités et accès › Gestion des habilitations • Finance › Contrôle",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-057",
+      "source_id": "I17",
+      "label": "Lorsqu’une information devient incorrecte, le métier peut-il retrouver sa valeur exacte à partir de documents ou d’informations fiables ?",
+      "role": "W",
+      "coefficients": {
+        "C": 0.0,
+        "I": 1.0,
+        "D": 0.0
+      },
+      "groups": {
+        "I": "I-CONT"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Capacité à retrouver la valeur correcte",
+      "options": [
+        {
+          "id": "I17#01",
+          "label": "Oui, facilement",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "I17#02",
+          "label": "Oui, mais avec du temps ou du travail supplémentaire",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "I17#03",
+          "label": "Seulement pour certaines informations",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "I17#04",
+          "label": "Non, la valeur correcte peut être définitivement perdue",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "I17#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        }
+      ],
+      "routing_description": "Priorité : Important",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-058",
+      "source_id": "I18",
+      "label": "L’application prépare-t-elle, enregistre-t-elle, déclenche-t-elle ou autorise-t-elle des opérations impliquant des sommes d’argent ?",
+      "role": "E",
+      "coefficients": {
+        "C": 0.0,
+        "I": 1.0,
+        "D": 0.0
+      },
+      "groups": {
+        "I": "I-ACT"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Operations financières enregistrées ou autorisées",
+      "options": [
+        {
+          "id": "I18#01",
+          "label": "Non, aucune opération financière",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "I18#02",
+          "label": "Oui, consultation ou suivi uniquement",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "I18#03",
+          "label": "Oui, préparation ou enregistrement des opérations",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "I18#04",
+          "label": "Oui, validation, émission ou autorisation d’opérations financières",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "I18#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-059",
+      "source_id": "I19",
+      "label": "Quel est l’ordre de grandeur du montant total annuel des opérations financières traitées ou engagées par l’application ?",
+      "role": "X",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.5,
+        "D": 0.0
+      },
+      "groups": {
+        "I": "I-ACT"
+      },
+      "category_scope_text": "Finance › Paiements • RH › Paie • Achats › Achats et approvisionnements • Commerce › Facturation et encaissement",
+      "rationale": "Montants financiers engagés : amplificateur indirect",
+      "options": [
+        {
+          "id": "I19#01",
+          "label": "Moins de 1 million d’euros",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "I19#02",
+          "label": "De 1 à moins de 10 millions d’euros",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "I19#03",
+          "label": "De 10 à moins de 100 millions d’euros",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "I19#04",
+          "label": "100 millions d’euros ou plus",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "I19#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        },
+        {
+          "id": "I19#06",
+          "label": "Non concerné",
+          "score": null,
+          "value_type": "not_applicable",
+          "source_choice_position": 6
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire  |  Condition : l’application traite ou engage des opérations financières",
+      "display_scope_text": "Finance › Paiements • RH › Paie • Achats › Achats et approvisionnements • Commerce › Facturation et encaissement",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-060",
+      "source_id": "I20",
+      "label": "Environ combien d’opérations financières sont traitées chaque mois ?",
+      "role": "X",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.3,
+        "D": 0.0
+      },
+      "groups": {
+        "I": "I-ACT"
+      },
+      "category_scope_text": "Finance › Paiements • RH › Paie • Achats › Achats et approvisionnements • Commerce › Facturation et encaissement",
+      "rationale": "Fréquence des transactions financières",
+      "options": [
+        {
+          "id": "I20#01",
+          "label": "Moins de 10",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "I20#02",
+          "label": "De 10 à 999",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "I20#03",
+          "label": "De 1 000 à 9 999",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "I20#04",
+          "label": "10 000 ou plus, ou des opérations en continu",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "I20#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        },
+        {
+          "id": "I20#06",
+          "label": "Non concerné",
+          "score": null,
+          "value_type": "not_applicable",
+          "source_choice_position": 6
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire  |  Condition : l’application traite des opérations financières",
+      "display_scope_text": "Finance › Paiements • RH › Paie • Achats › Achats et approvisionnements • Commerce › Facturation et encaissement",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-061",
+      "source_id": "I21",
+      "label": "L’application participe-t-elle à la préparation des comptes, à leur justification, aux contrôles financiers ou à la production d’informations financières officielles ?",
+      "role": "E",
+      "coefficients": {
+        "C": 0.0,
+        "I": 1.0,
+        "D": 0.0
+      },
+      "groups": {
+        "I": "I-PRE"
+      },
+      "category_scope_text": "Finance › Comptabilité et clôture, Contrôle financier • Reporting › Publication et déclarations",
+      "rationale": "Production d'états financiers officiels",
+      "options": [
+        {
+          "id": "I21#01",
+          "label": "Non",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "I21#02",
+          "label": "Oui, de façon secondaire",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "I21#03",
+          "label": "Oui, pour une activité comptable ou de contrôle importante",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "I21#04",
+          "label": "Oui, pour des comptes ou déclarations officiels essentiels",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "I21#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Finance › Comptabilité et clôture, Contrôle financier • Reporting › Publication et déclarations",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-062",
+      "source_id": "I22",
+      "label": "À quelle fréquence les informations métier importantes sont-elles créées ou modifiées dans l’application ?",
+      "role": "X",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.3,
+        "D": 0.1
+      },
+      "groups": {
+        "I": "I-ACT",
+        "D": "D-CAS"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Fréquence des modifications : contexte indirect",
+      "options": [
+        {
+          "id": "I22#01",
+          "label": "Rarement : quelques fois par mois ou moins",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "I22#02",
+          "label": "Régulièrement : chaque semaine",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "I22#03",
+          "label": "Fréquemment : chaque jour",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "I22#04",
+          "label": "Très fréquemment : de nombreuses fois par jour",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "I22#05",
+          "label": "En permanence ou presque, avec un grand nombre de modifications",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "I22#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 6
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-063",
+      "source_id": "D01",
+      "label": "À quelle fréquence l’application est-elle indispensable au fonctionnement normal de l’activité ?",
+      "role": "X",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 0.5
+      },
+      "groups": {
+        "D": "D-DEP"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Fréquence de dépendance, exposition temporelle",
+      "options": [
+        {
+          "id": "D01#01",
+          "label": "Seulement quelques fois par an",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "D01#02",
+          "label": "Quelques fois par mois",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "D01#03",
+          "label": "Chaque semaine",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "D01#04",
+          "label": "Tous les jours ouvrés",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "D01#05",
+          "label": "En permanence ou presque, y compris en dehors des heures de bureau",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "D01#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 6
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-064",
+      "source_id": "D02",
+      "label": "Quel serait l’impact pour l’activité si l’application était totalement indisponible pendant une journée ouvrée complète ?",
+      "role": "E",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 1.0
+      },
+      "groups": {
+        "D": "D-IMP"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Impact concret d'un arrêt d'une journée",
+      "options": [
+        {
+          "id": "D02#01",
+          "label": "Aucun impact notable",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "D02#02",
+          "label": "Faible : quelques tâches retardées",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "D02#03",
+          "label": "Limité : gêne gérable sans conséquence importante",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "D02#04",
+          "label": "Modéré : une ou plusieurs activités seraient fortement ralenties",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "D02#05",
+          "label": "Critique : arrêt d’une activité essentielle ou conséquences très graves",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "D02#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 6
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-065",
+      "source_id": "D03",
+      "label": "Quel serait l’impact pour l’activité si l’application était totalement indisponible pendant sept jours consécutifs ?",
+      "role": "E",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 1.0
+      },
+      "groups": {
+        "D": "D-IMP"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Impact concret d'un arrêt de sept jours",
+      "options": [
+        {
+          "id": "D03#01",
+          "label": "Aucun impact notable",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "D03#02",
+          "label": "Faible : conséquences limitées",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "D03#03",
+          "label": "Limité : difficultés rattrapables",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "D03#04",
+          "label": "Modéré : fortes perturbations",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "D03#05",
+          "label": "Important : pertes ou obligations non respectées",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "D03#06",
+          "label": "Critique : conséquences majeures ou durables",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 6
+        },
+        {
+          "id": "D03#07",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 7
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-066",
+      "source_id": "D04",
+      "label": "Quelles seraient les principales conséquences concrètes d’une interruption de l’application ?",
+      "role": "H",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {},
+      "category_scope_text": "Socle commun",
+      "rationale": "Typologie des conséquences, non graduée ; utile à l'analyste",
+      "options": [
+        {
+          "id": "D04#01",
+          "label": "Arrêt ou ralentissement d’une prestation ou d’un service",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 1
+        },
+        {
+          "id": "D04#02",
+          "label": "Retard de facturation, d’encaissement ou de paiement",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 2
+        },
+        {
+          "id": "D04#03",
+          "label": "Non-respect d’une échéance contractuelle ou obligatoire",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 3
+        },
+        {
+          "id": "D04#04",
+          "label": "Insatisfaction ou perte de clients et de partenaires",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 4
+        },
+        {
+          "id": "D04#05",
+          "label": "Pénalités, coûts supplémentaires ou travail de rattrapage",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 5
+        },
+        {
+          "id": "D04#06",
+          "label": "Danger pour des personnes ou des installations",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 6
+        },
+        {
+          "id": "D04#07",
+          "label": "Aucune conséquence connue",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 7
+        },
+        {
+          "id": "D04#08",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 8
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire  |  Choix multiples",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "multi",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-067",
+      "source_id": "D05",
+      "label": "Pendant combien de temps au maximum l’activité peut-elle se passer totalement de cette application avant de subir des conséquences inacceptables ?",
+      "role": "E",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 1.0
+      },
+      "groups": {
+        "D": "D-TEM"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Tolérance maximale à l'interruption",
+      "options": [
+        {
+          "id": "D05#01",
+          "label": "Moins d’une heure",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "D05#02",
+          "label": "De 1 à moins de 4 heures",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "D05#03",
+          "label": "De 4 à moins de 24 heures",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "D05#04",
+          "label": "De 1 à moins de 3 jours",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "D05#05",
+          "label": "De 3 à moins de 7 jours",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "D05#06",
+          "label": "7 jours ou plus",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 6
+        },
+        {
+          "id": "D05#07",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 7
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-068",
+      "source_id": "D06",
+      "label": "Quelle quantité maximale de données récentes le métier pourrait-il perdre sans conséquence inacceptable, si des informations saisies ou traitées devaient être reconstituées ?",
+      "role": "E",
+      "coefficients": {
+        "C": 0.0,
+        "I": 1.0,
+        "D": 0.0
+      },
+      "groups": {
+        "I": "I-PRE"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Perte admissible de données récentes : intégrité plutôt que disponibilité",
+      "options": [
+        {
+          "id": "D06#01",
+          "label": "Aucune perte de données acceptable",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "D06#02",
+          "label": "Moins d’une heure de données",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "D06#03",
+          "label": "De 1 à moins de 4 heures de données",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "D06#04",
+          "label": "De 4 à moins de 24 heures de données",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "D06#05",
+          "label": "De 1 à moins de 3 jours de données",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "D06#06",
+          "label": "3 jours de données ou plus",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 6
+        },
+        {
+          "id": "D06#07",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 7
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-069",
+      "source_id": "D07",
+      "label": "Si des objectifs de continuité ont déjà été validés pour cette activité, quels sont les délais de reprise attendus et la perte de données autorisée ?",
+      "role": "H",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {},
+      "category_scope_text": "Socle commun",
+      "rationale": "Objectifs de continuité libres, comparer au RTO/RPO mais pas noter sans grille",
+      "options": [],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-070",
+      "source_id": "D08",
+      "label": "L’application est-elle particulièrement importante à certaines périodes (fin de mois, versements, campagnes, clôture, paie, horaires d’ouverture) ?",
+      "role": "E",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 1.0
+      },
+      "groups": {
+        "D": "D-TEM"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Dépendance à périodes critiques",
+      "options": [
+        {
+          "id": "D08#01",
+          "label": "Non, l’importance est stable toute l’année",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "D08#02",
+          "label": "Oui, pendant quelques périodes prévisibles",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "D08#03",
+          "label": "Oui, à de nombreuses échéances importantes",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "D08#04",
+          "label": "Oui, une interruption lors de ces périodes aurait des conséquences critiques",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "D08#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        }
+      ],
+      "routing_description": "Priorité : Non spécifiée",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-071",
+      "source_id": "D09",
+      "label": "Si l’application ne fonctionne plus, les équipes peuvent-elles poursuivre l’activité par un autre moyen (procédure manuelle, autre outil, traitement différé) ?",
+      "role": "W",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 1.0
+      },
+      "groups": {
+        "D": "D-ALT"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Qualité des alternatives lors d'une interruption, note déjà en faiblesse",
+      "options": [
+        {
+          "id": "D09#01",
+          "label": "Oui, complètement et sans difficulté majeure",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "D09#02",
+          "label": "Oui, pour la plupart des tâches",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "D09#03",
+          "label": "Oui, mais pour une partie seulement du travail",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "D09#04",
+          "label": "Oui, pendant une très courte durée",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "D09#05",
+          "label": "Non, aucune solution de remplacement utilisable",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "D09#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 6
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-072",
+      "source_id": "D10",
+      "label": "Si une solution de remplacement existe, combien de temps peut-elle être utilisée avant de provoquer des difficultés importantes ?",
+      "role": "W",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 1.0
+      },
+      "groups": {
+        "D": "D-ALT"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Autonomie de la solution de remplacement, note déjà en faiblesse",
+      "options": [
+        {
+          "id": "D10#01",
+          "label": "Plus de 7 jours",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "D10#02",
+          "label": "De 3 à 7 jours",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "D10#03",
+          "label": "De 1 à moins de 3 jours",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "D10#04",
+          "label": "De 4 à moins de 24 heures",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "D10#05",
+          "label": "Moins de 4 heures",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "D10#06",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 6
+        },
+        {
+          "id": "D10#07",
+          "label": "Non concerné",
+          "score": null,
+          "value_type": "not_applicable",
+          "source_choice_position": 7
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire  |  Condition : une solution de remplacement existe",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-073",
+      "source_id": "D11",
+      "label": "Après un arrêt important de l’application, quelle quantité de travail supplémentaire serait nécessaire pour reprendre les opérations en retard ?",
+      "role": "E",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 1.0
+      },
+      "groups": {
+        "D": "D-IMP"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Charge de reprise lors d'une interruption",
+      "options": [
+        {
+          "id": "D11#01",
+          "label": "Aucun rattrapage",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "D11#02",
+          "label": "Rattrapage limité, réalisable dans la journée",
+          "score": 1.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "D11#03",
+          "label": "Rattrapage nécessitant plusieurs jours de travail",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "D11#04",
+          "label": "Rattrapage très important, avec risque de pertes ou d’erreurs",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "D11#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-074",
+      "source_id": "D12",
+      "label": "À combien estimez-vous, si cette information existe déjà, les pertes ou coûts métier d’une journée d’indisponibilité ?",
+      "role": "H",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {},
+      "category_scope_text": "Socle commun",
+      "rationale": "Coûts libres utiles au BIA, pas de tranches de score dans la source",
+      "options": [],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-075",
+      "source_id": "D13",
+      "label": "L’entreprise a-t-elle pris des engagements de continuité ou de délai de service envers des clients, partenaires ou organismes publics pour les activités utilisant cette application ?",
+      "role": "E",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 1.0
+      },
+      "groups": {
+        "D": "D-IMP"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Engagement contractuel de continuité / prestation",
+      "options": [
+        {
+          "id": "D13#01",
+          "label": "Non",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "D13#02",
+          "label": "Oui, engagement souple ou sans pénalité connue",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "D13#03",
+          "label": "Oui, engagements importants avec conséquences contractuelles",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "D13#04",
+          "label": "Oui, engagements stricts ou obligations essentielles",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "D13#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-076",
+      "source_id": "R01",
+      "label": "Quelles obligations particulières s’appliquent, à votre connaissance, aux activités ou informations gérées dans l’application ?",
+      "role": "H",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {},
+      "category_scope_text": "Socle commun",
+      "rationale": "Obligations transversales hétérogènes, nécessitent une classification par option",
+      "options": [
+        {
+          "id": "R01#01",
+          "label": "Protection de données personnelles",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "R01#02",
+          "label": "Confidentialité exigée par un contrat ou un secret professionnel",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "R01#03",
+          "label": "Production de déclarations ou informations destinées à une autorité",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "R01#04",
+          "label": "Conservation obligatoire de documents ou de preuves",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "R01#05",
+          "label": "Obligations importantes de disponibilité ou de qualité de service",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 5
+        },
+        {
+          "id": "R01#06",
+          "label": "Exigences propres à une activité réglementée",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 6
+        },
+        {
+          "id": "R01#07",
+          "label": "Aucune de ces situations",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 7
+        },
+        {
+          "id": "R01#08",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 8
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire  |  Choix multiples",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "multi",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-077",
+      "source_id": "R02",
+      "label": "Des informations produites par l’application doivent-elles être présentées lors d’un audit, d’un contrôle, d’un litige ou à la demande d’une autorité ?",
+      "role": "E",
+      "coefficients": {
+        "C": 0.0,
+        "I": 1.0,
+        "D": 0.0
+      },
+      "groups": {
+        "I": "I-PRE"
+      },
+      "category_scope_text": "Juridique › Audit et preuve • Administratif › Archivage et conservation • Finance › Comptabilité et clôture • Qualité › Traçabilité et",
+      "rationale": "Preuve et recevabilité des données lors d'un contrôle",
+      "options": [
+        {
+          "id": "R02#01",
+          "label": "Non",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "R02#02",
+          "label": "Oui, de manière ponctuelle",
+          "score": 2.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "R02#03",
+          "label": "Oui, régulièrement ou pour des contrôles importants",
+          "score": 4.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "R02#04",
+          "label": "Oui, pour répondre à des obligations pouvant avoir des conséquences graves",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 4
+        },
+        {
+          "id": "R02#05",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 5
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Juridique › Audit et preuve • Administratif › Archivage et conservation • Finance › Comptabilité et clôture • Qualité › Traçabilité et",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-078",
+      "source_id": "R03",
+      "label": "Certains documents doivent-ils rester exacts, consultables et utilisables comme preuve pendant une durée définie ?",
+      "role": "H",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {},
+      "category_scope_text": "Juridique › Audit et preuve • Administratif › Archivage et conservation",
+      "rationale": "Besoin d'archivage/valeur probatoire : oui/non non graduable",
+      "options": [
+        {
+          "id": "R03#01",
+          "label": "Oui",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 1
+        },
+        {
+          "id": "R03#02",
+          "label": "Non",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 2
+        },
+        {
+          "id": "R03#03",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 3
+        },
+        {
+          "id": "R03#04",
+          "label": "Non concerné",
+          "score": null,
+          "value_type": "not_applicable",
+          "source_choice_position": 4
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Juridique › Audit et preuve • Administratif › Archivage et conservation",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-079",
+      "source_id": "R04",
+      "label": "Des délais précis doivent-ils être respectés pour informer des clients, partenaires ou autorités lorsqu’un incident affecte ces activités ?",
+      "role": "H",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {},
+      "category_scope_text": "Juridique › Obligations et déclarations • Qualité › Surveillance et alertes",
+      "rationale": "Obligation de notification : oui/non non graduable",
+      "options": [
+        {
+          "id": "R04#01",
+          "label": "Oui",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 1
+        },
+        {
+          "id": "R04#02",
+          "label": "Non",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 2
+        },
+        {
+          "id": "R04#03",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 3
+        },
+        {
+          "id": "R04#04",
+          "label": "Non concerné",
+          "score": null,
+          "value_type": "not_applicable",
+          "source_choice_position": 4
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Juridique › Obligations et déclarations • Qualité › Surveillance et alertes",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-080",
+      "source_id": "R05",
+      "label": "L’activité doit-elle pouvoir restituer ou supprimer des informations à la demande d’un client, d’un partenaire ou d’une autorité ?",
+      "role": "H",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {},
+      "category_scope_text": "Socle commun",
+      "rationale": "Besoin de restitution/suppression : oui/non non graduable",
+      "options": [
+        {
+          "id": "R05#01",
+          "label": "Oui",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 1
+        },
+        {
+          "id": "R05#02",
+          "label": "Non",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 2
+        },
+        {
+          "id": "R05#03",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 3
+        },
+        {
+          "id": "R05#04",
+          "label": "Non concerné",
+          "score": null,
+          "value_type": "not_applicable",
+          "source_choice_position": 4
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-081",
+      "source_id": "R06",
+      "label": "L’application contribue-t-elle à une prestation ou à un service considéré comme essentiel pour l’organisation ?",
+      "role": "E",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 1.0
+      },
+      "groups": {
+        "D": "D-DEP"
+      },
+      "category_scope_text": "Socle commun",
+      "rationale": "Service essentiel pour l'organisation",
+      "options": [
+        {
+          "id": "R06#01",
+          "label": "Non",
+          "score": 0.0,
+          "value_type": "numeric",
+          "source_choice_position": 1
+        },
+        {
+          "id": "R06#02",
+          "label": "Oui, pour une activité importante",
+          "score": 3.0,
+          "value_type": "numeric",
+          "source_choice_position": 2
+        },
+        {
+          "id": "R06#03",
+          "label": "Oui, pour une activité essentielle au fonctionnement de l’entreprise",
+          "score": 5.0,
+          "value_type": "numeric",
+          "source_choice_position": 3
+        },
+        {
+          "id": "R06#04",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 4
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-082",
+      "source_id": "H01",
+      "label": "L’activité a-t-elle déjà été affectée par un arrêt important, une erreur majeure, une perte de données ou une divulgation d’informations liée à cette application ?",
+      "role": "H",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {},
+      "category_scope_text": "Socle commun",
+      "rationale": "Historique d'incidents : oui/non sans portée ni répétition, à qualifier manuellement",
+      "options": [
+        {
+          "id": "H01#01",
+          "label": "Oui",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 1
+        },
+        {
+          "id": "H01#02",
+          "label": "Non",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 2
+        },
+        {
+          "id": "H01#03",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 3
+        },
+        {
+          "id": "H01#04",
+          "label": "Non concerné",
+          "score": null,
+          "value_type": "not_applicable",
+          "source_choice_position": 4
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-083",
+      "source_id": "H02",
+      "label": "Existe-t-il aujourd’hui des difficultés connues concernant la fiabilité des données, la validation des opérations, les accès métier ou la continuité de l’activité ?",
+      "role": "H",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {},
+      "category_scope_text": "Socle commun",
+      "rationale": "Faiblesses connues non graduées, traiter comme point d'attention",
+      "options": [
+        {
+          "id": "H02#01",
+          "label": "Oui",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 1
+        },
+        {
+          "id": "H02#02",
+          "label": "Non",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 2
+        },
+        {
+          "id": "H02#03",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 3
+        },
+        {
+          "id": "H02#04",
+          "label": "Non concerné",
+          "score": null,
+          "value_type": "not_applicable",
+          "source_choice_position": 4
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-084",
+      "source_id": "H03",
+      "label": "Une évolution importante est-elle prévue dans l’usage métier de l’application (nouveaux utilisateurs, augmentation du volume, nouvelle activité ou nouveaux partenaires) ?",
+      "role": "H",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {},
+      "category_scope_text": "Socle commun",
+      "rationale": "Changement futur non gradué, utile pour planifier nouvelle revue",
+      "options": [
+        {
+          "id": "H03#01",
+          "label": "Oui",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 1
+        },
+        {
+          "id": "H03#02",
+          "label": "Non",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 2
+        },
+        {
+          "id": "H03#03",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 3
+        },
+        {
+          "id": "H03#04",
+          "label": "Non concerné",
+          "score": null,
+          "value_type": "not_applicable",
+          "source_choice_position": 4
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-085",
+      "source_id": "H04",
+      "label": "Y a-t-il d’autres informations métier utiles pour comprendre l’importance de cette application qui n’ont pas été abordées ?",
+      "role": "H",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {},
+      "category_scope_text": "Socle commun",
+      "rationale": "Commentaires complémentaires libres",
+      "options": [],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    },
+    {
+      "id": "Q-086",
+      "source_id": "H05",
+      "label": "Une autre personne doit-elle être consultée pour confirmer certaines réponses ?",
+      "role": "H",
+      "coefficients": {
+        "C": 0.0,
+        "I": 0.0,
+        "D": 0.0
+      },
+      "groups": {},
+      "category_scope_text": "Socle commun",
+      "rationale": "Besoin de corroboration sans note évaluative",
+      "options": [
+        {
+          "id": "H05#01",
+          "label": "Oui",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 1
+        },
+        {
+          "id": "H05#02",
+          "label": "Non",
+          "score": null,
+          "value_type": "descriptive",
+          "source_choice_position": 2
+        },
+        {
+          "id": "H05#03",
+          "label": "Je ne sais pas",
+          "score": null,
+          "value_type": "unknown",
+          "source_choice_position": 3
+        },
+        {
+          "id": "H05#04",
+          "label": "Non concerné",
+          "score": null,
+          "value_type": "not_applicable",
+          "source_choice_position": 4
+        }
+      ],
+      "routing_description": "Priorité : Obligatoire",
+      "display_scope_text": "Socle commun",
+      "selection_mode_hint": "inspect_existing_schema",
+      "rule_warning": "Texte documentaire de routage, pas une expression exécutable : utiliser le moteur de visibilité de la plateforme."
+    }
+  ],
+  "notes": {
+    "selection": "IMPORTANT: derive active question IDs from existing platform routing rules; the category and routing texts in this file are documentary only.",
+    "missing": "Never convert hidden, unanswered, unknown, or NA choices to numeric 0.",
+    "source": "Calibration register and current professional edition of ISRA BO questionnaire; no IT questionnaire data."
+  }
+}

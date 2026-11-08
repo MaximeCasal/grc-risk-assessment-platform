@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load assessment_tags %}
+{% block content %}
+<a class="back" href="{% url 'dashboard' %}">← Mes questionnaires</a>
+<div class="page-head">
+  <div><p class="eyebrow">{{ assignment.template.code }} · {{ assignment.get_status_display }}</p><h1>{{ assignment.template.title }}</h1></div>
+  <div class="progress"><span></span><b>Brouillon sauvegardable</b></div>
+</div>
+
+<section class="answer-rule">
+  <b>Toutes les questions affichées doivent être traitées.</b>
+  <span>Vous pouvez soit répondre, soit envoyer une demande d’aide. Une demande d’aide valide la question même sans réponse sélectionnée.</span>
+</section>
+
+<form method="post" id="questionnaire-form">
+  {% csrf_token %}
+  <input type="hidden" name="categories_present" value="1">
+  <input type="hidden" id="last-section" name="last_section" value="{{ assignment.last_section }}">
+  <section class="scope">
+    <div><h2>Périmètre du questionnaire</h2><p>Le socle commun reste actif. Ajoutez ou retirez des catégories à tout moment ; les réponses masquées restent dans le brouillon jusqu’à la soumission.</p></div>
+    <div class="chips">{% for c in categories %}<label><input type="checkbox" name="categories" value="{{ c.id }}" {% if c.id in selected_ids %}checked{% endif %}> {{ c.name }}</label>{% endfor %}</div>
+    <button name="action" value="save">Mettre à jour le périmètre</button>
+  </section>
+
+  <nav class="section-nav" aria-label="Sections">{% for section, questions in grouped %}<a href="#section-{{ section.order }}">{{ section.order }}. {{ section.title }}</a>{% endfor %}{% if added %}<a href="#questions-ajoutees">Questions ajoutées</a>{% endif %}</nav>
+  {% for section, questions in grouped %}
+    <section class="question-section" data-section="{{ section.order }}" id="section-{{ section.order }}">
+      <div class="section-title"><span>{{ section.order|stringformat:'02d' }}</span><h2>{{ section.title }}</h2></div>
+      {% for q in questions %}{% include 'assessments/question_card.html' %}{% endfor %}
+    </section>
+  {% endfor %}
+  {% if added %}
+    <section class="question-section added" id="questions-ajoutees">
+      <div class="section-title"><span>+</span><h2>Questions ajoutées</h2></div>
+      <p>Ces questions ont été ajoutées à la fin du parcours après une modification du périmètre.</p>
+      {% for q in added %}{% include 'assessments/question_card.html' %}{% endfor %}
+    </section>
+  {% endif %}
+  <div class="sticky-actions"><button class="secondary" name="action" value="save">Enregistrer le brouillon</button><button name="action" value="submit" onclick="return confirm('Soumettre définitivement ? Les réponses seront verrouillées.')">Soumettre définitivement</button></div>
+</form>
+
+{% for q in applicable %}<form class="help-form" id="help-{{ q.id }}" method="post" action="{% url 'request_help' assignment.pk q.id %}">{% csrf_token %}</form>{% endfor %}
+
+<script>
+const sections=[...document.querySelectorAll('[data-section]')],position=document.querySelector('#last-section'),bar=document.querySelector('.progress span');
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){position.value=entry.target.dataset.section;bar.style.width=(100*(sections.indexOf(entry.target)+1)/sections.length)+'%'}}),{threshold:.12});
+sections.forEach(section=>observer.observe(section));
+document.querySelectorAll('.help-form').forEach(form=>form.addEventListener('submit',async event=>{
+  event.preventDefault();
+  const button=document.querySelector(`[form="${form.id}"][type="submit"]`);
+  const textarea=document.querySelector(`[form="${form.id}"][name="comment"]`);
+  button.disabled=true; button.textContent='Envoi…';
+  const data=new FormData(form); data.set('comment',textarea.value);
+  const response=await fetch(form.action,{method:'POST',body:data,headers:{'X-Requested-With':'XMLHttpRequest'}});
+  if(response.ok){const card=button.closest('.question');card.classList.add('help-requested');card.querySelector('.help-state').textContent='Aide demandée — cette question est validée même sans réponse.';button.textContent='Demande envoyée';}
+  else{button.disabled=false;button.textContent='Réessayer';}
+}));
+</script>
+{% endblock %}

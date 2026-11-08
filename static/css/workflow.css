@@ -1,0 +1,53 @@
+.button-row { display: flex; flex-wrap: wrap; gap: 9px; }
+.action-gap { width: 100%; margin-top: 12px; text-align: center; }
+.form-panel ul { padding: 0; list-style: none; }
+.form-panel ul label { display: flex; gap: 9px; align-items: flex-start; padding: 8px 0; font-weight: 450; }
+.form-panel ul input { flex: 0 0 auto; width: auto; margin-top: 4px; }
+
+.scope { display: grid; grid-template-columns: 1fr 1.5fr auto; gap: 22px; align-items: center; margin-top: 24px; }
+.scope h2 { margin-top: 0; }
+.scope p { margin-bottom: 0; color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips label { padding: 7px 11px; color: var(--muted); background: #f7f7f9; border: 1px solid var(--line); border-radius: 99px; cursor: pointer; }
+.chips label:hover { border-color: #cde3ff; }
+.chips label:has(input:checked) { color: var(--blue); background: var(--blue-soft); border-color: #bcd9ff; }
+.chips input, .options input { width: auto; accent-color: var(--blue); }
+
+.answer-rule { display: flex; flex-direction: column; gap: 4px; margin: 22px 0; padding: 17px 20px; color: #4f5965; background: var(--blue-soft); border: 1px solid #cde3ff; border-radius: 16px; }
+.answer-rule b { color: #174b82; }
+.method { border-left: 3px solid var(--blue); }
+.method > h2:first-child { margin-top: 0; }
+.question-section { max-width: 1040px; margin: 58px auto; scroll-margin-top: 72px; }
+.section-title { display: flex; align-items: center; gap: 13px; margin-bottom: 20px; }
+.section-title > span { display: grid; place-items: center; width: 38px; height: 38px; color: var(--blue); background: var(--blue-soft); border: 1px solid #d4e7ff; border-radius: 12px; font-weight: 760; }
+.section-title h2 { margin: 0; }
+.question { margin: 14px 0; padding: 24px; background: #fff; border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow-sm); }
+.question:hover { border-color: #d2e5fc; box-shadow: var(--shadow); }
+.q-head { display: grid; grid-template-columns: 52px 1fr; gap: 12px; }
+.q-head > span { color: var(--blue); font-weight: 780; letter-spacing: .02em; }
+.q-head h3 { margin-bottom: 6px; font-size: 17px; font-weight: 650; }
+.q-head p { color: var(--muted); font-size: 13px; }
+.question-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.question-meta small { padding: 3px 8px; color: #1761a9; background: var(--blue-soft); border-radius: 99px; font-size: 10px; }
+.options { display: grid; gap: 8px; margin: 19px 0; }
+.options label { display: flex; gap: 11px; padding: 11px 13px; color: #515157; background: #fafafd; border: 1px solid var(--line); border-radius: 12px; cursor: pointer; }
+.options label:hover { color: var(--ink); background: #f7faff; border-color: #cde3ff; }
+.options label:has(input:checked) { color: #174b82; background: var(--blue-soft); border-color: #9fcaff; box-shadow: inset 3px 0 var(--blue); }
+.options input { flex: 0 0 auto; margin-top: 4px; }
+.options small { margin-left: 8px; padding: 2px 6px; color: var(--muted); background: #ededf0; border-radius: 5px; }
+.comment { display: grid; gap: 6px; color: var(--muted); font-size: 12px; }
+.help { margin-top: 14px; padding-top: 4px; color: var(--blue); }
+.help summary { cursor: pointer; user-select: none; font-weight: 600; }
+.help textarea { margin: 10px 0; }
+.help > small { display: block; margin-top: 8px; color: var(--muted-2); }
+.help-requested { border-color: #a7d7b2; box-shadow: 0 0 0 2px rgba(36,138,61,.04), var(--shadow-sm); }
+.help-state { display: block; margin-top: 7px; color: var(--green); font-size: 12px; }
+.added { padding-left: 26px; border-left: 2px solid var(--blue); }
+.sticky-actions { position: sticky; bottom: 14px; z-index: 12; display: flex; justify-content: flex-end; gap: 9px; max-width: 1040px; margin: 0 auto; padding: 12px; background: rgba(255,255,255,.92); border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 12px 35px rgba(0,0,0,.1); backdrop-filter: blur(22px); }
+.result-section .section-head > div { text-align: right; }.result-section .section-head b { display: block; color: var(--ink); font-size: 30px; }
+
+@media (max-width: 580px) {
+  .question { padding: 18px; }
+  .sticky-actions { flex-direction: column; }.sticky-actions button { width: 100%; }
+  .progress { width: 100%; }
+}

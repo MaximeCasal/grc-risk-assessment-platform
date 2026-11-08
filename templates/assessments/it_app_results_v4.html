@@ -1,0 +1,103 @@
+<div class="results-page it-results-page">
+  <a class="results-back" href="{% url 'dashboard' %}"><span aria-hidden="true">←</span> Tableau de bord</a>
+
+  <header class="results-hero">
+    <div>
+      <div class="results-kicker"><span class="status submitted">Soumis</span><span>{{ assignment.submitted_at|date:'d/m/Y à H:i' }}</span></div>
+      <h1>Questionnaire ISRA <span>— IT Application</span></h1>
+      <p class="respondent-line">Répondu par <strong>{{ assignment.respondent.get_full_name }}</strong></p>
+    </div>
+    <a class="btn export-button" href="{% url 'export_xlsx' assignment.pk %}">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 15v4h14v-4"/></svg>
+      Exporter XLSX
+    </a>
+  </header>
+
+  <section class="results-section" aria-labelledby="it-summary-title">
+    <div class="section-heading">
+      <div><span class="section-label">Synthèse V4</span><h2 id="it-summary-title">Faiblesses des contrôles par famille</h2></div>
+      <p>Échelle de 0 à 5</p>
+    </div>
+    <div class="it-family-grid">
+      {% for code, family in results.it_app.families.items %}
+      <article class="it-family-card{% if family.value != None and family.value >= 5 %} critical-score{% endif %}">
+        <div class="it-family-heading"><span>{{ code }}</span><h3>{{ family.name }}</h3></div>
+        <div class="it-family-value">
+          {% if family.value != None %}<strong>{{ family.value|floatformat:1 }}</strong><span>/5</span>{% else %}<strong class="not-evaluated">Non évalué</strong>{% endif %}
+        </div>
+        {% if family.value != None %}
+        <div class="it-family-scale score-scale" style="--score-position: {{ family.position_percent_css }}%" aria-label="Score {{ family.value|floatformat:1 }} sur 5">
+          <div class="score-track"><span class="score-marker"></span></div>
+          <div class="score-ticks" aria-hidden="true"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
+        </div>
+        {% endif %}
+        {% if family.status == 'provisional' %}<small class="it-family-status">Provisoire — information applicable inconnue</small>{% elif family.status == 'complete' %}<small class="it-family-status complete">Calcul complet</small>{% else %}<small class="it-family-status neutral">Aucune note numérique disponible</small>{% endif %}
+      </article>
+      {% endfor %}
+    </div>
+    <p class="business-note"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg><span>Chaque famille est calculée indépendamment par moyenne simple des contrôles W applicables et connus. Il n’existe ni note globale IT Application, ni score CIA technique, ni conversion automatique en niveau de risque.</span></p>
+  </section>
+
+  <section class="results-section calculation-section" aria-labelledby="it-calculation-title">
+    <div class="section-heading">
+      <div><span class="section-label">Traçabilité</span><h2 id="it-calculation-title">Détail des dix familles</h2></div>
+      <p>Réponses W contributives uniquement</p>
+    </div>
+    <div class="calculation-list it-calculation-list">
+      {% for code, family in results.it_app.families.items %}
+      <details class="calculation-row">
+        <summary>
+          <span class="group-dimension">{{ code }}</span>
+          <span class="group-title"><strong>{{ family.name }}</strong></span>
+          <span class="group-metric"><small>Note</small><strong>{% if family.value != None %}{{ family.value|floatformat:1 }}/5{% else %}Non évalué{% endif %}</strong></span>
+          <span class="group-metric"><small>Contributions</small><strong>{{ family.contributions|length }}</strong></span>
+          <span class="chevron" aria-hidden="true">⌄</span>
+        </summary>
+        <div class="calculation-detail v4-detail">
+          <div><span>Statut</span><strong>{% if family.status == 'complete' %}Complet{% elif family.status == 'provisional' %}Provisoire{% else %}Non évalué{% endif %}</strong></div>
+          <div class="retained-questions"><span>Réponses contributives</span><ul>{% for contribution in family.contributions %}<li><a href="#answer-{{ contribution.reference }}">{{ contribution.reference }}</a><span>{{ contribution.selected_labels|join:'; ' }} · {{ contribution.score }}/5</span></li>{% empty %}<li>Aucune réponse numérique connue.</li>{% endfor %}</ul></div>
+          {% if family.unknown_questions %}<div class="retained-questions missing-list"><span>Réponses inconnues ou non renseignées</span><ul>{% for reference in family.unknown_questions %}<li><a href="#answer-{{ reference }}">{{ reference }}</a></li>{% endfor %}</ul></div>{% endif %}
+          {% if family.not_applicable_questions %}<div class="retained-questions"><span>Questions non applicables justifiées</span><ul>{% for reference in family.not_applicable_questions %}<li><a href="#answer-{{ reference }}">{{ reference }}</a></li>{% endfor %}</ul></div>{% endif %}
+        </div>
+      </details>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="results-section answers-section" aria-labelledby="it-answers-title">
+    <div class="section-heading answers-heading">
+      <div><span class="section-label">Dossier d’évaluation</span><h2 id="it-answers-title">Réponses et justifications</h2></div>
+      <label class="answer-search"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></svg><span class="sr-only">Rechercher une réponse</span><input type="search" id="answer-search" placeholder="Rechercher une question ou une référence…"></label>
+    </div>
+    <div id="answer-sections">
+      {% for section, data in results.sections.items %}
+      <details class="answer-section" open>
+        <summary><span>{{ forloop.counter|stringformat:'02d' }}</span><strong>{{ section }}</strong><small>{{ data.answers|length }} réponse{{ data.answers|length|pluralize }}</small><i aria-hidden="true">⌄</i></summary>
+        <div class="answer-list">
+          {% for q, answer, choices, score in data.answers %}
+          <article class="answer-card" id="answer-{{ q.reference }}" data-search="{{ q.reference|lower }} {{ q.text|lower }} {% for c in choices %}{{ c.label|lower }} {% endfor %}">
+            <div class="answer-card-head"><span class="answer-reference">{{ q.reference }}</span><div class="answer-categories">{% for category in q.categories.all %}<span>{{ category.name }}</span>{% endfor %}</div>{% if score != None %}<span class="answer-score">Note W {{ score|floatformat:0 }}/5</span>{% endif %}</div>
+            <h3>{{ q.text }}</h3>
+            <div class="answer-content"><span>Réponse</span><div>{% for c in choices %}<p>{{ c.label }} {% if c.special == 'ND' %}<span class="answer-badge unknown">Je ne sais pas</span>{% elif c.special == 'NA' %}<span class="answer-badge na">Non applicable</span>{% endif %}</p>{% empty %}<p>{% if answer.value %}{{ answer.value|join:'; ' }}{% else %}<span class="answer-badge missing">Sans réponse</span>{% endif %}</p>{% endfor %}</div></div>
+            {% if answer.comment %}<div class="answer-comment"><span>Justification ou commentaire</span><p>{{ answer.comment }}</p></div>{% endif %}
+          </article>
+          {% endfor %}
+        </div>
+      </details>
+      {% endfor %}
+      <p class="no-search-results" hidden>Aucune réponse ne correspond à cette recherche.</p>
+    </div>
+  </section>
+</div>
+
+<script>
+const search = document.querySelector('#answer-search');
+if (search) search.addEventListener('input', () => {
+  const term = search.value.trim().toLocaleLowerCase('fr'); let total = 0;
+  document.querySelectorAll('.answer-section').forEach(section => {
+    let count = 0; section.querySelectorAll('.answer-card').forEach(card => { const visible = !term || card.dataset.search.includes(term); card.hidden = !visible; if (visible) count++; });
+    section.hidden = count === 0; if (term && count) section.open = true; total += count;
+  });
+  document.querySelector('.no-search-results').hidden = total !== 0;
+});
+</script>
